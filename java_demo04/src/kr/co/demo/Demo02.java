@@ -24,7 +24,7 @@ public class Demo02 {
 
          */
         if(s1.equals(s2)) {
-            System.out.println("코드에 저장된 리터럴 값 s1과 사용자가 입력한 문장려 s2가 같습니다.");
+            System.out.println("코드에 저장된 리터럴 값 s1과 사용자가 입력한 문자열 s2가 같습니다.");
         } else {
             System.out.println("코드에 저장된 리터럴 값 s1과 사용자가 입력한 문자열 값 s2가 다릅니다.");
         }
