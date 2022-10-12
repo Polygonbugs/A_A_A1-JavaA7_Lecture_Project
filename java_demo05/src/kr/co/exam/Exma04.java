@@ -20,6 +20,11 @@ public class Exma04 {
         for(int i = 0; i < arr.length; i++) {
             System.out.print("1 ~ 10까지의 수 중에서 초기화할 값을 입력하세요 : ");
             arr[i] = sc.nextInt();
+            if(i > 0 && arr[i] == arr[i - 1]) {
+                System.out.print("중복된 값이 있습니다. 다시 입력하세요. : ");
+            } else {
+
+            }
         }
     }
 }
