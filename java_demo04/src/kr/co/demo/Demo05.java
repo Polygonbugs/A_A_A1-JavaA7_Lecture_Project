@@ -63,7 +63,7 @@ public class Demo05 {
         /*
          *      do while
          *          일단 1회는 무조건 수행한다.
-         *          
+         *
          *      do {
          *          반복 실행 코드;
          *      } while(조건식);
