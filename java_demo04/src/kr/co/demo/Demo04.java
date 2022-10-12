@@ -109,7 +109,7 @@ public class Demo04 {
          */
 
         // 누적합을 구하기 위한 반복문
-        int sum1 = 0;
+        /* int sum1 = 0;
         for(int x8 = 1; x8 <= 10; x8++) {
             sum1 += x8;
         }
@@ -122,6 +122,23 @@ public class Demo04 {
             }
         }
         System.out.printf("1 ~ 100 까지의 짝수의 누적합은 %d입니다.\n", sum2);
+
+         */
+
+        // 큰 값 -> 작은 값 감소하는 형식의 반복문
+        /*
+        for(int x9 = 10; x9 >= 1; x9--) {
+            System.out.printf("%d\n", x9);
+        }
+        */
+
+        // 중첩 반복문
+        for(int i = 1; i <= 9; i++) {
+            for(int j = 2; j <= 9; j++) {
+                System.out.printf("%d X %d = %d\t", j, i, j * i);
+            }
+            System.out.println();
+        }
 
     }
 }
