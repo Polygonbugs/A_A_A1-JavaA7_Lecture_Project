@@ -12,7 +12,7 @@ public class Exma04 {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("2 ~ 5사이의 정수값을 입력 하세요 : ");
+        System.out.print("배열의 크기를 결정하기 위해 2 ~ 5사이의 정수값을 입력 하세요 : ");
         int size = sc.nextInt();
 
         int arr[] = new int[size];
@@ -22,12 +22,17 @@ public class Exma04 {
             arr[i] = sc.nextInt();
 
             for(int j = 0; j < i; j++) {
+<<<<<<< Updated upstream
                 if(i > 0 && arr[i] == arr[j]) {
+=======
+                if (arr[i] == arr[j]) {
+>>>>>>> Stashed changes
                     System.out.print("중복된 값이 있습니다. 다시 입력하세요. : ");
                     arr[j] = sc.nextInt();
                 }
             }
 
         }
+
     }
 }
