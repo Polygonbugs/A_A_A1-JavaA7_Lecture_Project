@@ -10,6 +10,7 @@ public class Demo03 {
          */
 
         Scanner sc = new Scanner(System.in);
+
         int[] arr1 = new int[3];
         arr1[0] = 1; arr1[1] = 2; arr1[2] = 3;
 
