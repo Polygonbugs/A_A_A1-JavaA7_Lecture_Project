@@ -2,7 +2,7 @@ package kr.co.exam;
 
 import java.util.Scanner;
 
-public class Exma04 {
+public class Exam04 {
     public static void main(String[] args) {
         /*
          *      Exam04.java 파일을 생성 후 다음의 문제를 풀어보세요.
