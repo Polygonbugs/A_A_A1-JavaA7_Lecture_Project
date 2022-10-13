@@ -2,7 +2,7 @@ package kr.co.exam;
 
 import java.util.Scanner;
 
-public class Exam07 {
+public class Exam07_ans {
     public static void main(String[] args) {
         /*      문제7
          *      사용자 입력을 받아서 다음의 기능을 수행하는 코드를 작성
@@ -19,51 +19,48 @@ public class Exam07 {
          *          총합 : 43
          *          평균 : 14.3
          */
-        /*
-         *      문제7 알고리즘
-         *      1-1. 정수값을 입력받는다. (정수값 = 입력한 횟수에 해당)
-         *      1-2. 배열 길이(배열 참조 변수 생성시 처음 입력하는 배열 길이값)에 입력 받은 정수값을 할당한다.
-         *
-         *
-         */
-
-
 
         Scanner sc = new Scanner(System.in);
+
         int arr[] = new int[0];
-        int count, sum = 0;
+
+        int num = 0;
+        int count = 0;
+        int sum = 0;
         double avg;
 
-        System.out.print("입력 횟수를 입력하세요 : ");
-        count = sc.nextInt();
-
-        for(int i = 0; i < count; i++){
-            System.out.printf("%d번째 정수값 입력 : ", i + 1);
-            int num = sc.nextInt();
+        while(true) {
+            System.out.printf("%d번째 정수값 입력 : ", ++count);
+            num = sc.nextInt();
 
             if(num == -1) {
                 break;
             }
 
-            int tmp[];
-            tmp = new int[arr.length + 1];
+            int tmp[] = new int[arr.length + 1];
 
+            // 새로운 배열에 값 옮기기(깊은 복사)
             for(int j = 0; j < arr.length; j++) {
                 tmp[j] = arr[j];
             }
 
+            // 새로운 배열의 마지막 요소에 값 추가하기
             tmp[tmp.length - 1] = num;
 
+            // 참조 주소 변경하기(얕은 복사)
             arr = tmp;
-        }
 
-        for(int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+            sum += num;
         }
 
         avg = (double)sum / arr.length;
 
+        for(int i = 0; i < arr.length; i++) {
+            System.out.printf("%d\t", arr[i]);
+        }
+
+        System.out.println();
         System.out.printf("총합 : %d\n", sum);
-        System.out.printf("평균 : %.1f\n", avg);
+        System.out.printf("평균 : %.2f\n", avg);
     }
 }
