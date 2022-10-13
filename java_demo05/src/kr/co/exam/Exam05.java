@@ -51,12 +51,12 @@ public class Exam05 {
          *      (조건, 자료형은 정수배열 사용)
          */
 
-        int arr2[] = new int[10];
+        int arr2[] = new int[count];
 
-        for(int i = 0; i < arr2.length; i++) {
-
+        for(int i = 0, j =0; i < arr2.length || j < count; i++) {
             if(arr1[i] % 2 == 0) {
-                arr2[i] = arr1[i];
+                arr2[j] = arr1[i];
+                j++;
             }
         }
 
