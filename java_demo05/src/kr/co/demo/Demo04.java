@@ -2,11 +2,11 @@ package kr.co.demo;
 
 import java.util.Scanner;
 
-public class Demo03 {
+public class Demo04 {
     public static void main(String[] args) {
         /*
          *      동적 배열
-         *          반복문을 이용한 깊은 복사
+         *          System.arraycopy를 이용한 깊은 복사
          */
 
         Scanner sc = new Scanner(System.in);
@@ -24,15 +24,13 @@ public class Demo03 {
             tmp = new int[arr1.length + 1];
 
             // 기존 배열의 데이터를 새로 생성한 배열에 복사 -> 깊은 복사
-            for(int j = 0; j < arr1.length; j++) {
-                tmp[j] = arr1[j];
-            }
+            System.arraycopy(arr1, 0, tmp, 1, arr1.length);
 
             // 배열의 크기가 증가된 경우 새로우 값 추가.
-            tmp[tmp.length - 1] = num;
+            tmp[0] = num;
 
-            // 앞으로 게속 사용할 배열 변수명은 기존 이름을 사용해야함
-            arr1 = tmp;     // 얕은 복사 : 참조주소를 복사한다.
+            // 얕은 복사 : 참조주소를 복사한다.
+            arr1 = tmp;
 
             System.out.printf("arr1 배열의 크기가 %d 가 되었습니다.\n", arr1.length);
         }

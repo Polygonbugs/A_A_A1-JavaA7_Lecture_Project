@@ -75,7 +75,7 @@ public class Demo01 {
         System.out.println(arr7[0]);
         System.out.println(arr8[0]);
 
-        // 깊은 목사
+        // 깊은 복사
         for(int i = 0; i < arr9.length; i++) {
             arr9[i] = arr7[i];
         }
