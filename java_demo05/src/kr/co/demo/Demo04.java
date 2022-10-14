@@ -7,7 +7,7 @@ public class Demo04 {
         /*
          *      동적 배열
          *          System.arraycopy를 이용한 깊은 복사
-         *          테스트
+         *
          */
 
         Scanner sc = new Scanner(System.in);

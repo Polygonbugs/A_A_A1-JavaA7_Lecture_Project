@@ -22,11 +22,8 @@ public class Exam04 {
             arr[i] = sc.nextInt();
 
             for(int j = 0; j < i; j++) {
-<<<<<<< Updated upstream
-                if(i > 0 && arr[i] == arr[j]) {
-=======
+
                 if (arr[i] == arr[j]) {
->>>>>>> Stashed changes
                     System.out.print("중복된 값이 있습니다. 다시 입력하세요. : ");
                     arr[j] = sc.nextInt();
                 }
