@@ -38,17 +38,31 @@ public class Exam09_ans {
         int arr[][] = new int[row][subjects.length];
 
         for(int i = 0; i < arr.length; i++) {
+            int sum = 0;
             System.out.printf("%d번 학생\n", i + 1);
             for(int j = 0; j < arr[i].length; j++) {
                 System.out.printf("\t%s 점수 입력 : ", subjects[j]);
                 int num = sc.nextInt();
-
                 arr[i][j] = num;
+                sum += num;
             }
+            // 동적 배열을 활용해서 총점이 배열에 추가 될 수 있게 하세요
+            arr[i] = Arrays.copyOf(arr[i], arr[i].length + 1);
+            arr[i][arr[i].length - 1] = sum;
         }
 
+        for(int j = 0; j < subjects.length; j++) {
+            System.out.printf("%s\t", subjects[j]);
+        }
+        System.out.print("총점\t평균\n");
+
         for(int i = 0; i < arr.length; i++) {
-            System.out.println(Arrays.toString(arr[i]));
+            double avg;
+            for(int j = 0; j < arr[i].length; j++) {
+                System.out.printf("%d\t\t", arr[i][j]);
+            }
+            avg = (double)arr[i][arr[i].length - 1] / (arr[i].length - 1);
+            System.out.printf("%.2f\n", avg);
         }
 
 
