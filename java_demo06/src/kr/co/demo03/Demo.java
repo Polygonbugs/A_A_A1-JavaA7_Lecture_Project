@@ -5,10 +5,10 @@ public class Demo {
         Circle c1 = new Circle(10);
         Circle c2 = new Circle(15);
 
-        System.out.println(Circle.PI);
+        System.out.println(Circle.PI2);
 
-        System.out.printf("%f", c1.getArea());
-        System.out.printf("%f", c2.getArea());
+        System.out.printf("%f\n", c1.getArea());
+        System.out.printf("%f\n", c2.getArea());
 
     }
 }
