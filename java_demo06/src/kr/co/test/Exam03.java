@@ -8,5 +8,10 @@ public class Exam03 {
         sub1.showTitle();
         sub1.showScore();
         sub1.showRank();
+
+        Lotto lot1 = new Lotto(3);
+
+        lot1.createNumber();
+        System.out.println(lot1.checkNumber());
     }
 }
