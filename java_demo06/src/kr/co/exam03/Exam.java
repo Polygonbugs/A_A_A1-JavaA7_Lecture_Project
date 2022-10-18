@@ -21,9 +21,8 @@ public class Exam {
 
         System.out.println(clock2.getTimeString());
 
-
-
-
+        Clock_ans clock3 = new Clock_ans(12, 30, 30);
+        System.out.println(clock3.getTimeString());
 
     }
 }
