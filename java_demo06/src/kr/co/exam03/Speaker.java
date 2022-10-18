@@ -38,14 +38,14 @@ public class Speaker {
     }
 
     public void upVolume() {
-        if(this.soundVolume >= 100) {
+        if(this.soundVolume + 5 >= 100) {
             return;
         }
         this.soundVolume += 5;
     }
 
     public void downVolume() {
-        if(this.soundVolume <= 0) {
+        if(this.soundVolume - 5 <= 0) {
             return;
         }
         this.soundVolume -= 5;
@@ -73,7 +73,7 @@ public class Speaker {
         } else if(isPower && isMute) {
             System.out.println("음소거 On");
         } else if (isPower && !isMute){
-            System.out.printf("음량 : %d", soundVolume);
+            System.out.printf("음량 : %d\n", soundVolume);
         }
     }
 }
