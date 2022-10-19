@@ -41,5 +41,12 @@ public class Exam {
 
         double score = s.getScore("국어");
         System.out.println(score);
+
+        s.addSubject("과학", 76.5);
+        s.addSubject("국어", 76.5);
+        s.addSubject("수학", 76.5);
+        table = s.getGradeTable();
+        System.out.println(table);
+
     }
 }

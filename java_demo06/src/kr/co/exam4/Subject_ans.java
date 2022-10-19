@@ -50,4 +50,7 @@ public class Subject_ans {
         return this.grade;
     }
 
+    public boolean isExists(String name) {
+        return this.name.equals(name);
+    }
 }

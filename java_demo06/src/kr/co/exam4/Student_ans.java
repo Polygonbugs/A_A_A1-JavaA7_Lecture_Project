@@ -1,5 +1,7 @@
 package kr.co.exam4;
 
+import java.util.Arrays;
+
 public class Student_ans {
     public Subject_ans subjects[] = {
             new Subject_ans("국어", 70),
@@ -26,25 +28,41 @@ public class Student_ans {
         return result;
     }
 
+    public boolean isDuplicate(String subjectName) {
+
+        return this.findIndex(subjectName) == -1 ? false : true;
+    }
+
+    public int findIndex(String subjectName) {
+        for(int i = 0; i < this.subjects.length; i++) {
+            Subject_ans s = this.subjects[i];
+            if(s.isExists(subjectName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public double getScore(String subjectName) {
         double result = -1.0;
 
-        for(int i = 0; i < this.subjects.length; i++) {
-            Subject_ans s = this.subjects[i];
-            if(s.getName().equals(subjectName)) {
-                result = s.getScore();
-                return result;
-            }
+        int idx = this.findIndex(subjectName);
+
+        if(idx >= 0) {
+            result = this.subjects[idx].getScore();
         }
 
         return result;
     }
 
-    public void updateSubject(String subjectName, double score) {
-
+    public void addSubject(String subjectName, double score) {
+        if(!this.isDuplicate(subjectName)) {
+            int len = this.subjects.length;
+            this.subjects = Arrays.copyOf(this.subjects, len + 1);
+            this.subjects[len] = new Subject_ans(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
+        }
     }
 
-    public void addSubject(String subjectName, double score) {
+    public void updateSubject(String subjectName, double score) {
 
     }
 
