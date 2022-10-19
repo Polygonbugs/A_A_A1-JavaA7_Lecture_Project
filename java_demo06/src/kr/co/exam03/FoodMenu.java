@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class FoodMenu {
     /*
-     *      FoodMenu 클래스
+     *      FoodMenu_Obj 클래스
      *      - 멤버 변수 : 음식명(배열), 음식가격(배열)
      *      - 멤버 메서드 : 메뉴출력, 음식찾기, 음식추가, 음식수정, 음식삭제
      *

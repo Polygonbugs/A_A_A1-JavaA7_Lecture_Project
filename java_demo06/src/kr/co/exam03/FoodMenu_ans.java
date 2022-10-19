@@ -87,8 +87,25 @@ public class FoodMenu_ans {
         return false;
     }
 
-    public void remove(String name) {
+    public boolean remove(String name) {
         // 메뉴를 찾아 삭제하기 위한 메서드
+        int idx = this.findIndex(name);
+        if(idx != -1) {
+            String tmpName[] = new String[this.name.length - 1];
+            int tmpPrice[] = new int[this.price.length - 1];
+            for(int i = 0, j = 0; i < this.name.length; i++) {
+                if(idx != i) {
+                    tmpName[j] = this.name[i];
+                    tmpPrice[j] = this.price[i];
+                    j++;
+                }
+            }
+            this.name = tmpName;
+            this.price = tmpPrice;
+            return true;
+        }
+
+        return false;
     }
 
 
