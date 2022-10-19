@@ -51,7 +51,7 @@ public class FoodMenu {
     }
 
     public void printMenu() {
-        System.out.println("음식명 리스트 : " + Arrays.toString(name));
+        System.out.println("음식명 리스트 :   " + Arrays.toString(name));
         System.out.println("음식가격 리스트 : " + Arrays.toString(price));
     }
 
