@@ -14,7 +14,7 @@ public class Exam {
          */
 
 
-        Student s1 = new Student("꿀꿀이");
+        /*Student s1 = new Student("꿀꿀이");
 
         s1.addSubjectScore("영어", 97);
         s1.addSubjectScore("수학", 57);
@@ -24,23 +24,22 @@ public class Exam {
 
         s1.updateSubjectScore("영어", 50);
         System.out.println(s1.showScoreBoard());
+        s1.updateSubjectScore("수학", 99);
+        System.out.println(s1.showScoreBoard());
 
         s1.deleteSubjectScore("영어");
-        System.out.println(s1.showScoreBoard());
-        //System.out.println(s1.showScoreBoard());
+        System.out.println(s1.showScoreBoard());*/
+
 
         System.out.println("-----------------------");
         System.out.println("-----------------------");
 
-        Subject_ans s = new Subject_ans("국어");
+        Student_ans s = new Student_ans("홍길동");
 
-        s.setScore(65.8);
+        String table = s.getGradeTable();
+        System.out.println(table);
 
-        System.out.println(s.getName());
-        System.out.println(s.getScore());
-        System.out.println(s.getGrade());
-
-
-
+        double score = s.getScore("국어");
+        System.out.println(score);
     }
 }
