@@ -1,19 +1,19 @@
-package kr.co.exam4;
+package kr.co.exam05;
 
 import java.util.Arrays;
 
-public class Student_ans {
-    public Subject_ans[] subjects;
+public class Student {
+    public Subject[] subjects;
     public String name;
     public int year;
 
-    public Student_ans(String name) {
-        this.subjects = new Subject_ans[0];
+    public Student(String name) {
+        this.subjects = new Subject[0];
         this.name = name;
         System.out.println(this.toString());        // this 객체가 객체의 주소값을 지닌다는 것을 보여주기 위해 작성
     }
 
-    public Student_ans(String name, int year) {
+    public Student(String name, int year) {
         this(name);
         this.year = year;
     }
@@ -21,7 +21,7 @@ public class Student_ans {
     public String getGradeTable() {
         String result = "";
         for(int i = 0; i < subjects.length; i++) {
-            Subject_ans s = this.subjects[i];
+            Subject s = this.subjects[i];
             result += String.format("%s\t%.2f\n", s.getName(), s.getScore());
         }
         return result;
@@ -35,7 +35,7 @@ public class Student_ans {
 
     private int findIndex(String subjectName) {
         for(int i = 0; i < this.subjects.length; i++) {
-            Subject_ans s = this.subjects[i];       // 축약하는 용도
+            Subject s = this.subjects[i];       // 축약하는 용도
             if(s.isExists(subjectName)) {
                 return i;
             }
@@ -43,8 +43,8 @@ public class Student_ans {
         return -1;
     }
 
-    public Subject_ans getSubject(String subjectName) {
-        Subject_ans result = null;
+    public Subject getSubject(String subjectName) {
+        Subject result = null;
         int idx = this.findIndex(subjectName);
 
         if(idx >= 0) {
@@ -70,11 +70,11 @@ public class Student_ans {
 
     // 가변 매개변수 : 메소드 오버로딩이 적용이 되지 않는다.
     // 과목 여러개를 한번에 받아내기 위해서 사용하는 것이다.
-    public Subject_ans[] getSubjects(String ... subjectNames) {
-        Subject_ans[] results = new Subject_ans[0];
+    public Subject[] getSubjects(String ... subjectNames) {
+        Subject[] results = new Subject[0];
 
         for(int i  = 0 ; i < subjectNames.length; i++) {
-            Subject_ans subject = this.getSubject(subjectNames[i]);
+            Subject subject = this.getSubject(subjectNames[i]);
             if(subject != null) {
                 results = Arrays.copyOf(results, results.length + 1);
                 results[results.length - 1] = subject;
@@ -85,7 +85,7 @@ public class Student_ans {
     }
 
     public double getScore(String subjectName) {
-        Subject_ans result = this.getSubject(subjectName);
+        Subject result = this.getSubject(subjectName);
 
         return result != null ? result.getScore() : -1;
     }
@@ -100,7 +100,7 @@ public class Student_ans {
     //      오버로딩된 메서드를 사용하는 사용자 입장에서는 해당 메서드를 사용할 때
     //      타입에 대한 부분을 신경쓰지 않아도 되며, 다양한 타입을 사용해서 동일한
     //      결과를 얻을 수도 있다.
-    public void addSubject(Subject_ans subject) {
+    public void addSubject(Subject subject) {
         this.addSubject(subject.getName(), subject.getScore());
     }
 
@@ -124,7 +124,7 @@ public class Student_ans {
         if(!this.isDuplicate(subjectName)) {
             int len = this.subjects.length;
             this.subjects = Arrays.copyOf(this.subjects, len + 1);
-            this.subjects[len] = new Subject_ans(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
+            this.subjects[len] = new Subject(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
         }
     }
 
@@ -132,7 +132,7 @@ public class Student_ans {
         if(!this.isDuplicate(subjectName)) {
             int len = this.subjects.length;
             this.subjects = Arrays.copyOf(this.subjects, len + 1);
-            this.subjects[len] = new Subject_ans(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
+            this.subjects[len] = new Subject(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
         }
     }
 
@@ -142,16 +142,16 @@ public class Student_ans {
         int idx = this.findIndex(subjectName);
 
         if(idx >= 0) {
-            Subject_ans s = this.subjects[idx];
+            Subject s = this.subjects[idx];
             s.setScore(score);
         }
     }
 
-    public void updateSubject(Subject_ans subject, double score) {
+    public void updateSubject(Subject subject, double score) {
         int idx = this.findIndex(subject.getName());
 
         if(idx >= 0) {
-            Subject_ans s = this.subjects[idx];
+            Subject s = this.subjects[idx];
             s.setScore(score);
         }
     }
@@ -171,7 +171,7 @@ public class Student_ans {
         this.subjects = Arrays.copyOf(this.subjects, this.subjects.length - 1);
     }
 
-    public void removeSubject(Subject_ans subject) {
+    public void removeSubject(Subject subject) {
         int idx = this.findIndex(subject.getName());
 
         if(idx >= 0) {
