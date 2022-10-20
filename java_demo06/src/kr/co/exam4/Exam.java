@@ -34,7 +34,13 @@ public class Exam {
         System.out.println("-----------------------");
         System.out.println("-----------------------");
 
+        System.out.println("인스턴스 객체 정보1");
         Student_ans s = new Student_ans("홍길동");
+        System.out.println(s);
+
+        System.out.println("인스턴스 객체 정보2");
+        Student_ans s2 = new Student_ans("홍길동");
+        System.out.println(s2.toString());
 
         String table = s.getGradeTable();
         System.out.println(table);
@@ -45,6 +51,14 @@ public class Exam {
         s.addSubject("과학", 76.5);
         s.addSubject("국어", 76.5);
         s.addSubject("수학", 76.5);
+        table = s.getGradeTable();
+        System.out.println(table);
+
+        s.updateSubject("과학", 95);
+        table = s.getGradeTable();
+        System.out.println(table);
+
+        s.removeSubject("수학");
         table = s.getGradeTable();
         System.out.println(table);
 
