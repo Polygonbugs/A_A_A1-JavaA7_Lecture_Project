@@ -1,16 +1,18 @@
 package kr.co.exam05;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Student {
     public Subject[] subjects;
     public String name;
     public int year;
+    public double avg;
+
 
     public Student(String name) {
         this.subjects = new Subject[0];
         this.name = name;
-        System.out.println(this.toString());        // this 객체가 객체의 주소값을 지닌다는 것을 보여주기 위해 작성
     }
 
     public Student(String name, int year) {
@@ -18,13 +20,107 @@ public class Student {
         this.year = year;
     }
 
-    public String getGradeTable() {
+    public void getMenu() {
         String result = "";
+
+        Scanner sc = new Scanner(System.in);
+
+
+        do{
+            System.out.printf("<<<%s 학생 성적 관리 메뉴>>>\n", this.name);
+            System.out.println("1. 성적표 출력");
+            System.out.println("2. 과목 성적 출력");
+            System.out.println("3. 과목 성적 추가");
+            System.out.println("4. 과목 성적 수정");
+            System.out.println("5. 과목 성적 삭제");
+            System.out.println("6. 프로그램 종료");
+
+            System.out.print("\n메뉴번호 입력 : ");
+            int menuInput = sc.nextInt(); sc.nextLine();
+            int addSubjectScore;
+            String subjectName;
+
+            switch(menuInput) {
+                case 1:
+                    System.out.println(this.getGradeTable());
+                    break;
+                case 2:
+                    //this.getSubject();
+                    break;
+                case 3:
+                    System.out.print("추가 할 과목명 : ");
+                    subjectName = sc.nextLine();
+                    System.out.print("성적 입력(0 ~ 100) : ");
+                    addSubjectScore = sc.nextInt();
+
+                    if(!isDuplicate(subjectName)) {
+                        this.addSubject(subjectName, addSubjectScore);
+                    } else if() {
+
+                    } else {
+                        System.out.println("이미 존재하는 과목 정보입니다.");
+                    }
+                    break;
+                case 4:
+                    //this.updateSubject();
+                    break;
+                case 5:
+                    //this.removeSubject();
+                    break;
+                case 6:
+                    System.out.println("프로그램을 종료합니다");
+                    System.exit(0);
+                default:
+                    System.out.println("값을 잘못 입력하셨습니다. 다시 입력하세요");
+            }
+        } while(true);
+
+    }
+
+    public String getGradeTable() {
+        String[] result = new String[3];
+        String total_result = "";
+
+        result[0] += String.format("%s\t\t\t\t", " ");
         for(int i = 0; i < subjects.length; i++) {
             Subject s = this.subjects[i];
-            result += String.format("%s\t%.2f\n", s.getName(), s.getScore());
+            result[0] += String.format("%s\t\t", s.getName());
         }
-        return result;
+        result[0] += String.format("평균\n");
+
+
+        result[1] += String.format("%s점수\t\t", " ");
+        for(int i = 0; i < subjects.length; i++) {
+            Subject s = this.subjects[i];
+            result[1] += String.format("%.1f\t\t", s.getScore());
+        }
+        result[1] += String.format("%.1f\n", calAvg());
+
+
+        result[2] += String.format("%s등급\t\t", " ");
+        for(int i = 0; i < subjects.length; i++) {
+            Subject s = this.subjects[i];
+            result[2] += String.format("%c\t\t", s.getGrade());
+        }
+
+        for(int i = 0; i < result.length; i++) {
+            total_result += result[i];
+        }
+
+        return total_result;
+    }
+
+    public double calAvg() {
+        double total = 0.0;
+
+        for(int i = 0; i < subjects.length; i++) {
+            Subject s = this.subjects[i];
+            total += s.getScore();
+        }
+
+        this.avg = total / subjects.length;
+
+        return this.avg;
     }
 
     // 해당 메서드를 클래스 내부 메서드 안의 로직에서만 사용할 것이므로 접근제한자를 private으로 바꿔주자

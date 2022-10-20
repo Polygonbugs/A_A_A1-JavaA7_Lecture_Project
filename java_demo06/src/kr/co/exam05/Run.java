@@ -1,86 +1,75 @@
 package kr.co.exam05;
 
+import java.util.Scanner;
+
 public class Run {
-    public static void main(String[ ] args) {
-        /*
-         *      Run 클래스를 만들고 지금까지 만들어 둔
-         *      Student 클래스르 사용하여 다음의 프로그램을 만들어보세요
-         *
-         *      학생의 성적을 관리하기 위한 프로그램
-         *
-         *      <<< 홍길동 학행 성적 메뉴 >>>
-         *      1. 성적표 출력
-         *      2. 과목 성적 출력
-         *      3. 과목 성적 추가
-         *      4. 과목 성적 수정
-         *      5. 과목 성적 삭제
-         *      6. 프로그램 종료
-         *
-         *      메뉴 번호 입력 : 1
-         *
-         *              국어      영어      수학      평균
-         *      점수    70.0      80.0      70.0      73.3
-         *      등급    C         B         C         C
-         *
-         *      초기 메뉴로 돌아갈려면 Enter 입력!
-         *
-         */
 
-        /*
-         *      학생의 성적을 관리하기 위한 프로그램
-         *
-         *      <<< 홍길동 학행 성적 메뉴 >>>
-         *      1. 성적표 출력
-         *      2. 과목 성적 출력
-         *      3. 과목 성적 추가
-         *      4. 과목 성적 수정
-         *      5. 과목 성적 삭제
-         *      6. 프로그램 종료
-         *
-         *      메뉴 번호 입력 : 3
-         *
-         *      추가 할 과목명 : 과학
-         *      성적 입력(0 ~ 100) : 95
-         *
-         *      과목 추가 완료되었습니다.
-         *
-         *      추가할 과목명 : 수학 :67
-         *
-         *      이미 존재하는 과목 정보 입니다.
-         *
-         *      추가 할 과목 명 : exit
-         *
-         *      추가 작업을 마침니다.
-         *      초기 메뉴로 돌아갈려면 Enter 입력!
-         *
-         */
+    private Scanner sc = new Scanner(System.in);
+    private Student student;
 
-        /*
-         *      학생의 성적을 관리하기 위한 프로그램
-         *
-         *      <<< 홍길동 학행 성적 메뉴 >>>
-         *      1. 성적표 출력
-         *      2. 과목 성적 출력
-         *      3. 과목 성적 추가
-         *      4. 과목 성적 수정
-         *      5. 과목 성적 삭제
-         *      6. 프로그램 종료
-         *
-         *      메뉴 번호 입력 : 5
-         *
-         *      추가 할 과목명 : 과학
-         *
-         *      과목 삭제 완료되었습니다.
-         *
-         *      추가할 과목명 : 사회
-         *
-         *      삭제할 과목이 존재하지 않습니다.
-         *
-         *      추가 할 과목 명 : exit
-         *
-         *      삭제 작업을 마침니다.
-         *      초기 메뉴로 돌아갈려면 Enter 입력!
-         *
-         */
+    public Run() {
+        this.student = new Student("홍길동");
+        this.student.addSubject("국어", 67.9);
+        this.student.addSubject("영어", 77.7);
+        this.student.addSubject("수학", 84.5);
     }
+
+    private String initMenu() {
+        String menu = "";
+
+        menu += "1. 성적표 출력\n";
+        menu += "2. 과목 성적 출력\n";
+        menu += "3. 과목 성적 추가\n";
+        menu += "4. 과목 성적 수정\n";
+        menu += "5. 과목 성적 삭제\n";
+        menu += "6. 프로그램 종료\n";
+
+        return menu;
+    }
+
+    private void select(int number) {
+        switch(number) {
+            case 1:
+                this.printAll(); break;
+            case 2:
+                this.print(); break;
+            case 3:
+                this.add(); break;
+            case 4:
+                this.update(); break;
+            case 5:
+                this.remove(); break;
+            case 6:
+                System.out.println("프로그램을 종료 합니다.");
+                System.exit(0);
+        }
+    }
+
+    private void printAll() {
+        String s = this.student.getGradeTable();
+        System.out.println(s);
+    }
+
+    private void print() {
+
+    }
+
+    private void add() {}
+
+    private void update() {}
+
+    private void remove() {}
+
+    public void start() {
+        while(true) {
+            System.out.println(this.initMenu());
+            System.out.print("메뉴 번호 입력 : ");
+            int number = sc.nextInt();	sc.nextLine();
+            this.select(number);
+
+            System.out.print("초기 메뉴로 돌아가려면 Enter 입력!");
+            sc.nextLine();
+        }
+    }
+
 }
