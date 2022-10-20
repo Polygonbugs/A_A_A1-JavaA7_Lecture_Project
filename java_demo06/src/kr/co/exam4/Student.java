@@ -1,6 +1,5 @@
 package kr.co.exam4;
 
-import kr.co.demo04.Food;
 
 import java.util.Arrays;
 

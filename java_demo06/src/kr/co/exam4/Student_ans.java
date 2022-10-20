@@ -18,6 +18,11 @@ public class Student_ans {
         this.year = year;
     }
 
+
+    /**
+     * 성적표출력
+     * @return
+     */
     public String getGradeTable() {
         String result = "";
         for(int i = 0; i < subjects.length; i++) {
