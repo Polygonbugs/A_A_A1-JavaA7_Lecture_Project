@@ -1,18 +1,16 @@
 package kr.co.exam05;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Student {
     public Subject[] subjects;
     public String name;
     public int year;
-    public double avg;
-
 
     public Student(String name) {
         this.subjects = new Subject[0];
         this.name = name;
+        System.out.println(this.toString());        // this 객체가 객체의 주소값을 지닌다는 것을 보여주기 위해 작성
     }
 
     public Student(String name, int year) {
@@ -20,107 +18,48 @@ public class Student {
         this.year = year;
     }
 
-    public void getMenu() {
+
+    /**
+     * 성적표출력
+     * @return
+     */
+    public String getGradeTable(Student student) {
         String result = "";
+        String col0 = "평균";
+        String col1 = "\t\t\t";
+        String row1 = "";
+        String col2 = "\n점수\t\t";
+        String row2 = "";
+        String col3 = "\n등급\t\t";
+        String row3 = "";
 
-        Scanner sc = new Scanner(System.in);
 
-
-        do{
-            System.out.printf("<<<%s 학생 성적 관리 메뉴>>>\n", this.name);
-            System.out.println("1. 성적표 출력");
-            System.out.println("2. 과목 성적 출력");
-            System.out.println("3. 과목 성적 추가");
-            System.out.println("4. 과목 성적 수정");
-            System.out.println("5. 과목 성적 삭제");
-            System.out.println("6. 프로그램 종료");
-
-            System.out.print("\n메뉴번호 입력 : ");
-            int menuInput = sc.nextInt(); sc.nextLine();
-            int addSubjectScore;
-            String subjectName;
-
-            switch(menuInput) {
-                case 1:
-                    System.out.println(this.getGradeTable());
-                    break;
-                case 2:
-                    //this.getSubject();
-                    break;
-                case 3:
-                    System.out.print("추가 할 과목명 : ");
-                    subjectName = sc.nextLine();
-                    System.out.print("성적 입력(0 ~ 100) : ");
-                    addSubjectScore = sc.nextInt();
-
-                    if(!isDuplicate(subjectName)) {
-                        this.addSubject(subjectName, addSubjectScore);
-                    } else if() {
-
-                    } else {
-                        System.out.println("이미 존재하는 과목 정보입니다.");
-                    }
-                    break;
-                case 4:
-                    //this.updateSubject();
-                    break;
-                case 5:
-                    //this.removeSubject();
-                    break;
-                case 6:
-                    System.out.println("프로그램을 종료합니다");
-                    System.exit(0);
-                default:
-                    System.out.println("값을 잘못 입력하셨습니다. 다시 입력하세요");
-            }
-        } while(true);
-
-    }
-
-    public String getGradeTable() {
-        String[] result = new String[3];
-        String total_result = "";
-
-        result[0] += String.format("%s\t\t\t\t", " ");
+        row1 += col1;
         for(int i = 0; i < subjects.length; i++) {
             Subject s = this.subjects[i];
-            result[0] += String.format("%s\t\t", s.getName());
+            row1 += String.format("%s\t", s.getName());
         }
-        result[0] += String.format("평균\n");
+        row1 += col0;
 
-
-        result[1] += String.format("%s점수\t\t", " ");
+        row2 += col2;
         for(int i = 0; i < subjects.length; i++) {
             Subject s = this.subjects[i];
-            result[1] += String.format("%.1f\t\t", s.getScore());
+            row2 += String.format("%.1f\t", s.getScore());
         }
-        result[1] += String.format("%.1f\n", calAvg());
+        row2 += String.format("%.1f", getAvg(student));
 
-
-        result[2] += String.format("%s등급\t\t", " ");
+        row3 += col3;
         for(int i = 0; i < subjects.length; i++) {
             Subject s = this.subjects[i];
-            result[2] += String.format("%c\t\t", s.getGrade());
+            row3 += String.format("%c\t\t", s.getGrade());
         }
+        row3 += avgGrade(getAvg(student));
 
-        for(int i = 0; i < result.length; i++) {
-            total_result += result[i];
-        }
+        result += row1;
+        result += row2;
+        result += row3;
 
-        return total_result;
-    }
-
-    public double calAvg() {
-        double total = 0.0;
-
-        for(int i = 0; i < subjects.length; i++) {
-            Subject s = this.subjects[i];
-            total += s.getScore();
-        }
-
-        this.avg = total / subjects.length;
-
-        return this.avg;
+        return result;
     }
 
     // 해당 메서드를 클래스 내부 메서드 안의 로직에서만 사용할 것이므로 접근제한자를 private으로 바꿔주자
@@ -186,6 +125,40 @@ public class Student {
         return result != null ? result.getScore() : -1;
     }
 
+    public double getAvg(Student student)  {
+        double avg = 0.0;
+        double sum = 0.0;
+
+        for(int i = 0; i < student.subjects.length; i++) {
+            sum += student.subjects[i].getScore();
+        }
+
+        avg = sum / student.subjects.length;
+
+        return avg;
+    }
+
+    public char avgGrade(double avg) {
+        char newGrade;
+
+        switch((int)(avg / 10)) {
+            case 10:
+            case 9:
+                newGrade = 'A'; break;
+            case 8:
+                newGrade = 'B'; break;
+            case 7:
+                newGrade = 'C'; break;
+            case 6:
+                newGrade = 'D'; break;
+            case 5:
+                newGrade = 'E'; break;
+            default:
+                newGrade = 'F';
+        }
+
+        return newGrade;
+    }
 
 
     // 메소드 오버로딩(Overloading) : 동일한 이름의 메서드를 여러개 작성하는 것이다.
@@ -221,6 +194,9 @@ public class Student {
             int len = this.subjects.length;
             this.subjects = Arrays.copyOf(this.subjects, len + 1);
             this.subjects[len] = new Subject(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
+            System.out.println("과목 추가 완료되었습니다");
+        } else {
+            System.out.println("이미 존재하는 과목 정보입니다");
         }
     }
 
@@ -229,6 +205,9 @@ public class Student {
             int len = this.subjects.length;
             this.subjects = Arrays.copyOf(this.subjects, len + 1);
             this.subjects[len] = new Subject(subjectName, score);           // len은 그대로 남아 있으므로 그대로 두면 된다.
+            System.out.println("과목 추가 완료되었습니다");
+        } else {
+            System.out.println("이미 존재하는 과목 정보입니다");
         }
     }
 
@@ -258,13 +237,20 @@ public class Student {
     public void removeSubject(String subjectName) {
         int idx = this.findIndex(subjectName);
 
-        if (idx >= 0) {
-            for (int i = idx; i < this.subjects.length - 1; i++) {
-                this.subjects[i] = this.subjects[i + 1];
+        if(this.isDuplicate(subjectName)) {
+            if (idx >= 0) {
+                for (int i = idx; i < this.subjects.length - 1; i++) {
+                    this.subjects[i] = this.subjects[i + 1];
+                }
             }
+
+            this.subjects = Arrays.copyOf(this.subjects, this.subjects.length - 1);
+
+            System.out.println("과목 삭제 완료되었습니다");
+        } else {
+            System.out.println("삭제할 과목이 존재하지 않습니다");
         }
 
-        this.subjects = Arrays.copyOf(this.subjects, this.subjects.length - 1);
     }
 
     public void removeSubject(Subject subject) {

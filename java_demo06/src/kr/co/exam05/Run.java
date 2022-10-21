@@ -46,7 +46,7 @@ public class Run {
     }
 
     private void printAll() {
-        String s = this.student.getGradeTable();
+        String s = this.student.getGradeTable(this.student);
         System.out.println(s);
     }
 
@@ -54,11 +54,39 @@ public class Run {
 
     }
 
-    private void add() {}
+    private void add() {
+        while(true) {
+            System.out.print("추가할 과목명 : ");
+            String subjectName = sc.nextLine();
+
+            System.out.print("성적 입력(0 ~ 100) : ");
+            int score = sc.nextInt();
+
+            if(!subjectName.equals("exit")) {
+                student.addSubject(subjectName, score);
+            } else {
+                System.out.println("추가 작업을 마칩니다");
+                break;
+            }
+        }
+    }
 
     private void update() {}
 
-    private void remove() {}
+    private void remove() {
+        while(true) {
+            System.out.print("삭제 할 과목명 : ");
+            String subjectName = sc.nextLine();
+
+            if(!subjectName.equals("exit")) {
+                this.student.removeSubject(subjectName);
+            } else {
+                System.out.println("삭제 작업을 마칩니다.");
+                break;
+            }
+        }
+
+    }
 
     public void start() {
         while(true) {

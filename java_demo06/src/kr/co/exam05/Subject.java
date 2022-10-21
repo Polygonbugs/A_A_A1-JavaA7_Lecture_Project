@@ -50,6 +50,12 @@ public class Subject {
         return this.grade;
     }
 
+    /**
+     * Get grade from average;
+     * @param avg
+     * @return
+     */
+
     public boolean isExists(String name) {
         return this.name.equals(name);
     }
