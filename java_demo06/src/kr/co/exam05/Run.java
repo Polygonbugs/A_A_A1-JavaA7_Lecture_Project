@@ -51,7 +51,25 @@ public class Run {
     }
 
     private void print() {
+        while(true) {
+            System.out.print("과목 입력 : ");
+            String name = sc.nextLine();
 
+            if(name.equals("exit")) {
+                break;
+            }
+
+            Subject subject = this.student.getSubject(name);
+            if(subject != null) {
+                System.out.printf("\t%s\n", subject.getName());
+                System.out.printf("점수\t%.1f\n", subject.getScore());
+                System.out.printf("등륵\t%c\n", subject.getGrade());
+            } else {
+                System.out.println("출력 할 과목 정보가 없습니다.");
+            }
+
+            System.out.println();
+        }
     }
 
     private void add() {
@@ -71,7 +89,32 @@ public class Run {
         }
     }
 
-    private void update() {}
+    private void update() {
+        while(true) {
+            System.out.print("수정 할 과목 입력 : ");
+            String name = sc.nextLine();
+            System.out.println();
+
+            if(name.equals("exit")) {
+                break;
+            }
+
+            double score = -1;
+            while(!(score >=0 && score <= 100)) {
+                System.out.print("성적 입력(0 ~ 100) : ");
+                score = sc.nextDouble(); sc.nextLine();
+                System.out.println();
+            }
+
+            boolean result = this.student.updateSubject(name, score);
+            if(result) {
+                System.out.println("과목 수정 완료되었습니다.");
+            } else {
+                System.out.println("수정 할 과목이 존재하지 않습니다.");
+            }
+            System.out.println();
+        }
+    }
 
     private void remove() {
         while(true) {

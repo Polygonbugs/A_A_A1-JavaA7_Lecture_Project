@@ -213,22 +213,16 @@ public class Student {
 
     // updateSubject를 Subject 객체를 매개변수로 사용하여 기존과 동일하게 동작하는
     // 메소드로 오버로딩 하여 구현
-    public void updateSubject(String subjectName, double score) {
+
+    public boolean updateSubject(String subjectName, double score) {
+        boolean result = false;
         int idx = this.findIndex(subjectName);
-
         if(idx >= 0) {
             Subject s = this.subjects[idx];
             s.setScore(score);
+            result = true;
         }
-    }
-
-    public void updateSubject(Subject subject, double score) {
-        int idx = this.findIndex(subject.getName());
-
-        if(idx >= 0) {
-            Subject s = this.subjects[idx];
-            s.setScore(score);
-        }
+        return result;
     }
 
     // removeSubject를 Subject 객체를 매개변수로 사용하여 기존과
