@@ -1,4 +1,4 @@
-package kr.co.exam01;
+package kr.co.exam01.prac;
 
 public class Square extends Figure{
     public Square(int width, int length) {

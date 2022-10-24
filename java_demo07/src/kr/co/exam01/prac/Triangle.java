@@ -1,4 +1,4 @@
-package kr.co.exam01;
+package kr.co.exam01.prac;
 
 public class Triangle extends Figure{
     public Triangle(int width, int length) {
