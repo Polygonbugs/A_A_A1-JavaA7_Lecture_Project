@@ -10,7 +10,7 @@ public class Person {
         this.name = name;
     }
 
-    //public Person() {}        // 기본 생성자를 명사하면 자식에서도 생성자 없이 사용이 가능하다.
+    //public Person() {}        // 기본 생성자를 명시하면 자식에서도 생성자 없이 사용이 가능하다.
 
     public String getName() {
         return name;

@@ -3,7 +3,7 @@ package kr.co.exam02.ans;
 public class Person {
     private int year;
     private int classRoom;
-    private String subject[];
+    protected String subject[];
 
     public Person() {
         this.subject = new String[0];

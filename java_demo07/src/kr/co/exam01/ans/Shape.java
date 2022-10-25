@@ -19,7 +19,6 @@ public class Shape {
     public void setHeight(double height) {
         this.height = height;
     }
-
     public double getArea() {
         return getWidth() * getHeight();
     }
