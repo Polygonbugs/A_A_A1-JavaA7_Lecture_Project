@@ -12,12 +12,20 @@ public class Intern extends Employee {
     }
 
     public void filing() {
-        String message = String.format("%d이(가) 서류를 정리합니다.", role);
+        String message = String.format("%s이(가) 서류를 정리합니다.", role);
         System.out.println(message);
     }
 
     public void fileCopy() {
-        String message = String.format("%d이(가) 자료를 복사합니다.", role);
+        String message = String.format("%s이(가) 자료를 복사합니다.", role);
         System.out.println(message);
+    }
+
+    public Employee elevate() {
+        return new Staff(getName(), getAge());
+    }
+
+    public Employee degrement() {
+        return new Employee(getName(), getAge());
     }
 }

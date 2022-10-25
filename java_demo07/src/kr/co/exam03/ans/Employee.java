@@ -7,6 +7,13 @@ public class Employee {
     private int age;
     protected String role;
 
+    public Employee() {}
+
+    public Employee(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
     public void workOn() {
         String message = String.format("%s %s이(가) 출근하였습니다.", role, name);
         System.out.println(message);

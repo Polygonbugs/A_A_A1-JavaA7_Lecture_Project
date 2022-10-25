@@ -30,8 +30,34 @@ public class Exam {
         emps[0] = e1; emps[1] = e2;
         emps[2] = e3; emps[3] = e4;
 
+        // instanceof로 사용할 때 상속관계 확인
+        System.out.println(e1 instanceof Manager);
+        System.out.println(e1 instanceof Senior);
+        System.out.println(e1 instanceof Staff);
+        System.out.println(e1 instanceof Intern);
+        System.out.println(e1 instanceof Employee);
+
         for(int i = 0; i < emps.length; i++) {
-            emps[i].night();
+            if(emps[i] instanceof Manager) {
+                ((Manager)emps[i]).meeting();
+                ((Manager)emps[i]).workOut();
+                ((Manager)emps[i]).call();
+            } else if(emps[i] instanceof Senior) {
+                ((Senior)emps[i]).research();
+                ((Senior)emps[i]).document();
+                ((Senior)emps[i]).call();
+            } else if(emps[i] instanceof Staff) {
+                ((Staff)emps[i]).research();
+                ((Staff)emps[i]).document();
+                ((Staff)emps[i]).care();
+            } else if(emps[i] instanceof Intern) {
+                ((Intern) emps[i]).filing();
+                ((Intern) emps[i]).fileCopy();
+            }
         }
+
+        System.out.println(e1);
+        e1 = ((Intern)e1).elevate();
+        System.out.println(e1);
     }
 }

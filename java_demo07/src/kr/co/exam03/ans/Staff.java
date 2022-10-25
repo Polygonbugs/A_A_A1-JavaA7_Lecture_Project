@@ -1,6 +1,6 @@
 package kr.co.exam03.ans;
 
-public class Staff extends Employee{
+public class Staff extends Intern{
     public Staff() {
         role = "사원";
     }
@@ -24,5 +24,15 @@ public class Staff extends Employee{
     public void care() {
         String message = String.format("%s이(가) 인턴을 관리 합니다.", role);
         System.out.println(message);
+    }
+
+    @Override
+    public Employee elevate() {
+        return new Senior(getName(), getAge());
+    }
+
+    @Override
+    public Employee degrement() {
+        return new Employee(getName(), getAge());
     }
 }

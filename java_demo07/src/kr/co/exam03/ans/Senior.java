@@ -1,6 +1,6 @@
 package kr.co.exam03.ans;
 
-public class Senior extends Employee{
+public class Senior extends Staff{
     public Senior() {
         role = "대리";
     }
@@ -11,18 +11,18 @@ public class Senior extends Employee{
         setAge(age);
     }
 
-    public void research() {
-        String message = String.format("%s이(가) 자료 조사를 합니다.", role);
-        System.out.println(message);
-    }
-
-    public void document() {
-        String message = String.format("%s이(가) 문서 작성을 합니다.", role);
-        System.out.println(message);
-    }
-
     public void call() {
         String message = String.format("%s이(가) 업체와 통화를 합니다.", role);
         System.out.println(message);
+    }
+
+    @Override
+    public Employee elevate() {
+        return new Manager(getName(), getAge());
+    }
+
+    @Override
+    public Employee degrement() {
+        return new Staff(getName(), getAge());
     }
 }
