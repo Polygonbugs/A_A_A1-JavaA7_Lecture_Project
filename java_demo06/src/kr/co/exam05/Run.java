@@ -1,5 +1,6 @@
 package kr.co.exam05;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Run {
@@ -12,6 +13,8 @@ public class Run {
         this.student.addSubject("국어", 67.9);
         this.student.addSubject("영어", 77.7);
         this.student.addSubject("수학", 84.5);
+
+        System.out.println(Arrays.toString(this.student.subjects));
     }
 
     private String initMenu() {
@@ -63,7 +66,7 @@ public class Run {
             if(subject != null) {
                 System.out.printf("\t%s\n", subject.getName());
                 System.out.printf("점수\t%.1f\n", subject.getScore());
-                System.out.printf("등륵\t%c\n", subject.getGrade());
+                System.out.printf("등급\t%c\n", subject.getGrade());
             } else {
                 System.out.println("출력 할 과목 정보가 없습니다.");
             }

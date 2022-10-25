@@ -59,4 +59,13 @@ public class Subject {
     public boolean isExists(String name) {
         return this.name.equals(name);
     }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                ", grade=" + grade +
+                '}';
+    }
 }
