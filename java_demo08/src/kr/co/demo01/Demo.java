@@ -196,7 +196,7 @@ public class Demo {
         str2 = str1.substring(4);
         System.out.println(str2);
 
-        // toLowrCase(), toUpperCase() : 소문자로 구성된 문자열을 반환하는 메서드, 대문자로 구성된 문자열을 반환하는 메서드
+        // toLowerCase(), toUpperCase() : 소문자로 구성된 문자열을 반환하는 메서드, 대문자로 구성된 문자열을 반환하는 메서드
         str1 = new String("Hello");
         str2 = str1.toLowerCase();
         System.out.println(str2);
@@ -222,5 +222,6 @@ public class Demo {
         System.out.println(str1);
         str1 = "" + 10;
         System.out.println(str1);
+
     }
 }
