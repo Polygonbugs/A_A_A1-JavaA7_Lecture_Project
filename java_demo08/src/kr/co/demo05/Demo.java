@@ -12,7 +12,7 @@ public class Demo {
          *      날짜 관련 클래스
          *          - Date : 시스템으로부터 현재 날짜, 시간 정보를 가져와서 사용할 수 있게 만들어진 클래스
          *          - Calendar : new 연산자로 객체 생성을 할 수 없음. 대신 getInstance() 메서드를 사용하여
-         *                       날짜, 시간 정보를 생성해야 한다.
+         *                       날짜, 시간 정보를 생성해야 한다. (자동으로 윤년, 요일 맞춰서 사용 가능)
          *          - GregorianCalendar : Calendar 클래스를 상속한 하위 클래스로 년, 월, 일, 시, 분, 초 정보를
          *                                다룰 수 있게 되어있다.
          *          - SimpleDateFormat : 날짜 및 시간 정보를 정해진 형식에 맞추어 문자열로 만들어 주는 기능을
@@ -76,14 +76,14 @@ public class Demo {
                 strDay = "토요일";
         }
 
-        System.out.println(cYear + "년 " + cMonth + "월 " + cDate + "일 " + strDay);
+        System.out.println("calendar 출력 : " + cYear + "년 " + cMonth + "월 " + cDate + "일 " + strDay);
 
 
         /*
          *  GregorianCalendar
          */
 
-        GregorianCalendar gc = new GregorianCalendar();
+        GregorianCalendar gc;
         gc = new GregorianCalendar(2022, 0, 1);
         gc = new GregorianCalendar(2022, 0, 1, 12, 30, 30);
 
