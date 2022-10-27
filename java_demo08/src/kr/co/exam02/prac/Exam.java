@@ -1,4 +1,4 @@
-package kr.co.exam02;
+package kr.co.exam02.prac;
 
 import java.util.Scanner;
 
@@ -23,21 +23,36 @@ public class Exam {
         String phoneNumber = null;
         String ssn = null;
 
+        int idx = 0, count = 0;
+
         while(true) {
             System.out.print("휴대폰 번호를 입력하세요 : ");
             phoneNumber = sc.nextLine();
-            System.out.print("주민등록 번호를 입력하세요 : ");
-            ssn = sc.nextLine();
 
             if(!phoneNumber.startsWith("010")) {
-                System.out.println("휴대폰 번호를 잘못입력하셨습니다. 다시 입력하세요");
+                System.out.println("휴대폰 번호를 잘못 입력 하셨습니다. 다시 입력하세요");
                 continue;
             }
 
-            
+            idx = phoneNumber.indexOf("-", idx);
+
+            if(idx == -1) {
+                System.out.println("휴대폰 번호에 - 를 붙여서 입력하세요.");
+                continue;
+            }
+
+            idx++; count++;
+
+            System.out.print("주민등록 번호를 입력하세요 : ");
+            ssn = sc.nextLine();
+
+            //if((ssn.indexOf("1",8)) {
+            //    System.out.println("남자입니다.");
+            //}
         }
 
-
+ /*       for(int i = 0; i < ; )
+        System.out.println();*/
 
     }
 }
