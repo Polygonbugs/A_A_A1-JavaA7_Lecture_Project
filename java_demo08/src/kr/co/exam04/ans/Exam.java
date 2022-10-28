@@ -14,13 +14,6 @@ public class Exam {
          *      2. 2022년 01월 01일
          *      3. 12시 15분 45초
          *      4. 12:15:45
-
-         *  자신의 생년월일을 입력하면 현재로부터 몇 일 남았는지 알려주는 D-DAY 정보를
-         *  출력하세요.
-         *      - GregorianCalendar의 isLeapYear()를 사용하면 윤년을 알 수 있습니다.
-         *      - GregorianCalendar의 getMaximum(Calendar.DAY_OF_MONTH)을 사용하면
-         *        해당 월의 최대 일자를 알 수 있습니다.
-         *
          */
 
         Date date = new Date();
@@ -64,7 +57,7 @@ public class Exam {
         for(int i = 0; i < weekend.length; i++) {
             System.out.println(df.format(weekend[i]));
         }
+
+
     }
-
-
 }

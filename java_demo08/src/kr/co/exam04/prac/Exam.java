@@ -4,6 +4,7 @@ package kr.co.exam04.prac;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 import java.util.spi.CalendarDataProvider;
 
 public class Exam {
@@ -41,11 +42,12 @@ public class Exam {
         /*
          * 자신의 생년월일을 입력하면 현재로부터 몇 일 남았는지 알려주는 D-DAY 정보를 출력하세요.
          * - GregorianCalendar의 isLeapYear()를 사용하면 윤년을 알 수 있습니다.
-         * - GregorianCalendar의 getMaximum(Calendar.DAY_OF_MONTH)을 사용하면
+         * - GregorianCalendar의 getActualMaximum(Calendar.DAY_OF_MONTH)을 사용하면
          * 해당 월의 최대 일자를 알 수 있습니다.
          */
+        Scanner sc = new Scanner(System.in);
 
-        GregorianCalendar gc1 = new GregorianCalendar(2023, 6, 11);
+        GregorianCalendar gc1 = new GregorianCalendar(2023, 1, 2);
         GregorianCalendar gc2 = new GregorianCalendar();
         int byear = gc1.get(Calendar.YEAR);
         int bmonth = gc1.get(Calendar.MONTH);
@@ -73,20 +75,20 @@ public class Exam {
 
         GregorianCalendar tmpgc = new GregorianCalendar();
 
-        for(int i = 1; i <= bmonth; i++) {
+        for(int i = 0; i < bmonth; i++) {
             tmpgc.set(Calendar.MONTH, i);
-            bTotalDate += tmpgc.getMaximum(Calendar.DAY_OF_MONTH);
+            bTotalDate += tmpgc.getActualMaximum(Calendar.DAY_OF_MONTH);
         }
 
-        for(int i = 1; i <= cmonth; i++) {
+        for(int i = 0; i < cmonth; i++) {
             tmpgc.set(Calendar.MONTH, i);
-            cTotalDate += tmpgc.getMaximum(Calendar.DAY_OF_MONTH);
+            cTotalDate += tmpgc.getActualMaximum(Calendar.DAY_OF_MONTH);
         }
 
         bTotalDate += bdate;
         cTotalDate += cdate;
 
-        System.out.printf("D-day까지 %d일 남음", bTotalDate - cTotalDate);
+        System.out.printf("D-day까지 %d일 남음", bTotalDate - cTotalDate + 1);
 
 
 
