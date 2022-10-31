@@ -1,9 +1,6 @@
 package kr.co.exam01.ans;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,6 +37,16 @@ public class Exam {
         return null;
     }
 
+    public static void writeBirthDay(String filePath, String data) {
+        File f = new File(filePath);
+
+        try(FileWriter fw = new FileWriter(f, true)) {
+            fw.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws ParseException {
         /*
          * birthday.txt 파일에 작성된 생년월일을 읽고
@@ -60,11 +67,14 @@ public class Exam {
         GregorianCalendar gc = new GregorianCalendar(year, month - 1, day);
 
         df.applyPattern("yyyy년 MM월 dd일 EEEE");
+
+        StringBuilder sb = new StringBuilder(512);
         for(int i = 0; i < 100; i++) {
             // birthday100.txt 파일에 쓰기
-            System.out.println(df.format(gc.getTime()));
+            sb.append(df.format(gc.getTime()) + "\r\n");
             gc.add(Calendar.YEAR, 1);
         }
+        writeBirthDay("/Users/houstonjustin/Documents/A.Project/A_A_A1-Lecture-Project/test/birthday100.txt", sb.toString());
     }
 
 }

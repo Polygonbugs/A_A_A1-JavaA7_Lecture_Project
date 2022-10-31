@@ -45,7 +45,11 @@ public class Exam {
         String birthday = null;
 
         for(int i = 0; i < cArr.length; i++) {
-            birthday += cArr[i];
+            if(i == 0) {
+                birthday = "" + cArr[0];
+            } else {
+                birthday += "" + cArr[i];
+            }
         }
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
         Date d = df.parse(birthday);
@@ -61,8 +65,10 @@ public class Exam {
             for(int i = 0; i < 100; i++) {
                 // birthday100.txt 파일에 쓰기
                 System.out.println(df.format(gc.getTime()));
+                fw.write(df.format(gc.getTime()) + "\n");
                 gc.add(Calendar.YEAR, 1);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
