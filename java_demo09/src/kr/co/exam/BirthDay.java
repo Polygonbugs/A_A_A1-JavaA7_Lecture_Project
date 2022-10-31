@@ -22,6 +22,7 @@ public class BirthDay {
      *
      * @param dateFormat 날짜형식을 가지는 문자열
      */
+
     public BirthDay(String dateFormat) {
         switch(dateFormat.length()) {
             case 6:
@@ -33,8 +34,10 @@ public class BirthDay {
         }
         try {
             this.date = this.dateFormat.parse(dateFormat);
+            this.dateSplit();
         } catch (ParseException e) {
             this.date = new Date();
+            this.dateSplit();
             e.printStackTrace();
         }
     }
@@ -46,7 +49,18 @@ public class BirthDay {
      * @param day    태어난 일자
      */
     public BirthDay(int year, int month, int day) {
+        if(!(month >= 1 && month <= 12)) {
+            throw new MonthRangeException(month + "월은 잘못된 월입니다.");
+        }
+
+        if(!(day >= 1 && day <= 31)) {
+            throw new DayRangeExeption(day + "일은 잘못된 일자입니다.");
+        }
+
         this.date = (new GregorianCalendar(year, month - 1, day)).getTime();
+        this.year = year;
+        this.month = month;
+        this.day = day;
     }
 
     /**
@@ -55,6 +69,7 @@ public class BirthDay {
      */
     public BirthDay(Date date) {
         this.date = date;
+        this.dateSplit();
     }
 
     /**
@@ -76,6 +91,16 @@ public class BirthDay {
     }
 
     /**
+     * Date 객체로 생성한 날짜를 year, month, day로 분리하여 멤버변수로
+     * 저장 후 차후 다른 계산에 사용하기 위해 만듬
+     */
+    private void dateSplit() {
+        this.year = Integer.parseInt(String.format("%tY", this.date));
+        this.month = Integer.parseInt(String.format("%tm", this.date));
+        this.day = Integer.parseInt(String.format("%td", this.date));
+    }
+
+    /**
      * 현재 날짜를 기준으로 다음 생일이 언제인지 반환한다. </br>
      * 이미 생일이 지난 경우 다음년도에 대한 BirthDay 객체를 반환하고 </br>
      * 아직 생일이 지나지 않은 경우 올해에 대한 BirthDay 객체를 반환한다.
@@ -84,17 +109,15 @@ public class BirthDay {
     public BirthDay nextBirthDay() {
         GregorianCalendar n = new GregorianCalendar();
 
-        this.year = n.get(Calendar.YEAR);
-        this.month = Integer.parseInt(String.format("%tm", this.date));
-        this.day = Integer.parseInt(String.format("%td", this.date));
+        int year = n.get(Calendar.YEAR);
+        int month = Integer.parseInt(String.format("%tm", this.date));
+        int day = Integer.parseInt(String.format("%td", this.date));
 
         GregorianCalendar b = new GregorianCalendar(year, month - 1, day);
 
         if(n.before(b)) {
-            System.out.println("b보다 n이 더 이전 날짜입니다.");
             return new BirthDay(year, month, day);
         } else {
-            System.out.println("b보다 n이 더 이후 날짜입니다.");
             return new BirthDay(year + 1, month, day);
         }
 
@@ -121,7 +144,18 @@ public class BirthDay {
      * @return int : 만 나이
      */
     public int getAge() {
-        return 0;
+        Date now = new Date();
+        int nowYear = Integer.parseInt(String.format("%tY", now));
+        int nowMonth = Integer.parseInt(String.format("%tm", now));
+        int nowDay = Integer.parseInt(String.format("%td", now));
+
+        int age = nowYear - this.year;
+        if(nowMonth <= this.month ) {
+            if(nowMonth == this.month && nowDay < this.day) {
+                age -= 1;
+            }
+        }
+        return age;
     }
 
     /**
@@ -131,7 +165,13 @@ public class BirthDay {
      * @return int : zeroStart 값에 따라 만 나이 혹은 1살부터 시작한 나이
      */
     public int getAge(boolean zeroStart) {
-        return 0;
+        int age = this.getAge();
+
+        if(zeroStart) {
+            return age;
+        } else {
+            return age + 1;
+        }
     }
 
     @Override

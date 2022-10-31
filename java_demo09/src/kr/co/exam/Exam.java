@@ -12,7 +12,7 @@ public class Exam {
         BirthDay birthDay2 = new BirthDay("901030");
         BirthDay birthDay3 = new BirthDay(new Date());
         BirthDay birthDay4 = new BirthDay(new Date().getTime());
-        BirthDay birthDay5 = new BirthDay(1990, 10, 15);
+        BirthDay birthDay5 = new BirthDay(1990, 15, 15);
 
         System.out.println(birthDay1);
         System.out.println(birthDay2);
@@ -22,5 +22,7 @@ public class Exam {
 
         System.out.println(birthDay1.nextBirthDay());
         System.out.println(birthDay2.nextBirthDay());
+
+        System.out.println(birthDay1.getAge());
     }
 }
