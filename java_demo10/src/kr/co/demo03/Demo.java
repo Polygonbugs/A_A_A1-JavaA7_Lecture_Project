@@ -13,7 +13,8 @@ public class Demo {
          *      - 문자기반 스트림으로 문자 단위로 파일을 읽는다.
          */
 
-        File f = new File("/Users/houstonjustin/Documents/A.Project/A_A_A1-Lecture-Project/test/입출력텍스트.txt");
+        File f = new File("/Users/houstonjustin/Documents/A.Project/A_A_A1-LectureProject/test/입출력텍스트.txt");
+
 
         try(FileReader fr = new FileReader(f)) {
             char[] cArr = new char[0];

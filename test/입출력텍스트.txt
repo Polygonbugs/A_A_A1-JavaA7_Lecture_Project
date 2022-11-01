@@ -1,2 +1,1 @@
-A문자열append로 출력ABCD
-한글문자열A문자열append로 출력A문자열append로 출력A문자열append로 출력
+A문자열

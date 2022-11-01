@@ -56,7 +56,7 @@ public class Demo {
         if(!f3.exists()) {
             try {
                 f3.createNewFile();
-                System.out.println("파일 파일 생성이 완료되었습니다.");
+                System.out.println("파일 생성이 완료되었습니다.");
             } catch (IOException e) {
                 e.printStackTrace();
             }
