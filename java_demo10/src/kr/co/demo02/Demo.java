@@ -28,7 +28,7 @@ public class Demo {
                 idx += readBytes;
             }
 
-            System.out.println(new String(bArr));
+            System.out.println(new String(bArr));   // println은 byte[]를 출력할 수 없다.
 
         } catch (FileNotFoundException e) {
             System.out.println(f.getPath() + "경로에 파일이 존재하지 않습니다.");
