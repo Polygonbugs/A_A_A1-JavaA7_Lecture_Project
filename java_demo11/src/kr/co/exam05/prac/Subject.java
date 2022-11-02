@@ -8,7 +8,7 @@ public class Subject {
     public Subject(String subName, int score) {
         this.subName = subName;
         this.score = score;
-        getRank();
+        setRank();
     }
 
     public String getSubName() {
@@ -36,14 +36,19 @@ public class Subject {
             case 10:
             case 9:
                 this.rank = 'A';
+                break;
             case 8:
                 this.rank = 'B';
+                break;
             case 7:
                 this.rank = 'C';
+                break;
             case 6:
                 this.rank = 'D';
+                break;
             case 5:
                 this.rank = 'E';
+                break;
             default:
                 this.rank = 'F';
         }

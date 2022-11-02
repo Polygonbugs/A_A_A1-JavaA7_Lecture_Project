@@ -3,6 +3,7 @@ package kr.co.exam05.prac;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Exam {
@@ -46,14 +47,25 @@ public class Exam {
         scoreBoard.put(stu2, totalSub);
         scoreBoard.put(stu3, totalSub);
 
-        /*for(HashMap<Student, ArrayList<Subject>> tmpScoreBoard : scoreBoard) {
+        //System.out.println(scoreBoard);
+        //System.out.println(scoreBoard.get(stu1));
 
-        }*/
 
         File f = new File("/Users/houstonjustin/Documents/A.Project/A_A_A1-Lecture-Project/test/학생성적정보관리.info");
 
-        try(FileWriter fw = new FileWriter(f)) {
-            //fw.write();
+        try(FileWriter fw = new FileWriter(f, true)) {
+            for(Map.Entry<Student, ArrayList<Subject>> tmpScoreBoard : scoreBoard.entrySet()) {
+                String stuProp = String.format("학생명 : %s, %d학년, %d반, 학생번호 : %d\n", tmpScoreBoard.getKey().getName(), tmpScoreBoard.getKey().getGrade(),
+                        tmpScoreBoard.getKey().getClas(), tmpScoreBoard.getKey().getStudentNumber());
+
+                fw.write(stuProp);
+
+                for(Subject sub : tmpScoreBoard.getValue()){
+                    String subProp = String.format("%s : %s, %d점, %c등급\n", tmpScoreBoard.getKey().getName(), sub.getSubName(), sub.getScore(), sub.getRank());
+                    fw.write(subProp);
+                }
+
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

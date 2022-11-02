@@ -15,6 +15,38 @@ public class Student {
         this.studentNumber = studentNumber;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public int getClas() {
+        return clas;
+    }
+
+    public void setClas(int clas) {
+        this.clas = clas;
+    }
+
+    public int getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(int studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
