@@ -1,4 +1,4 @@
-package review_project.demo02;
+package kr.co.demo03.review_project.demo02;
 
 import java.util.HashSet;
 

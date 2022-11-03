@@ -7,6 +7,28 @@ import java.util.Map;
 import java.util.Random;
 
 public class Exam {
+    public static void saveFile(HashMap<Student, ArrayList<Subject>> scoreBoard) {
+        File f = new File("/Users/houstonjustin/Documents/A.Project/A_A_A1-Lecture-Project/test/학생성적정보관리.info");
+
+        try(FileWriter fw = new FileWriter(f, true)) {
+            for(Map.Entry<Student, ArrayList<Subject>> tmpScoreBoard : scoreBoard.entrySet()) {
+                String stuProp = String.format("학생명 : %s, %d학년, %d반, 학생번호 : %d\n", tmpScoreBoard.getKey().getName(), tmpScoreBoard.getKey().getGrade(),
+                        tmpScoreBoard.getKey().getClas(), tmpScoreBoard.getKey().getStudentNumber());
+
+                fw.write(stuProp);
+
+                for(Subject sub : tmpScoreBoard.getValue()){
+                    String subProp = String.format("%s : %s, %d점, %c등급\n", tmpScoreBoard.getKey().getName(), sub.getSubName(), sub.getScore(), sub.getRank());
+                    fw.write(subProp);
+                }
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         /*
          *  학생들의 성적을 관리하기 위한 프로그램을 컬렉션을 활용하여 만들어본다.
@@ -50,26 +72,7 @@ public class Exam {
         //System.out.println(scoreBoard);
         //System.out.println(scoreBoard.get(stu1));
 
+        saveFile(scoreBoard);
 
-        File f = new File("/Users/houstonjustin/Documents/A.Project/A_A_A1-Lecture-Project/test/학생성적정보관리.info");
-
-        try(FileWriter fw = new FileWriter(f, true)) {
-            for(Map.Entry<Student, ArrayList<Subject>> tmpScoreBoard : scoreBoard.entrySet()) {
-                String stuProp = String.format("학생명 : %s, %d학년, %d반, 학생번호 : %d\n", tmpScoreBoard.getKey().getName(), tmpScoreBoard.getKey().getGrade(),
-                        tmpScoreBoard.getKey().getClas(), tmpScoreBoard.getKey().getStudentNumber());
-
-                fw.write(stuProp);
-
-                for(Subject sub : tmpScoreBoard.getValue()){
-                    String subProp = String.format("%s : %s, %d점, %c등급\n", tmpScoreBoard.getKey().getName(), sub.getSubName(), sub.getScore(), sub.getRank());
-                    fw.write(subProp);
-                }
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

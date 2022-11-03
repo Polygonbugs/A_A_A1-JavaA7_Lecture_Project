@@ -1,5 +1,6 @@
 package kr.co.exam05.ans;
 
+
 public class Exam {
     public static void main(String[] args) {
         /*
@@ -22,5 +23,9 @@ public class Exam {
          *  프로그램을 실행 했을 때 이전 상태가 저장되어 있어야 한다.
          *  파일명은 "학생성적관리정보.info"로 한다.
          */
+
+        Run r = new Run();
+        r.start();
+
     }
 }

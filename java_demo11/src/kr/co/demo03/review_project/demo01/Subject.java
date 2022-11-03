@@ -1,4 +1,4 @@
-package review_project.demo01;
+package kr.co.demo03.review_project.demo01;
 
 public class Subject implements Comparable<Subject> {
     private String name;

@@ -1,4 +1,4 @@
-package review_project.demo01;
+package kr.co.demo03.review_project.demo01;
 
 import java.util.ArrayList;
 import java.util.Arrays;
