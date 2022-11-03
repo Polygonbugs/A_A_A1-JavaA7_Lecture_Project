@@ -18,6 +18,7 @@ public class Server {
             System.out.println("연결 요청 대기중...");
 
             // 클라이언트로부터 연결 요청 승낙 후 해당 클라이언트와의 연결 소켓 생성
+            // 무한반복을 사용하지 않아서 1개의 클라이언트만 연결 가능
             Socket sock = sSocket.accept();
             System.out.println("클라이언트의 연결 요청 승낙!");
             System.out.println("클라이언트와 통신을 위한 소켓을 생성합니다.");

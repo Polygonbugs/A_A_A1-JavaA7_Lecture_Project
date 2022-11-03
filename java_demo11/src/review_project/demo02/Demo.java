@@ -1,4 +1,4 @@
-package kr.co.demo03.review_project.demo02;
+package review_project.demo02;
 
 import java.util.HashSet;
 
@@ -35,6 +35,10 @@ public class Demo {
 
         // 데이터 검색
         boolean isExists = aSet.contains(Integer.valueOf(20));
+        System.out.println("정수 20이 있습니까? -> " + isExists);
+
+        // 데이터 삭제
+
 
 
 
