@@ -24,7 +24,7 @@ public class Server {
             System.out.println("클라이언트와 통신을 위한 소켓을 생성합니다.");
 
             // 소켓으로 클라이언트와 통신을 하기 위한 입/출력 객체 생성
-            System.out.println("클라이언트와 토인을 위한 입출력 스트림을 생성합니다.");
+            System.out.println("클라이언트와 통신을 위한 입출력 스트림을 생성합니다.");
             BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
 
