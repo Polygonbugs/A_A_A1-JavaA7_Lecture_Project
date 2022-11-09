@@ -244,3 +244,6 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/macos,eclipse,intellij,java
 
 # 연습 폴더 제외시키기
+
+# Dbeaver File Ignore
+.dbeaver/
