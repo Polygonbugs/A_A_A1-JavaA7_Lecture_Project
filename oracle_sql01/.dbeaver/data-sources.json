@@ -1,0 +1,78 @@
+{
+	"folders": {},
+	"connections": {
+		"oracle_thin-1845a7ed546-78b01ab6e664a3c8": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "Local Docker Oracle Server",
+			"save-password": true,
+			"read-only": false,
+			"virtual-model-id": "oracle_thin-1845a726b57-3a4dbc4fcd44860e",
+			"configuration": {
+				"host": "host.docker.internal",
+				"port": "15210",
+				"database": "XEPDB1",
+				"url": "jdbc:oracle:thin:@//host.docker.internal:15210/XEPDB1",
+				"type": "dev",
+				"provider-properties": {
+					"show-only-one-schema@": "false",
+					"@dbeaver-check-schema-content@": "false",
+					"@dbeaver-always-show-dba@": "false",
+					"@dbeaver-always-use-dba-views@": "false",
+					"@dbeaver-meta-use-sys-schema@": "false",
+					"@dbeaver-meta-use-simple-constraints@": "false",
+					"@dbeaver-use-rule-hint@": "false",
+					"@dbeaver-use-meta-optimizer@": "true",
+					"@dbeaver-meta-use-alternative-table-query@": "false",
+					"oracle.meta-search-in-synonyms": "false",
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-sid-service@": "SERVICE"
+				},
+				"auth-model": "oracle_native",
+				"handlers": {}
+			}
+		},
+		"oracle_thin-1845a7ed54a-796f15eaa2127f71": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "Local Parallels Oracle Server",
+			"save-password": true,
+			"read-only": false,
+			"virtual-model-id": "oracle_thin-18459c44e8b-68363a5dca2d5068",
+			"configuration": {
+				"host": "10.211.55.4",
+				"port": "1521",
+				"database": "XEPDB1",
+				"url": "jdbc:oracle:thin:@//10.211.55.4:1521/XEPDB1",
+				"type": "dev",
+				"provider-properties": {
+					"show-only-one-schema@": "false",
+					"@dbeaver-check-schema-content@": "false",
+					"@dbeaver-always-show-dba@": "false",
+					"@dbeaver-always-use-dba-views@": "false",
+					"@dbeaver-meta-use-sys-schema@": "false",
+					"@dbeaver-meta-use-simple-constraints@": "false",
+					"@dbeaver-use-rule-hint@": "false",
+					"@dbeaver-use-meta-optimizer@": "true",
+					"@dbeaver-meta-use-alternative-table-query@": "false",
+					"oracle.meta-search-in-synonyms": "false",
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-sid-service@": "SERVICE"
+				},
+				"auth-model": "oracle_native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
