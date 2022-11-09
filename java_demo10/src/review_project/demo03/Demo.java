@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Demo {
+    // 맥락(관점) : [범위1 + 범위2]의 관계
+    // 범위 1 : 프로그램의 사용용도
+    // 범위 2 : 프로그래밍 코드, 메인 메소드 블럭 내부
+    // 범위들의 관계(역할) : FileReader(문자기반 스트림)을 이용해서 프로그램 외부의 파일을 읽어서 콘솔창에 출력하는 것
     public static void main(String[] args) {
 
         File f = new File("/Users/houstonjustin/Documents/A.Project/A_A_A1-Lecture-Project/test/입출력텍스트.txt");
