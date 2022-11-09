@@ -20,19 +20,21 @@ SELECT 'Hello' From Dual;
 
 --CREATE USER 계정명 IDENTIFIED BY 계정암호;
 --GRANT 권한명1, 권한명2, ... TO 계정명;
-
 CREATE USER dev01 IDENTIFIED BY dev01;
-GRANT RESOURCE, DBA TO dev01;
 
--- 여기에 주석 달지 마세요
+-- GRANT RESOURCE, DBA TO dev01; // DBA는 관리자 권한이다
+-- 데이터베이스 연결에서 Resource, Connect, View, Session이 필수적으로 필요하다.
+GRANT RESOURCE, CONNECT, INSERT ANY TABLE, UPDATE ANY TABLE
+	, DELETE ANY TABLE, CREATE VIEW, CREATE SESSION TO dev01;
+
+-- 사용자 테이블 스페이스(임시 저장 공간 : 10 Megabytes)
+ALTER USER dev01 quota 10M ON USERS;
+
 -- 계정 생성 확인을 위한 조회(소문자로 생성해도 대문자로 찾아야 함)
-
 SELECT USERNAME FROM ALL_USERS WHERE USERNAME = 'DEV01';
 
 -- 패스워드 변경
-
 ALTER USER dev01 IDENTIFIED BY dev01;
 
 -- 계정 삭제
-
 Drop USER dev01;
