@@ -15,11 +15,11 @@
 
 SELECT EMAIL
      , LENGTH(EMAIL) AS 문자열길이
- FROM EMPLOYEES;
+  FROM EMPLOYEES;
 
 SELECT JOB_ID
      , INSTR(JOB_ID, '_') AS "_언더바(_) 문자위치"
-    FROM EMPLOYEES;
+  FROM EMPLOYEES;
 
 /*
  * SUBSTR(column name, startIndex, endIndex) : 한 컬럼에 있는 문자열 정보를 startIndex ~ endIndex 까지 자름
