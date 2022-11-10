@@ -37,7 +37,7 @@ SELECT EMPLOYEE_ID AS "사원 번호"
 FROM EMPLOYEES;
 
 /*
- *  SELECT 절에 컬럼명과 리터럴 값('' - 작은 따옴표로 묶어야 한다)을 혼합하여 Record Set으로 반환되는
+ *  SELECT 절에 컬럼명과 리터럴 값('' - 반드시 작은 따옴표로 묶어야 한다)을 혼합하여 Record Set으로 반환되는
  *  결과값을 변경할 수 있다.
  *  || 연산을 통해 두개의 문자열을 붙일 수 있다.
  */
@@ -110,9 +110,105 @@ SELECT FIRST_NAME
  *      NOT : 반환된 결과에 대한 부정
  */
 
- SELECT FIRST_NAME
+SELECT FIRST_NAME
     , LAST_NAME
     , SALARY
     FROM EMPLOYEES
     WHERE SALARY > 2000 AND SALARY < 4000;
 
+SELECT FIRST_NAME
+    , LAST_NAME
+    , SALARY
+    FROM EMPLOYEES
+    WHERE SALARY < 2500 OR SALARY > 20000;
+
+SELECT FIRST_NAME
+    , LAST_NAME
+    , SALARY
+    FROM EMPLOYEES
+    WHERE NOT(SALARY > 20000);
+
+
+/*
+ *      BETWEEN : 지정한 범위에 해당하는 데이터를 조회하기 위한 연산으로 사용
+ *                지정한 값을 포함하는 범위
+ */
+
+SELECT FIRST_NAME
+    , LAST_NAME
+    , SALARY
+    FROM EMPLOYEES
+    WHERE SALARY NOT BETWEEN 2000 AND 4000;
+
+SELECT FIRST_NAME
+     , LAST_NAME
+     , HIRE_DATE
+  FROM EMPLOYEES
+ WHERE HIRE_DATE BETWEEN '1999-01-01' AND '1999-12-31';
+
+/*
+ *  IN : 연속되지 않은 범위에 대한 연산으로 사용
+ */
+
+SELECT FIRST_NAME
+    , LAST_NAME
+    , SALARY
+    FROM EMPLOYEES
+    WHERE SALARY IN (2000, 3000, 4000, 5000);
+
+SELECT FIRST_NAME
+     , LAST_NAME
+  FROM EMPLOYEES
+ WHERE LAST_NAME IN ('Bell', 'Gee', 'Olson');
+
+
+/*
+ *      LIKE : 문자열에 대한 패턴 검색을 하기 위해 사용 (와일드 카드 문자 사용)
+ *      L% -> 해당 열의 'L'로 시작하는 행 검색
+ *      L__ -> 해당 열의 'L'로 시작하여 추가 2자리가 더 있는 행 검색
+ */
+
+SELECT FIRST_NAME
+     , LAST_NAME
+     , EMAIL
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE 'L%';
+
+SELECT FIRST_NAME
+     , LAST_NAME
+     , EMAIL
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE '%p%';
+
+SELECT FIRST_NAME
+     , LAST_NAME
+     , EMAIL
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE 'L__';
+
+/*
+ * _가 있고 뒤 문자 3개
+ * Escape 문자를 사용해야 한다.
+ */
+SELECT FIRST_NAME
+     , LAST_NAME
+     , JOB_ID
+  FROM EMPLOYEES
+ WHERE JOB_ID LIKE '%\____' ESCAPE '\';
+
+/*
+ * IS NULL, IS NOT NULL : NULL 데이터를 찾기 위한 연산자로 사용
+ */
+
+SELECT FIRST_NAME
+     , LAST_NAME
+     , DEPARTMENT_ID
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IS NULL;
+
+-- = 비교 연산자를 NULL과 같이 쓰면 제대로 된 연산이 되지 않는다.
+/*SELECT FIRST_NAME
+     , LAST_NAME
+     , DEPARTMENT_ID
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID = NULL;*/
