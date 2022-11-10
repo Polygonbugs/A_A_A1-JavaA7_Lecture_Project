@@ -50,3 +50,25 @@ SELECT JOB_ID
 
 SELECT DISTINCT MANAGER_ID
            FROM EMPLOYEES;
+
+
+/*
+ *  사원 테이블에서 EMAIL 컬럭을 출력할 때 "@emp.co.kr"이 추가로 붙어서 나오게 하세요
+ */
+
+SELECT EMAIL || '@emp.co.kr' AS EMAIL
+  FROM EMPLOYEES;
+
+/*
+ * 사원 테이블에서 전화번호 형식이 xxx.xxx.xxxx에 해당하는 정보만 Record Set으로 반환되게 하세요.
+ */
+
+SELECT PHONE_NUMBER
+  FROM EMPLOYEES
+ WHERE PHONE_NUMBER LIKE '___.____.____';
+
+/*
+ *  사원 테이블에서 COMISSION_PCT가 NULL이 아닌 데이터들만 조회되게 하고 SALARY를 출력할 때
+ *  COMISION_PCT가 포함된 SALARY 결과가 나오게 하세요.
+ */
+
