@@ -69,3 +69,50 @@ SELECT FIRST_NAME
  */
 SELECT DISTINCT DEPARTMENT_ID
     FROM EMPLOYEES;
+
+/*
+ *  WHERE절
+ */
+
+SELECT * FROM EMPLOYEES;
+
+/*
+ * WHERE 절에 사용하는 조건식(연산자)
+ *      1. 비교 연산자
+ *      2. 논리 연산자
+ *      3. 산술 연산자
+ *      4. IS NULL, IS NOT NULl
+ *      5. LIKE
+ *      6. IN, NOT IN
+ *      7. BETWEEN ... AND, NOT BETWEEN ... AND
+ *      8. 연결 연산자 -> ||
+ */
+
+/*
+ *     비교 연산자
+ *     깉다 : =
+ *     크다 : >
+ *     크거나 같다 : >=,
+ *     작거나 같다 : <=
+ *     다르다 : !=, <>
+ */
+
+SELECT FIRST_NAME
+    , LAST_NAME
+    , SALARY
+    FROM EMPLOYEES
+    WHERE SALARY <> 4000;
+
+/*
+ *  논리 연산자 : 다른 조건식의 결과로 반환된 trye, false에 대한 연산을 수행
+ *      AND : 모든 결과가 true일 때, true를 반환
+ *      OR : 하나의 결과가 true이면, true를 반환
+ *      NOT : 반환된 결과에 대한 부정
+ */
+
+ SELECT FIRST_NAME
+    , LAST_NAME
+    , SALARY
+    FROM EMPLOYEES
+    WHERE SALARY > 2000 AND SALARY < 4000;
+
