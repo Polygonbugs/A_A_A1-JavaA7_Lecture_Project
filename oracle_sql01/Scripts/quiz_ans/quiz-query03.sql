@@ -66,7 +66,7 @@ SELECT EMPLOYEE_ID AS 사번
     , FIRST_NAME || ' ' || LAST_NAME AS 이름
     , EMAIL || '@emp.co.kr' AS 이메일
   FROM EMPLOYEES
- WHERE PHONE_NUMBER LIKE '___.____.____';
+ WHERE PHONE_NUMBER LIKE '___.___.____';
 
 /*
  *  사원 테이블에서 COMISSION_PCT가 NULL이 아닌 데이터들만 조회되게 하고 SALARY를 출력할 때
