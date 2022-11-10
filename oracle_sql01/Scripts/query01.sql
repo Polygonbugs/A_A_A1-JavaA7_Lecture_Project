@@ -19,9 +19,9 @@ SELECT 'Hello' From Dual;
 */
 
 --CREATE USER 계정명 IDENTIFIED BY 계정암호;
---GRANT 권한명1, 권한명2, ... TO 계정명;
 CREATE USER dev01 IDENTIFIED BY dev01;
 
+--GRANT 권한명1, 권한명2, ... TO 계정명;
 -- GRANT RESOURCE, DBA TO dev01; // DBA는 관리자 권한이다
 -- 데이터베이스 연결에서 Resource, Connect, View, Session이 필수적으로 필요하다.
 GRANT RESOURCE, CONNECT, INSERT ANY TABLE, UPDATE ANY TABLE
