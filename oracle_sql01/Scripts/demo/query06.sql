@@ -86,7 +86,10 @@ SELECT JOB_ID
 /*
  *   ROLLUP : 그룹별 집계를 위한 함수
  *            그룹으로 묶기 위한 조건이 1개 이상인 경우에 사용하여
- *            그룹별 집계 외에 단일 그룹별(JOB_ID) 집계 / 복수개의 그룹별 집계 (JOB_ID, COMMISSION_PCT)/ 총 집계 (전체 / NULL로 되어 있음)
+ *            ROLLUP에 작성된 컬럼 순서대로 그룹을 1개씩 추가하여 묶어가며 집계에 사용한다.
+ *
+ *            예시)
+ *            단일 그룹별(JOB_ID) 집계 / 복수개의 그룹별 집계 (JOB_ID, COMMISSION_PCT)/ 총 집계 (전체 / NULL로 되어 있음)
  *            까지 나타낸다.
  */
 
@@ -120,3 +123,32 @@ SELECT JOB_ID
  WHERE COMMISSION_PCT IS NOT NULL
  GROUP BY CUBE(JOB_ID, COMMISSION_PCT)
  ORDER BY 1 NULLS FIRST, 2 NULLS LAST;
+
+/*
+ *  GROUPING : ROLLUP, CUBE로 집계한 결과에 대해 어떠한 조합으로 그룹을
+ *             묶었는지 알 수 있도록 도와주는 함수(SELECT 절에 사용)
+ *             함수의 반환값이 0이면 그룹에 포홤된 것이며, 1이면 포함이 안된 것이다.
+ */
+
+SELECT JOB_ID
+     , COMMISSION_PCT AS "수수료 퍼센트"
+     , COUNT(JOB_ID) AS 수
+     , CASE WHEN GROUPING(JOB_ID) = 0 AND GROUPING(COMMISSION_PCT) = 1 THEN '직무그룹'
+            WHEN GROUPING(JOB_ID) = 0 AND GROUPING(COMMISSION_PCT) = 0 THEN '직무/커미션그룹'
+            ELSE '총계'
+        END AS 그룹구분
+  FROM EMPLOYEES
+ WHERE COMMISSION_PCT IS NOT NULL
+ GROUP BY ROLLUP(JOB_ID, COMMISSION_PCT);
+
+SELECT JOB_ID
+     , COMMISSION_PCT AS "수수료 퍼센트"
+     , COUNT(JOB_ID) AS 수
+     , CASE WHEN GROUPING(JOB_ID) = 0 AND GROUPING(COMMISSION_PCT) = 1 THEN '직무그룹'
+            WHEN GROUPING(JOB_ID) = 1 AND GROUPING(COMMISSION_PCT) = 0 THEN '커미션그룹'
+            WHEN GROUPING(JOB_ID) = 0 AND GROUPING(COMMISSION_PCT) = 0 THEN '직무/커미션그룹'
+            ELSE '총계'
+        END AS 그룹구분
+  FROM EMPLOYEES
+ WHERE COMMISSION_PCT IS NOT NULL
+ GROUP BY CUBE(JOB_ID, COMMISSION_PCT);
