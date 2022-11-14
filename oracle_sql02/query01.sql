@@ -43,33 +43,58 @@
  *
  *      위의 제약 조건을 위반하는 데이터 추가/수정/삭제 작업이 이루어지느 경우 "제약조건 위반"이라는 에러가 발생하게 된다.
  *      이로 인해 데이터에 대한 무결성 보장을 수행할 수 있게 된다.
+ *
+ *  제약 조건 작성 방법
+ *      - 컬럼 레벨 : 컬럼명, 데이터 타입 옆에 작성하는 방법
+ *                  기본키, 유일키, 외래키, NOT NULL, CHECK, DEFAULT 작성 가능
+ *      - 테이블 레벨 : 컬럼명, 데이터 타입을 작성 후 동일 위치상에 작성하는 방법
+ *                   기본키, 유일키, 외래키, CHECK 작성 가능
  */
 
 -- 처음 크기를 지정할 때부터 데이터 크기를 잡아두어야 한다.
 SELECT LENGTHB('가나다') FROM DUAL;
 
 CREATE TABLE TEST1_T (
-      COL_NAME1 NUMBER                      PRIMARY KEY
-    , COL_NAME2 CHAR(10 CHAR)               CHECK(COL_NAME2 IN('A', 'B', 'C'))
-    , COL_NAME3 VARCHAR2(10 CHAR)
+      COL_NAME1 NUMBER                      CONSTRAINT TEST1_T_COL_NAME1_PK PRIMARY KEY
+    , COL_NAME2 CHAR(10 CHAR)               CONSTRAINT TEST1_T_COL_NAME2_CK CHECK(COL_NAME2 IN('A', 'B', 'C'))
+    , COL_NAME3 VARCHAR2(10 CHAR)           CONSTRAINT TEST1_T_COL_NAME3_FK REFERENCES REF_T(REF_COL1) ON DELETE CASCADE
     , COL_NAME4 DATE                        DEFAULT(SYSDATE)
+    --, FOREIGN KEY(COL_NAME3) REFERENCES REF_T(REF_COL1)
+);
+-- ON DELETE SET NULL
+-- 부모 테이블의 record가 지워지면 자식이 참조하고 있는 record 데이터는 null로 설정이 된다.
+
+-- ON DELETE CASCADE
+-- 부모를 참조하고 있던 record가 지워지면 자식 record도 동시에 지워진다.
+
+-- 참조할 때 제약조건에 고유 또는 기본키를 반드시 넣어야 한다.
+CREATE TABLE REF_T(
+      REF_COL1 VARCHAR2(10 CHAR) PRIMARY KEY
+    , COL2 NUMBER
 );
 
+
 SELECT * FROM TEST1_T;
+SELECT * FROM REF_T;
 
 SELECT * FROM USER_ALL_TABLES;
 SELECT * FROM USER_ALL_TABLES WHERE TABLE_NAME = 'TEST1_T';
 SELECT * FROM USER_TAB_COLUMNS WHERE TABLE_NAME = 'TEST1_T';
 SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'TEST1_T';
 
-INSERT INTO TEST1_T VALUES(2, 'C', '1', TO_DATE(20221114));
+INSERT INTO TEST1_T VALUES(1, 'C', 'A', TO_DATE(20221114));
 INSERT INTO TEST1_T(COL_NAME1, COL_NAME2, COL_NAME3) VALUES(1, '1', '1');
 INSERT INTO TEST1_T VALUES(1, NULL, NULL, DEFAULT);
 
 INSERT INTO TEST1_T VALUES(NULL, NULL, NULL, NULL);
 INSERT INTO TEST1_T VALUES(1, NULL, NULL, NULL);
 
+INSERT INTO REF_T VALUES('A', 10);
 -- INSERT INTO TEST1_T VALUES (2, '한글데이터', '한글데이터를입력해봅시다', NULL);
 -- INSERT INTO TEST1_T VALUES (2, '한글데이터를입력해봅시다', '한글데이터', NULL);
 
 DROP TABLE TEST1_T;
+DROP TABLE REF_T;
+
+DELETE FROM TEST1_T WHERE COL_NAME3 = 'A';
+DELETE FROM REF_T WHERE REF_COL1 = 'A';
