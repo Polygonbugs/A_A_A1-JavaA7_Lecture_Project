@@ -74,8 +74,6 @@ SELECT DISTINCT DEPARTMENT_ID
  *  WHERE절
  */
 
-SELECT * FROM EMPLOYEES;
-
 /*
  * WHERE 절에 사용하는 조건식(연산자)
  *      1. 비교 연산자
@@ -109,7 +107,6 @@ SELECT FIRST_NAME
  *      OR : 하나의 결과가 true이면, true를 반환
  *      NOT : 반환된 결과에 대한 부정
  */
-
 SELECT FIRST_NAME
     , LAST_NAME
     , SALARY

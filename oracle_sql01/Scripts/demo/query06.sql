@@ -1,4 +1,19 @@
 /*
+ *  SELECT 구문에서 사용하는 절
+ *  1. SELECT 절
+ *  2. FROM 절
+ *  3. WHERE 절
+ *  4. GROUP BY 젛
+ *  5. HAVING 절
+ *  6. ORDER BY 절
+ */
+-- 각 절이 사용되는 순서가 있음.(위에 명시한 순서)
+-- SELECT, FROM을 제외한 모든 절은 생략할 수 있다.
+
+-- 실행 순서는 다음과 같다.
+-- FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
+
+/*
  *  GROUP BY 절
  *      - 그룹 함수를 사용하여 특정 그룹에 대한 집계를 나타낼 때 전체 그룹이 아닌
  *        특정 그룹에 대한 집계가 이루어 질 수 있도록 그룹을 묶어주는 역할 수행
