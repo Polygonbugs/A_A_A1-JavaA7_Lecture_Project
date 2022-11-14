@@ -1,6 +1,6 @@
 /*
  *  집합 연산자
- *      - 2개 이상의 Record Set 결과를 하난의 Record Set 결과로 만드는 연산자
+ *      - 2개 이상의 Record Set 결과를 하나의 Record Set 결과로 만드는 연산자
  *      - UNION, UNION ALL, INTERSECT, MINUS 연산자가 있다.
  *
  *  UNION ALL

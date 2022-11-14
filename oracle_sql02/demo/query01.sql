@@ -1,5 +1,5 @@
 /*
- *   DDL
+ *   DDL(Data Definition Langauge)
  *      - 데이터 정의어로 데이터를 저장하고 다루기 위한 객체를
  *        생성하고(CREATE), 수정하고(ALTER), 삭제하는(DROP)하는 구문을 말한다.
  *      - ORACLE에서 사용하는 객체들로는 TABLE, VIEW, SEQUENCE, USER,
