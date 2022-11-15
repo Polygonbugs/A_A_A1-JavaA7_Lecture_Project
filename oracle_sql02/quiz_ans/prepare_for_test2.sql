@@ -1,0 +1,8 @@
+CREATE USER hong;
+
+ALTER USER hong IDENTIFIED BY hong;
+
+GRANT RESOURCE, CONNECT TO hong;
+
+DROP USER hong;
+
