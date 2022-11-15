@@ -9,7 +9,7 @@ SELECT * FROM EMPLOYEES;
 
 /*
  *     SELECT 구문에는 FROM절, WHERE절 ORDER BY절 등이 추가로 사용된다.
- *     FROM 절에는 조회할 테이블 명을 작성하게 된다.
+ *     FROM 절에는 조회할 테이블명을 작성하게 된다.
  *     WHERE 절에는 FROM에 명시한 테이블에서 데이터를 조회하기 위한 조건을 작성하게 된다.
  *     ORDER BY 절에는 조회 결과에 대한 정렬 기준을 작성하게 된다.
  *     SELECT 절에는 FROM 절에 명시한 테이블의 컬럼을 작성하게 된다. 이 때 작성된 컬럼의
