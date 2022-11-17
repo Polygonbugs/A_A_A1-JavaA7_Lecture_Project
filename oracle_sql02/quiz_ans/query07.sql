@@ -96,9 +96,10 @@ UPDATE JOB_SALARY_STATIS
                      , MIN(SALARY * (1 + NVL(COMMISSION_PCT, 1)))        AS MIN_SALARY
                     FROM EMPLOYEES
                     WHERE JOB_ID IS NOT NULL
-                         AND JOB_ID = JOB_SALARY_STATIS.JOB_ID
+                          AND JOB_ID = JOB_SALARY_STATIS.JOB_ID
                     GROUP BY JOB_ID
 );
 
 
-SELECT * FROM EMPLOYEES;
+SELECT * FROM DEPT_SALARY_STATIS;
+SELECT * FROM JOB_SALARY_STATIS;
