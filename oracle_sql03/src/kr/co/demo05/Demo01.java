@@ -1,8 +1,12 @@
-package kr.co.demo04;
+package kr.co.demo05;
+
+import kr.co.db.vo.EmployeeVO;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-public class Demo {
+public class Demo01 {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         /*
          *  Java로 Oracle DB에 접속하여 데이터 조회하는 방법
@@ -32,47 +36,42 @@ public class Demo {
         String password = "dev01";
         Connection conn = DriverManager.getConnection(url, username, password);
 
+        // Statement 또는 PreparedStatement 객체 생성
+        Statement stat = conn.createStatement();
+        // PreparedStatement pstat = conn.prepareStatement("");
 
         // Query 작성(쿼리 문자열에서 세미콜론은 넣지 마세요.)
-        // ? = holder
-        int empId = 207;
-        String jobId = "IT_PROG";
-        // 동일한 이름의 클래스는 import 할 수 없다.
-        Date hireDate = new Date(new java.util.Date().getTime());
-        String query = "INSERT INTO EMPLOYEES VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, HIRE_DATE FROM EMPLOYEES";
 
-        // PreparedStatement 객체 생성
-        PreparedStatement pstat = conn.prepareStatement(query);
-        pstat.setInt(1, empId);
-        pstat.setString(2, "길동");
-        pstat.setString(3, "홍");
-        pstat.setString(4, "HGILDONG");
-        pstat.setString(5, "515.123.1234");
-        pstat.setDate(6, hireDate);
-        pstat.setString(7, jobId);
-        pstat.setInt(8, 2800);
-        pstat.setDouble(9, 0);
-        pstat.setInt(10, 103);
-        pstat.setInt(11, 60);
 
         // Query 전송 후 결과 저장
         // Record Set(Oracle Database) = ResultSet rs(Java JDBC)
-        // SELECT : executeQuery()
-        // INSERT, UPDATE, DELETE : executeUpdate()
-        // executeUpdate(); = 반영된 행 갯수 반환
-        // INSERT ----> 1 ~ N
-        // UPDATE ----> 0 ~ N (조건절 여부에 따라)
-        // DELETE ----> 0 ~ N (조건절 여부에 따라)
-        int rs = pstat.executeUpdate();
+        ResultSet rs = stat.executeQuery(query);
 
-        if(rs >= 1) {
-            System.out.println(rs + " 개 행이 반영되었습니다");
-        } else {
-            System.out.println("0개 행이 반영되었습니다. (쿼리에 문제가 있을 수 있습니다. 다시 확인하세요");
+
+        // ResultSet에서 값 추출
+        // rs.next()는 데이터베이스의 커서를 이동시키는 역할을 한다. 옮기고 있는지를 확인하여 boolean 값 반환
+        SimpleDateFormat df = new SimpleDateFormat("yyyy년 MM월 dd일");
+        ArrayList<EmployeeVO> empArray = new ArrayList<EmployeeVO>();
+
+        System.out.println("| ID | FIRST_NAME           | LAST NAME            | HIRE DATE            |");
+        System.out.println("+----+----------------------+----------------------+----------------------+");
+        while(rs.next()) {
+            EmployeeVO emp = new EmployeeVO();
+            emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
+            emp.setFirstName(rs.getString("FIRST_NAME"));
+            emp.setFirstName(rs.getString("LAST_NAME"));
+            emp.setHireDate(rs.getDate("HIRE_DATE"));
+            empArray.add(emp);
+
         }
 
+        System.out.println(empArray);
+
+
         // Database 관련 연결 정보 Close
-        pstat.close();
+        rs.close();
+        stat.close();
         conn.close();
     }
 }
