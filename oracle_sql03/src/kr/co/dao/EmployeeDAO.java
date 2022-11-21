@@ -78,9 +78,39 @@ public class EmployeeDAO {
 	}
 
 	public ArrayList<EmployeeVO> selectName(String name) {
-		String query = "SELECT * FROM EMPLOYEES";
-		
-		return null;
+		String query = "SELECT * FROM EMPLOYEES"
+				+ " WHERE LOWER(CONCAT(FIRST_NAME, LAST_NAME)) LIKE ?";
+
+		try {
+			PreparedStatement pstat = this.oc.getPrepared(query);
+			pstat.setString(1, "%" + name.replace(" ", "").toLowerCase() + "%");
+
+			ResultSet rs = oc.sendSelect();
+
+			ArrayList<EmployeeVO> empArray = new ArrayList<EmployeeVO>();
+
+			while(rs.next()) {
+				EmployeeVO emp = new EmployeeVO();
+				emp.setEmpId(rs.getInt("EMPLOYEE_ID"));
+				emp.setFirstName(rs.getString("FIRST_NAME"));
+				emp.setLastName(rs.getString("LAST_NAME"));
+				emp.setEmail(rs.getString("EMAIL"));
+				emp.setPhoneNumber(rs.getString("PHONE_NUMBER"));
+				emp.setHireDate(rs.getDate("HIRE_DATE"));
+				emp.setJobId(rs.getString("JOB_ID"));
+				emp.setCommission(rs.getDouble("COMMISSION_PCT"));
+				emp.setManagerId(rs.getInt("MANAGER_ID"));
+				emp.setDeptId(rs.getInt("DEPARTMENT_ID"));
+				empArray.add(emp);
+			}
+
+			return empArray;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	public ArrayList<EmployeeVO> selectJobName(String jobName) {
