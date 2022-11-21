@@ -7,6 +7,13 @@
  *          - JOIN을 사용하는 테이블에 공통 열 값에 대해 결합을 수행하게 된다.
  */
 
+/*
+ *  INNER JOIN
+ *      - JOIN 구문의 가장 기본이 되는 조인 방법
+ *      - JOIN 결합 조건에 해당하는 행에 대해서만 결합을 수행하고
+ *        결합 조건에 해당하지 않는 경우 결합을 하지 않는다.
+ */
+
 SELECT * FROM EMPLOYEES;
 SELECT * FROM DEPARTMENTS;
 
@@ -17,7 +24,7 @@ SELECT *
   JOIN DEPARTMENTS DEPT
     ON EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID;
 
-/* 결합 컬럼을 맨 앞으로 빠진다. 컬럼을 하나로 통합해서 합친다. */
+/* USING을 쓸 경우 결합 컬럼을 맨 앞으로 빠진다. 컬럼을 하나로 통합해서 합친다. */
 SELECT *
   FROM EMPLOYEES EMP
   JOIN DEPARTMENTS DEPT
@@ -68,19 +75,11 @@ SELECT E.EMPLOYEE_ID
      , E.DEPARTMENT_ID
      , D.DEPARTMENT_NAME
   FROM EMPLOYEES E
- JOIN DEPARTMENTS D
+  JOIN DEPARTMENTS D
     ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
   JOIN JOBS J
     ON E.JOB_ID = J.JOB_ID
  WHERE E.EMPLOYEE_ID = 178;
-
-/*
- *  INNER JOIN
- *      - JOIN 구문의 가장 기본이 되는 조인 방법
- *      - JOIN 결합 조건에 해당하는 행에 대해서만 결합을 수행하고
- *        결합 조건에 해당하지 않는 경우 결합을 하지 않는다.
- */
-
 
 /*  OUTER JOIN : INNER JOIN과 다르게 결합 조건에 해당하지 않는 경우에도 Record Set에 포함
  *      - LEFT, RIGHT, FULL OUTER JOIN이 존재한다
