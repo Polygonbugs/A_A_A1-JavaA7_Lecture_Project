@@ -24,7 +24,7 @@ SELECT *
  USING (DEPARTMENT_ID);
 
 /* 가시성을 위해 SELECT의 TABLE을 명시한다*/
-/* 기준열(겹치는 부분)은 EMP 또는 DEPT로 잡을 수 있다. 강사님은 EMP로 보는 것이다*/
+/* INNER JOIN의 경우 기준열(겹치는 부분)은 EMP 또는 DEPT로 잡을 수 있다. 강사님은 EMP로 보는 것이다*/
 SELECT EMP.EMPLOYEE_ID
      , EMP.FIRST_NAME
      , EMP.LAST_NAME
@@ -79,15 +79,94 @@ SELECT E.EMPLOYEE_ID
  *      - JOIN 구문의 가장 기본이 되는 조인 방법
  *      - JOIN 결합 조건에 해당하는 행에 대해서만 결합을 수행하고
  *        결합 조건에 해당하지 않는 경우 결합을 하지 않는다.
- *
- *  OUTER JOIN : INNER JOIN과 다르게 결합 조건에 해당하지 않는 경우에도 Record Set에 포함
- *      - LEFT OUTER JOIN
- *      - RIGHT OUTER JOIN
- *      - FULL OUTER JOIN
- *
- *  CROSS JOIN
- *
- *  NON_EQU JOIN
- *
- *
  */
+
+
+/*  OUTER JOIN : INNER JOIN과 다르게 결합 조건에 해당하지 않는 경우에도 Record Set에 포함
+ *      - LEFT, RIGHT, FULL OUTER JOIN이 존재한다
+ *      - LEFT OUTER JOIN
+ *          왼쪽 테이블의 데이터에 해당하는 값이 없어도
+ *          왼쪽 테이블의 데이터는 전부 Record Set에 포함된다.
+*/
+SELECT E.EMPLOYEE_ID
+     , E.FIRST_NAME
+     , E.LAST_NAME
+     , E.DEPARTMENT_ID
+     , D.DEPARTMENT_NAME
+  FROM EMPLOYEES E
+  LEFT OUTER JOIN DEPARTMENTS D
+    ON E.EMPLOYEE_ID = D.MANAGER_ID;
+
+/*      - RIGHT OUTER JOIN
+ *          결합 조건에 해당하는 값이 없어도 오른쪽 테이블의 데이터는 전부 Record Set에 포함된다.
+ */
+SELECT E.EMPLOYEE_ID
+     , E.FIRST_NAME
+     , E.LAST_NAME
+     , D.DEPARTMENT_ID
+     , D.DEPARTMENT_NAME
+  FROM EMPLOYEES E
+  RIGHT OUTER JOIN DEPARTMENTS D
+    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+/*      - FULL OUTER JOIN
+ *          LEFT OUTER JOIN과 RIGHT OUTER JOIN이 결합된 형태
+ */
+SELECT E.EMPLOYEE_ID
+     , E.FIRST_NAME
+     , E.LAST_NAME
+     , D.DEPARTMENT_ID
+     , D.DEPARTMENT_NAME
+  FROM EMPLOYEES E
+  FULL OUTER JOIN DEPARTMENTS D
+    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+
+/*
+ *  CROSS JOIN
+ *      - 카테시안 곱(Cartesian Product)이라고도 한다.
+ *      - JOIN 하는 모든 테이블의 행들이 맵핑된 데이터의 결과로 반환한다.
+ *      - A 테이블 10행, B 테이블 5행 -> A * B = 50 행
+ */
+
+SELECT COUNT(*) FROM DEPARTMENTS;
+
+SELECT *
+  FROM EMPLOYEES E
+ CROSS JOIN DEPARTMENTS D;
+
+/*
+ *  NON_EQU JOIN
+ *      - 지정한 범위에 포함되는 데이터를 결합하는 형식의 JOIN
+ */
+SELECT E.EMPLOYEE_ID
+     , E.FIRST_NAME
+     , E.LAST_NAME
+     , E.JOB_ID
+     , E.SALARY
+     , J.MIN_SALARY
+     , J.MAX_SALARY
+  FROM EMPLOYEES E
+  JOIN JOBS J
+    ON E.JOB_ID = J.JOB_ID
+   AND E.SALARY BETWEEN J.MIN_SALARY AND J.MAX_SALARY
+ WHERE E.EMPLOYEE_ID = 207;
+
+INSERT INTO EMPLOYEES VALUES(207, '길동', '홍', 'HGILDONG', '515.123.1234', TO_DATE(SYSDATE), 'IT_PROG', 2800);
+/*
+ *  SELF JOIN
+ *      - 동일(같은)한 테이블을 결합하는 것
+ *      - 테이블안에 자기 자신을 참조할 수 있는 테이블을 찾기 위한 용도로 사용됩니다.
+ */
+
+SELECT E1.EMPLOYEE_ID
+     , E1.FIRST_NAME
+     , E1.LAST_NAME
+     , E1.MANAGER_ID
+     , E2.FIRST_NAME
+     , E2.LAST_NAME
+  FROM EMPLOYEES E1
+  JOIN EMPLOYEES E2
+    ON E1.MANAGER_ID = E2.EMPLOYEE_ID;
+
+SELECT * FROM EMPLOYEES;
