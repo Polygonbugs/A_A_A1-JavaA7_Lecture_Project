@@ -68,7 +68,7 @@ SELECT EMPLOYEE_ID
   FROM EMPLOYEES
  WHERE DEPARTMENT_ID = (SELECT DISTINCT EMPLOYEE_ID
                           FROM EMPLOYEES
-                        WHERE MANAGER_ID IS NOT NULL);
+                         WHERE MANAGER_ID IS NOT NULL);
 
 SELECT EMPLOYEE_ID
      , FIRST_NAME
@@ -106,4 +106,62 @@ SELECT EMPLOYEE_ID
   * (1개 값을 비교하는 형태면 단일행, 여러 값을 비교하는 형태면 다중열)
   * FROM 절에 사용하는 서브쿼리는 어떠한 형태이든 사용 가능하다.
   * FROM 절에 사용하는 서브쿼리는 INLINE VIEW 라고 한다.
-  */
+ */
+
+/*
+ * INLINE VIEW를 사용할 때, WITH 구문을 사용해서 미리 서브쿼리에 대한 별칭을 부여할 수 있다.
+ */
+
+WITH TEMP
+  AS (SELECT EMPLOYEE_ID
+           , FIRST_NAME
+           , LAST_NAME
+       FROM EMPLOYEES);
+
+SELECT * FROM TEMP;
+
+/*
+ * TOP-N 분석 : 상위/하위 n개 행에 대해 조회.
+ */
+
+-- 서브쿼리는 급여에 대해 내림차순 정렬을 의미한다
+-- ROWNUM은 식별자이다. 행번호를 의미한다.
+-- 동률이 있어도 순위가 매겨진다
+SELECT ROWNUM AS 순위
+     , EMPLOYEE_ID
+     , FIRST_NAME
+     , LAST_NAME
+     , SALARY
+  FROM (SELECT EMPLOYEE_ID
+             , FIRST_NAME
+             , LAST_NAME
+             , SALARY
+          FROM EMPLOYEES
+         ORDER BY SALARY DESC)
+ WHERE ROWNUM <= 10;
+
+-- 동률이 있으면 같은 순위로 표시
+SELECT 순위
+     , EMPLOYEE_ID
+     , FIRST_NAME
+     , LAST_NAME
+     , SALARY
+  FROM (SELECT EMPLOYEE_ID
+             , FIRST_NAME
+             , LAST_NAME
+             , SALARY
+             , RANK() OVER(ORDER BY SALARY DESC) AS 순위
+         FROM EMPLOYEES);
+
+-- 동률이 나온 다음 순위는 동률 순위 +1 순위 한 것이다.
+SELECT 순위
+     , EMPLOYEE_ID
+     , FIRST_NAME
+     , LAST_NAME
+     , SALARY
+  FROM (SELECT EMPLOYEE_ID
+             , FIRST_NAME
+             , LAST_NAME
+             , SALARY
+             , DENSE_RANK() OVER(ORDER BY SALARY DESC) AS 순위
+         FROM EMPLOYEES);
