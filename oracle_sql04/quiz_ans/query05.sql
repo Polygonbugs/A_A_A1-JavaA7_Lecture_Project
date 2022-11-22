@@ -125,8 +125,24 @@ SELECT * FROM JOBS;
  *      290                 Network             NULL            3000
  */
 
-INSERT INTO DEPARTMENTS VALUES(280, 'Server', NULL, 3000);
-INSERT INTO DEPARTMENTS VALUES(290, 'Network', NULL, 3000);
+INSERT INTO DEPARTMENTS VALUES(
+    (SELECT (MAX(DEPARTMENT_ID) + 10) FROM DEPARTMENTS)
+    , 'Server'
+    , NULL
+    , 3000
+    , '서버관리부'
+);
+
+INSERT INTO DEPARTMENTS VALUES(
+    (SELECT (MAX(DEPARTMENT_ID) + 10) FROM DEPARTMENTS)
+    , 'Network'
+    , NULL
+    , 3000
+    , '네트워크관리부'
+);
+
+SELECT * FROM DEPARTMENTS;
+
 
 /*
  *  새로 신설된 Server, Network 부서를 위한 인력을 충원하고 있는 것으로 가정하여 각 부서마다
@@ -137,10 +153,93 @@ INSERT INTO DEPARTMENTS VALUES(290, 'Network', NULL, 3000);
  *      - 부서장으로 선택된 인원은 JOBS 테이블의 MIN_SALARY 급여에서 +2000 상승된 급여로 받을 수 있게 데이터를 수정한다.
  */
 
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '주식', '강', 'KCHUL', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
+                   , 'SV_MGR', 280);
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '영수', '박', 'PYOUNG', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
+                   , 'SV_MGR', 280);
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '강석', '이', 'LEEGANG', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
+                   , 'SV_MGR', 280);
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '주식', '강', 'LKANG', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
+                   , 'SV_MGR', 290);
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '장원', '서', 'SJANG', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'NT_MGR')
+                   , 'SV_MGR', 290);
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '지원', '임', 'IJW', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'NT_MGR')
+                   , 'SV_MGR', 290);
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
+                   '강석', '이', 'LKANG', SYSDATE
+                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'NT_MGR')
+                   , 'SV_MGR', 280);
+
+UPDATE DEPARTMENTS
+   SET MANAGER_ID = (SELECT EMPLOYEE_ID
+                       FROM EMPLOYEES
+                      WHERE EMPLOYEES.DEPARTMENT_ID = 280
+                        AND FIRST_NAME = '철수'
+                        AND LAST_NAME = '김')
+WHERE DEPARTMENT_ID = 280;
+
+UPDATE DEPARTMENTS
+   SET MANAGER_ID = (SELECT EMPLOYEE_ID
+                       FROM EMPLOYEES
+                      WHERE EMPLOYEES.DEPARTMENT_ID = 290
+                        AND FIRST_NAME = '주식'
+                        AND LAST_NAME = '강')
+WHERE DEPARTMENT_ID = 290;
+
+UPDATE DEPARTMENTS
+   SET MANAGER_ID = (SELECT EMPLOYEE_ID
+                       FROM EMPLOYEES
+                      WHERE EMPLOYEES.DEPARTMENT_ID = 280
+                        AND FIRST_NAME = '철수'
+                        AND LAST_NAME = '김')
+WHERE DEPARTMENT_ID = 280;
+
+UPDATE DEPARTMENTS
+   SET MANAGER_ID = (SELECT EMPLOYEE_ID
+                       FROM EMPLOYEES
+                      WHERE EMPLOYEES.DEPARTMENT_ID = 290
+                        AND FIRST_NAME = '주식'
+                        AND LAST_NAME = '강')
+WHERE DEPARTMENT_ID = 290;
+
+
+UPDATE EMPLOYEES
+   SET SALARY = SALARY + 2000
+WHERE EMPLOYEE_ID IN (SELECT MANAGER_ID
+                        FROM DEPARTMENTS
+                        WHERE EMPLOYEES.DEPARTMENT_ID IN (280, 290));
+
+
+SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID >= 207;
 
 /*
  * 물가 상승분을 반영하여 모든 급여 정보를 수정하려고 한다.
- * JOBS 테이블과 EMPLOYEES 테이블의 모든 급여 정보를 기존보다 5% ~ 10% 상승 시키도록 한다.
+ * JOBS 테이블과 EMPLOYEES 테이블의 모든 급여 정보를 기존보다 5% ~ 10% 상승시키도록 한다.
  *      - 급여가 4000 미만인 경우 10% 상승
  *      - 급여가 4000 이상 8000 미만인 경우 8% 상승
  *      - 급여가 8000 이상 12000 미만인 경우 6% 상승
@@ -148,6 +247,34 @@ INSERT INTO DEPARTMENTS VALUES(290, 'Network', NULL, 3000);
  *      - 정수 1번째 자리에서 절삭할 것. 예) 4333.333은 4330으로 절삭
  */
 
+UPDATE JOBS
+   SET (MIN_SALARY, MAX_SALARY) = (SELECT CASE WHEN MIN_SALARY < 4000 THEN TRUNC(MIN_SALARY * 1.1, -1)
+                                               WHEN MIN_SALARY < 8000 THEN TRUNC(MIN_SALARY * 1.08, -1)
+                                               WHEN MIN_SALARY < 12000 THEN TRUNC(MIN_SALARY * 1.06, -1)
+                                               ELSE TRUNC(MIN_SALARY * 1.05)
+                                            END AS MIN_SALARY
+                                        , CASE WHEN MAX_SALARY < 4000 THEN TRUNC(MAX_SALARY * 1.1, -1)
+                                               WHEN MAX_SALARY < 8000 THEN TRUNC(MAX_SALARY * 1.08, -1)
+                                               WHEN MAX_SALARY < 12000 THEN TRUNC(MAX_SALARY * 1.06, -1)
+                                               ELSE TRUNC(MAX_SALARY * 1.05)
+                                            END AS MAX_SALARY
+                                        FROM JOBS J
+                                       WHERE J.JOB_ID = JOBS.JOB_ID);
+
+SELECT * FROM JOBS;
+
+UPDATE EMPLOYEES
+   SET SALARY = (SELECT CASE WHEN SALARY < 4000 THEN TRUNC(SALARY * 1.1, -1)
+                             WHEN SALARY < 8000 THEN TRUNC(SALARY * 1.08, -1)
+                             WHEN SALARY < 12000 THEN TRUNC(SALARY * 1.06, -1)
+                             ELSE TRUNC(SALARY * 1.05)
+                        END AS MAX_SALARY
+                  FROM EMPLOYEES E
+                 WHERE E.JOB_ID = EMPLOYEE_ID);
+
+
+
+SELECT TRUNC(1111, -1) FROM DUAL;
 /*
  * 사내 공지를 위한 게시판 기능을 추가하여 한다. 다음의 요구사항에 맞추어 테이블을 생성하고
  * 첫번째 공지를 작성하도록 한다. (첫번째 공지는 모든 부서가 열람할 수 있게 한다.)
@@ -156,6 +283,8 @@ INSERT INTO DEPARTMENTS VALUES(290, 'Network', NULL, 3000);
  *  - 공지를 작성할 때 다음의 정보가 저장되어야 한다.
  *      번호, 제목, 내용, 작성일자, 부서ID
  */
+
+
 
 /*
  *  사내 공지 게시판 테이블을 생성 후에 다음의 공지를 추가로 작성한다.
