@@ -76,7 +76,7 @@ SELECT EMPLOYEE_ID
   FROM EMPLOYEES
  WHERE DEPARTMENT_ID IN (SELECT DISTINCT EMPLOYEE_ID
                           FROM EMPLOYEES
-                        WHERE MANAGER_ID IS NOT NULL);
+                         WHERE MANAGER_ID IS NOT NULL);
 
 -- 행 1개, 열 n개 / sub query where 절 지워보기
 -- 열수, 행수 고려하기

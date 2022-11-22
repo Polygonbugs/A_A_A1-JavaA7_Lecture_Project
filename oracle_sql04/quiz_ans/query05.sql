@@ -273,10 +273,9 @@ UPDATE EMPLOYEES
                  WHERE E.JOB_ID = EMPLOYEE_ID);
 
 
-
 SELECT TRUNC(1111, -1) FROM DUAL;
 /*
- * 사내 공지를 위한 게시판 기능을 추가하여 한다. 다음의 요구사항에 맞추어 테이블을 생성하고
+ * 사내 공지를 위한 게시판 기능을 추가해야 한다. 다음의 요구사항에 맞추어 테이블을 생성하고
  * 첫번째 공지를 작성하도록 한다. (첫번째 공지는 모든 부서가 열람할 수 있게 한다.)
  *  - 공지 게시판은 부서별 공지와 전체 공지로 나누어져 운영되야 한다.
  *  - 전체 공지는 모든 부서가 확일할 수 있는 공지이며 부서별 공지는 지정한 부서에 소속된 사원만 볼 수 있는 공지이다.
@@ -284,12 +283,35 @@ SELECT TRUNC(1111, -1) FROM DUAL;
  *      번호, 제목, 내용, 작성일자, 부서ID
  */
 
+CREATE TABLE NOTICE(
+          ID NUMBER PRIMARY KEY
+        , TITLE VARCHAR2(250) NOT NULL
+        , CONTENT VARCHAR2(2000)
+        , WRITEDATE DATE
+        , DEPT_ID NUMBER
+);
+
+INSERT INTO NOTICE VALUES(1, '전체 공지입니다.', '모든 부서에서 확인할 수 있습니다.', SYSDATE, 0);
+
+SELECT * FROM NOTICE;
 
 
 /*
  *  사내 공지 게시판 테이블을 생성 후에 다음의 공지를 추가로 작성한다.
  *  - 모든 부섬나다 'xxx 부서만 확인할 수 있는 공지입니다' 라는 메시지를 추가한다.
  */
+
+INSERT INTO NOTICE(
+       SELECT ROWNUM + 1 AS ID
+            , DEPARTMENT_NAME_KR || '부서 공지' AS TITLE
+            , DEPARTMENT_NAME_KR || '부서만 확인할 수 있는 공지입니다.' AS CONTENT
+            , SYSDATE AS WRITE_DATE
+            , DEPARTMENT_ID AS DEPT_ID
+       FROM DEPARTMENTS
+);
+
+SELECT * FROM NOTICE;
+
 
 /*
  * 100 번 사원이 공지를 열람한다는 가정하에 100번 사원이 소속된 부서의 공지와 전체 공지가 보일 수 있는
