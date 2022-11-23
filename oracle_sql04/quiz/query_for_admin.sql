@@ -12,6 +12,7 @@ CREATE USER web_admin identified by web_admin;
 GRANT CONNECT, RESOURCE TO web_admin;
 GRANT INSERT ANY TABLE, UPDATE ANY TABLE
     , DELETE ANY TABLE TO web_admin;
+GRANT CREATE VIEW TO web_admin;
 
 ALTER USER web_admin quota 10M ON USERS;
 
