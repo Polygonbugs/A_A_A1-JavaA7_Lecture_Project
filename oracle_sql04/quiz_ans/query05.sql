@@ -154,46 +154,38 @@ SELECT * FROM DEPARTMENTS;
  */
 
 INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '주식', '강', 'KCHUL', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
-                   , 'SV_MGR', 280);
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '철수', '김', 'KCHUL', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'SV_MGR')
+                    , 'SV_MGR', 280);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '영수', '박', 'PYOUNG', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'SV_ENG')
+                    , 'SV_ENG', 280);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '강석', '이', 'LKANG', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'SV_ENG')
+                    , 'SV_ENG', 280);
+
 
 INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '영수', '박', 'PYOUNG', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
-                   , 'SV_MGR', 280);
-
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '주식', '강', 'KJU', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'NT_MGR')
+                    , 'NT_MGR', 290);
 INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '강석', '이', 'LEEGANG', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
-                   , 'SV_MGR', 280);
-
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '장원', '서', 'SJANG', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'NT_ENG')
+                    , 'NT_ENG', 290);
 INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '주식', '강', 'LKANG', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'SV_MGR')
-                   , 'SV_MGR', 290);
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '지원', '임', 'IJI', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'NT_ENG')
+                    , 'NT_ENG', 290);
 
-INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '장원', '서', 'SJANG', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'NT_MGR')
-                   , 'SV_MGR', 290);
-
-INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '지원', '임', 'IJW', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'NT_MGR')
-                   , 'SV_MGR', 290);
-
-INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
-            VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES),
-                   '강석', '이', 'LKANG', SYSDATE
-                   ,(SELECT MIN_SALARY FROM JOBS WHERE JOBS.JOB_ID = 'NT_MGR')
-                   , 'SV_MGR', 280);
 
 UPDATE DEPARTMENTS
    SET MANAGER_ID = (SELECT EMPLOYEE_ID
@@ -317,6 +309,12 @@ SELECT * FROM NOTICE;
  * 100 번 사원이 공지를 열람한다는 가정하에 100번 사원이 소속된 부서의 공지와 전체 공지가 보일 수 있는
  * SELECT 쿼리문을 작성하세요.
  */
+SELECT *
+  FROM NOTICE N
+  LEFT OUTER JOIN EMPLOYEES E
+    ON N.DEPT_ID = E.DEPARTMENT_ID
+ WHERE E.EMPLOYEE_ID = 100
+    OR N.DEPT_ID = 0;
 
 /*
  *   공지 게시판에 중요도 기능을 추가하여 가장 중요한 공지가 가장 먼저 조회될 수 있도록 테이블을 수정하도록 한다.
@@ -326,3 +324,83 @@ SELECT * FROM NOTICE;
  *      - 추가한 공지 데이터를 조회할 때 중요도 순으로 조회가 될 수 있도록
  *        SELECT 구문을 작성한다.
  */
+
+ALTER TABLE NOTICE ADD ORD NUMBER(1) DEFAULT(3);
+ALTER TABLE NOTICE ADD CONSTRAINTS NOTICE_ORD_CK CHECK(ORD BETWEEN 1 AND 5);
+
+SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'NOTICE';
+
+UPDATE NOTICE
+   SET ORD = 1
+ WHERE DEPT_ID = 0;
+
+SELECT *
+  FROM NOTICE N
+  LEFT OUTER JOIN EMPLOYEES E
+    ON N.DEPT_ID = E.DEPARTMENT_ID
+ WHERE E.EMPLOYEE_ID = 100
+    OR N.DEPT_ID = 0
+ ORDER BY ORD, ID;
+
+/*
+ *  DEPARTMENTS 테이블에서 MANAGER_ID가 없는 부서는 삭제하도록 한다.
+ *  NOTICE 테이블도 삭제할 부서의 공지사항이 삭제되도록 한다.
+ *  1번문제
+ *  1. DEPARTMENTS 테이블에서 MANAGER_ID가 없는 부서를 취득한다.
+ *  2. 취득한 데이터를 제거하는 쿼리문을 작성한다. (서브 쿼리 이용)
+ * --> 자식 레코드 문제는 내가 잘못 테이블을 중간에 집어 넣는 바람에 발생하게 됬다.
+ *  2번문제
+ *  1. 1번문제에서 취득한 부서 정보 데이터를 NOTICE 테이블에서 제거하는 쿼리문을 작성한다.
+ *
+ */
+
+DELETE
+FROM NOTICE
+WHERE DEPT_ID IN (SELECT DEPARTMENT_ID
+                  FROM DEPARTMENTS
+                  WHERE MANAGER_ID IS NULL);
+
+DELETE
+  FROM DEPARTMENTS
+ WHERE MANAGER_ID IS NULL;
+
+
+/*
+ *  EMPLOYEES 테이블의 COMMISSION_PCT가 NULL인 경우 0으로 수정한다.
+ *  1. 수정한다 : UPDATE
+ *  2. 개체 : EMPLOYEES
+ *  3. 0으로 : SET COMISSION_PCT = 0
+ *  3. WHERE : COMMISSION IS NULL
+ */
+
+ UPDATE EMPLOYEES
+    SET COMMISSION_PCT = 0
+  WHERE COMMISSION_PCT IS NULL;
+
+/*
+ *  EMPLOYEES 테이블의 MANAGER_ID 가 없는 사원은 DEPARTMENT_ID에 해당하는 부서 정보를 찾아서
+ *  해당 부서의 MANAGER_ID 값이 EMPLOYEES 테이블의 MANAGER_ID가 되도록 수정한다.
+ *  필드 값의 흐름을 먼저 파악하는 것이 중요하다.
+ *  1. EMPLOYEES 테이블을 수정
+ *  2. EMPLOYEES 테이블의 MANAGER_ID 값을 설정한다.
+ *      2-1. DEPARTMENT_ID에 해당하는 부서 정보를 찾아서 해당 부서의 MANAGER_ID 값이 되도록
+ *      WHERE E2.EMPLOYEE_ID = E.MANAGER_ID -> 1개 행을 만들기 위한 문법
+ *  3. MANAGER_ID 가 없는 사원은
+ */
+
+UPDATE EMPLOYEES E
+   SET E.DEPARTMENT_ID = (SELECT E2.DEPARTMENT_ID
+                            FROM EMPLOYEES E2
+                           WHERE E2.EMPLOYEE_ID = E.MANAGER_ID)
+ WHERE E.DEPARTMENT_ID IS NULL;
+
+/*
+ *  EMPLOYEES 테이블의 DEPARTMENT_ID 가 없는 사원은 MANAGER_ID에 해당하는 사원 정보를 찾아서
+ *  해당 사원의 DEPARTMENT_ID 값이 EMPLOYEES 테이블의 DEPARTMENT_ID가 되도록 수정한다.
+ */
+
+UPDATE EMPLOYEES E1
+   SET E1.DEPARTMENT_ID = (SELECT E2.DEPARTMENT_ID
+                             FROM EMPLOYEES E2
+                            WHERE E2.EMPLOYEE_ID = E1.MANAGER_ID)
+ WHERE E1.DEPARTMENT_ID IS NULL;

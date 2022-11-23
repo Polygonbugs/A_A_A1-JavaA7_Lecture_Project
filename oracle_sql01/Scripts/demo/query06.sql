@@ -3,7 +3,7 @@
  *  1. SELECT 절
  *  2. FROM 절
  *  3. WHERE 절
- *  4. GROUP BY 젛
+ *  4. GROUP BY 절
  *  5. HAVING 절
  *  6. ORDER BY 절
  */
