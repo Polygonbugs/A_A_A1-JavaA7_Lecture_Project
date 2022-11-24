@@ -5,7 +5,9 @@
  *          - PRIMARY KEY로 사용하는 번호(ID)등에 사용하여 정수값을 생성하기 위한 용도로 많이 사용
  */
 
-/* CACHE : 미리 생성할 정수값 수량*/
+/* CACHE : 미리 생성할 정수값 수량(보통 가장 간단한 형태로 많이 쓴다)*/
+/* SEQUENCE 값은 기본적으로 캐시에 저장된다. 서버가 꺼지면 값이 refresh 된다. 이를 방지하기 위해 nocacahe를 쓴다
+   다만 cache가 속도가 빠르다*/
 CREATE SEQUENCE SEQ1
           START WITH 10
       INCREMENT BY 10
