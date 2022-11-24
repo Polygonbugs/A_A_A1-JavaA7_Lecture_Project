@@ -4,6 +4,7 @@
  *      - 조회 속도는 빨라지지만 INSERT, UPDATE, DELETE 작업이 자주 이루어지는 경우에는
  *        해당 작업에 대한 성능이 저하된다.
  *      - INDEX 객체를 위한 추가 저장 공간이 필요함. (색인을 위한 저장공간이다)
+ *      - 평소에 사용하는 쿼리문을 사용할 때 적용된다.
  *
  *  고유(UNIQUE) 인덱스
  *      - 중복 값이 포함될 수 없다.
@@ -62,4 +63,11 @@ SELECT *
 
 SELECT *
   FROM USER_IND_COLUMNS
- WHERE TABLE_NAME = 'JOBS';
+ WHERE TABLE_NAME = 'DEPARTMENTS';
+
+CREATE INDEX DEPT_DEPT_NAME_IX ON DEPARTMENTS(DEPARTMENT_NAME);
+DROP INDEX DEPT_DEPT_NAME_IX;
+
+-- 실행 계획("계획 설명" 버튼 참고)
+SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_NAME = 'IT';
+SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = 60;
