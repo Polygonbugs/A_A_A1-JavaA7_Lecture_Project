@@ -124,13 +124,14 @@ CREATE TABLE LOGIN_LOG(
   , LOGGING_DATE DATE
 );
 
-CREATE SEQUENCE SEQ_LOGIN_LOG NOCACHE;
+CREATE SEQUENCE SEQ_LOGIN_LOG NOCACHE; /* LOG_ID 용도 */
 
 CREATE OR REPLACE PROCEDURE PROC_LOGIN(
         IN_USERNAME IN VARCHAR2
       , IN_PASSWORD IN VARCHAR2
 )
 IS
+    /* 바로 나오지 않으므로 하나씩 추가하면 된다 */
     EXISTS_USER NUMBER;
     VAR_PASSWORD VARCHAR2(25);
     VAR_TRY_CNT NUMBER;
@@ -147,35 +148,46 @@ BEGIN
     ELSE
         DBMS_OUTPUT.PUT_LINE('해당 계정이 존재합니다');
 
-        SELECT USERNAME, PASSWORD, TRY_CNT, LOGIN_LOCK, LOCK_DATE
+        SELECT PASSWORD, TRY_CNT, LOGIN_LOCK, LOCK_DATE
            INTO VAR_PASSWORD, VAR_TRY_CNT, VAR_LOGIN_LOCK, VAR_LOCK_DATE
            FROM LOGIN
           WHERE USERNAME = IN_USERNAME;
 
         IF VAR_LOGIN_LOCK = 'LOCK' AND SYSDATE < (VAR_LOCK_DATE + INTERVAL '5' MINUTE) THEN
             DBMS_OUTPUT.PUT_LINE('계정이 잠겨 있습니다.'
-                                     || (VAR_LOCK_DATE + INTERVAL '5' MINUTE)
+                                     || TO_CHAR(VAR_LOCK_DATE + INTERVAL '5' MINUTE, 'YYYY년 MM월 DD일 HH24:MM:SS')
                                      || ' 에 다시 시도하세요');
         ELSE
+            iF VAR_LOGIN_LOCK = 'LOCK' THEN
+                UPDATE LOGIN
+                   SET LOGIN_LOCK = NULL
+                 WHERE USERNAME = IN_USERNAME
+                   AND LOGIN_LOCK = 'LOCK';
+            END IF;
+
+
             IF VAR_PASSWORD = IN_PASSWORD THEN
                 DBMS_OUTPUT.PUT_LINE('패스워드가 일치합니다. - 로그인 성공');
+                UPDATE LOGIN
+                   SET TRY_CNT = 0
+                 WHERE USERNAME = IN_USERNAME;
             ELSE
                 DBMS_OUTPUT.PUT_LINE('패스워드가 일치하지 않습니다. - 로그인 실패');
 
-            IF(VAR_TRY_CNT + 1 = 3) THEN
-                DBMS_OUTPUT.PUT_LINE('로그인 시도 3회 실패하였습니다. 계정이 5분간 잠깁니다.');
-                UPDATE LOGIN
-                   SET TRY_CNT = 3
-                     , LOGIN_LOCK = 'LOCK'
-                     , LOCK_DATE = SYSDATE
-                 WHERE USERNAME = IN_USERNAME;
-            ELSE
-                DBMS_OUTPUT.PUT_LINE('로그인 시도' || TO_CHAR(3 - (1 + VAR_TRY_CNT)) || '회 남았습니다');
-                UPDATE LOGIN
-                   SET TRY_CNT = TRY_CNT + 1
-                 WHERE USERNAME = IN_USERNAME;
+                IF(VAR_TRY_CNT + 1 = 3) THEN
+                    DBMS_OUTPUT.PUT_LINE('로그인 시도 3회 실패하였습니다. 계정이 5분간 잠깁니다.');
+                    UPDATE LOGIN
+                     SET TRY_CNT = 3
+                      , LOGIN_LOCK = 'LOCK'
+                      , LOCK_DATE = SYSDATE
+                    WHERE USERNAME = IN_USERNAME;
+                ELSE
+                    DBMS_OUTPUT.PUT_LINE('로그인 시도' || TO_CHAR(3 - (1 + VAR_TRY_CNT)) || '회 남았습니다');
+                    UPDATE LOGIN
+                       SET TRY_CNT = TRY_CNT + 1
+                     WHERE USERNAME = IN_USERNAME;
+                    END IF;
                 END IF;
-            END IF;
         END IF;
     END IF;
 END;
@@ -183,7 +195,9 @@ END;
 SELECT * FROM USER_ERRORS;
 
 BEGIN
-    PROC_LOGIN('test', 'test1');
+    PROC_LOGIN('test', 'test2');
 END;
+
+INSERT INTO LOGIN(USERNAME, PASSWORD) VALUES('test', 'test1');
 
 SELECT * FROM LOGIN;
