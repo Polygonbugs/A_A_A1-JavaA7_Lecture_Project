@@ -49,6 +49,41 @@ BEGIN
     COMMIT;
 END;
 
+DECLARE
+    ROW_COUNT NUMBER;
+BEGIN
+    PROC_INC_JOB_SALARY('IT_PROG', -0.2, ROW_COUNT);  /* 양수는 증가 */
+    DBMS_OUTPUT.PUT_LINE(ROW_COUNT || ' 개 행이 반영되었습니다.');
+END;
+
+DECLARE
+    ROW_COUNT NUMBER;
+BEGIN
+    PROC_INC_JOB_SALARY('IT_PROG', -0.1, ROW_COUNT); /* 음수는 감소 */
+    DBMS_OUTPUT.PUT_LINE(ROW_COUNT || ' 개 행이 반영되었습니다.');
+END;
+
+DECLARE
+    ROW_COUNT NUMBER;
+BEGIN
+    PROC_INC_JOB_SALARY('it_prog', 0.1, ROW_COUNT);  /* 소문자도 처리 가능 */
+    DBMS_OUTPUT.PUT_LINE(ROW_COUNT || ' 개 행이 반영되었습니다.');
+END;
+
+DECLARE
+    ROW_COUNT NUMBER;
+BEGIN
+    PROC_INC_JOB_SALARY('it', 0.1, ROW_COUNT);       /* 잘못된 JOB_ID 는 오류 없이 0개행 반영으로 종료 */
+    DBMS_OUTPUT.PUT_LINE(ROW_COUNT || ' 개 행이 반영되었습니다.');
+END;
+
+DECLARE
+    ROW_COUNT NUMBER;
+BEGIN
+    PROC_INC_JOB_SALARY('IT_PROG', 10, ROW_COUNT);   /* -1.0 초과 ~ 1.0 미만 의 범위만 처리, 그 외 범위는 0개행 반영으로 종료 */
+    DBMS_OUTPUT.PUT_LINE(ROW_COUNT || ' 개 행이 반영되었습니다.');
+END;
+
 /*
  *  LOGIN 테이블을 생성한다.
  *      USERNAME : 사용자 ID가 저장될 컬럼
