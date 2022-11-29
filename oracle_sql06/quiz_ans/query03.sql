@@ -126,8 +126,6 @@ CREATE TABLE LOGIN_LOG(
 
 CREATE SEQUENCE SEQ_LOGIN_LOG NOCACHE;
 
-
-
 CREATE OR REPLACE PROCEDURE PROC_LOGIN(
         IN_USERNAME IN VARCHAR2
       , IN_PASSWORD IN VARCHAR2
@@ -172,7 +170,7 @@ BEGIN
                      , LOCK_DATE = SYSDATE
                  WHERE USERNAME = IN_USERNAME;
             ELSE
-                DBMS_OUTPUT.PUT_LINE('로그인 시도' || 3 - (1 + VAR_TRY_CNT) || '회 남았습니다');
+                DBMS_OUTPUT.PUT_LINE('로그인 시도' || TO_CHAR(3 - (1 + VAR_TRY_CNT)) || '회 남았습니다');
                 UPDATE LOGIN
                    SET TRY_CNT = TRY_CNT + 1
                  WHERE USERNAME = IN_USERNAME;
@@ -185,7 +183,7 @@ END;
 SELECT * FROM USER_ERRORS;
 
 BEGIN
-    PROC_LOGIN('test', 'test');
+    PROC_LOGIN('test', 'test1');
 END;
 
-SELECT (SYSDATE + INTERVAL '5' MINUTE), SYSDATE FROM DUAL;
+SELECT * FROM LOGIN;
