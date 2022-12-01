@@ -17,7 +17,7 @@
 
 CREATE TABLE 회원테이블 (
       NICKNAME VARCHAR2(50) CONSTRAINT NICKNAME_COL_PK PRIMARY KEY
-    , EMAIL VARCHAR2(50)
+    , EMAIL VARCHAR2(50) UNIQUE
     , PASSWORD VARCHAR2(50) DEFAULT('samplepassword')
     , LOGIN_STATE NUMBER DEFAULT(0) CONSTRAINT LOGIN_STATE_COL_CK CHECK (LOGIN_STATE IN (0, 1))
     , LOGIN_SEQ NUMBER DEFAULT(0)
@@ -37,13 +37,13 @@ CREATE TABLE 접속이력테이블 (
 
 CREATE SEQUENCE 로그인시퀀스 NOCACHE;
 
-DELETE FROM 회원테이블;
-DROP TABLE 회원테이블;
-DELETE FROM 회원요청테이블;
-DROP TABLE 회원요청테이블;
 DELETE FROM 접속이력테이블;
 DROP TABLE 접속이력테이블;
-
+DELETE FROM 회원요청테이블;
+DROP TABLE 회원요청테이블;
+DELETE FROM 회원테이블;
+DROP TABLE 회원테이블;
+DROP SEQUENCE 로그인시퀀스;
 
 
 
@@ -80,6 +80,7 @@ SELECT COUNT(*)
 /* 회원 정보를 추가. 가입 후 바로 로그인*/
 IF(ISACCOUNTEXIST = 0) THEN
     INSERT INTO 회원테이블(NICKNAME, EMAIL, LOGIN_STATE, LOGIN_SEQ) VALUES(IN_NICKNAME, IN_EMAIL, 1, 로그인시퀀스.NEXTVAL);
+    INSERT INTO 접속이력테이블 VALUES(IN_NICKNAME, '가입 성공', SYSDATE, 로그인시퀀스.CURRVAL);
     DBMS_OUTPUT.PUT_LINE(IN_NICKNAME || '님 가입을 축하드립니다. 로그인 되었습니다');
 ELSE
     DBMS_OUTPUT.PUT_LINE(IN_NICKNAME || '은 이미 존재하는 계정입니다. 다시 입력하세요');
@@ -91,7 +92,11 @@ END;
 SELECT * FROM USER_ERRORS;
 
 BEGIN
-    회원가입('rnjs1', 'RNJS1@gmail.com');
+    회원가입('rnjs1','RNJS1@gmail.com');
+END;
+
+BEGIN
+    회원가입('rnjs2','RNJS3gmail.com');
 END;
 
 INSERT INTO 회원테이블(NICKNAME, EMAIL, LOGIN_STATE) VALUES('rnjs1', 'RNJS1@gmail.com', 0);
@@ -130,13 +135,12 @@ BEGIN
         SELECT COUNT(*)
           INTO ISACCOUNTMATCH
           FROM 회원테이블
-         WHERE NICKNAME = IN_NICKNAME AND PASSWORD = IN_PASSWORD
-         GROUP BY NICKNAME;
+         WHERE NICKNAME = IN_NICKNAME AND PASSWORD = IN_PASSWORD;
 
         SELECT LOGIN_STATE
           INTO ISACCOUNTLOGINED
           FROM 회원테이블
-         WHERE NICKNAME = IN_NICKNAME AND PASSWORD = IN_PASSWORD;
+         WHERE NICKNAME = IN_NICKNAME;
 
         SELECT LOGIN_DATE
           INTO pLOGIN_DATE
@@ -168,8 +172,16 @@ END;
 SELECT * FROM USER_ERRORS;
 
 BEGIN
-    로그인('rnjs1', 'samplepassword');
+    로그인('rnjs1', 'test1234');
 END;
+
+BEGIN
+    로그인('rnjs2', 'test1234');
+END;
+
+SELECT * FROM 회원테이블;
+SELECT * FROM 접속이력테이블;
+SELECT * FROM 접속이력테이블;
 
 -- -------------------------------------
 -- -------------------------------------
@@ -214,6 +226,10 @@ BEGIN
     로그아웃('rnjs1');
 END;
 
+BEGIN
+    로그아웃('rnjs2');
+END;
+
 SELECT * FROM 회원테이블;
 SELECT * FROM 접속이력테이블;
 
@@ -226,9 +242,46 @@ SELECT * FROM 접속이력테이블;
 
 
 CREATE OR REPLACE PROCEDURE 계정정보변경(
-    IN_EMAIL IN VARCHAR2
+      IN_NICKNAME IN VARCHAR2
+    , IN_CHANGE_EMAIL IN VARCHAR2
+    , IN_CHANGE_PASSWORD IN VARCHAR2
 )
 IS
+    isAccountLogined NUMBER;
+    isEmailUnique NUMBER;
 BEGIN
-1
+    /* 계정정보 변경*/
+    SELECT COUNT(*)
+      INTO ISACCOUNTLOGINED
+      FROM 회원테이블
+     WHERE LOGIN_STATE = 1 AND NICKNAME = IN_NICKNAME;
+
+    SELECT COUNT(*)
+      INTO ISEMAILUNIQUE
+      FROM 회원테이블
+     WHERE EMAIL = IN_CHANGE_EMAIL AND NICKNAME = IN_NICKNAME;
+
+    IF(ISACCOUNTLOGINED = 1 AND ISEMAILUNIQUE <> 1) THEN
+        UPDATE 회원테이블 SET EMAIL = IN_CHANGE_EMAIL WHERE NICKNAME = IN_NICKNAME;
+        UPDATE 회원테이블 SET PASSWORD = IN_CHANGE_PASSWORD WHERE NICKNAME = IN_NICKNAME;
+        DBMS_OUTPUT.PUT_LINE('이메일 및 비밀번호가 변경되었습니다');
+    ELSIF(ISACCOUNTLOGINED <> 1) THEN
+        DBMS_OUTPUT.PUT_LINE('계정이 로그인 되어 있지 않습니다.');
+    ELSIF(ISEMAILUNIQUE = 1) THEN
+        DBMS_OUTPUT.PUT_LINE('이메일이 기존과 동일하거나 다른 사용자가 사용하고 있습니다');
+    END IF;
+
 END;
+
+SELECT * FROM USER_ERRORS;
+
+BEGIN
+    계정정보변경('rnjs1', 'RNJS2@gmail.com', 'test1234');
+END;
+
+BEGIN
+    계정정보변경('rnjs2', 'RNJS4@gmail.com', 'test1234');
+END;
+
+SELECT * FROM 회원테이블;
+SELECT * FROM 접속이력테이블;
