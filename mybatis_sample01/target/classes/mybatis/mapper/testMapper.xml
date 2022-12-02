@@ -6,7 +6,14 @@
     <select id="hello" resultType='string'>
         select 'Hello Mybatis' FROM DUAL
     </select>
-    <!--<insert id =""></insert>
-    <update id =""></update>
-    <delete id =""></delete>  -->
+    <select id="reqAccount" resultType="kr.co.vo.AccountVO">
+        SELECT ID, NICKNAME, EMAIL, ISALLOWED, REQDATE
+          FROM REQ_ACCOUNTS
+         WHERE ISALLOWED != 'Y'
+    </select>
+    <!--
+        <insert id =""></insert>
+        <update id =""></update>
+        <delete id =""></delete>
+    -->
 </mapper>

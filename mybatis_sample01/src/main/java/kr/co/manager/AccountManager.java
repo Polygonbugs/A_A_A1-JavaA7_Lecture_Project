@@ -11,7 +11,6 @@ public class AccountManager {
         while(true) {
             System.out.println("[1] 회원 가입 요청 목록");
             System.out.println("[9] 프로그램 종료");
-            System.out.print("메뉴 번호 입력 : ");
 
             int menu = 0;
 
