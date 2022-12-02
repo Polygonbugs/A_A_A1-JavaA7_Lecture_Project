@@ -168,14 +168,3 @@ SELECT E1.EMPLOYEE_ID
     ON E1.MANAGER_ID = E2.EMPLOYEE_ID;
 
 SELECT * FROM EMPLOYEES;
-
-
-SELECT sd_name 학생명
-     , l_name 과목명
-     , to_char(t_date, 'YYYY.MM.DD') 수강신청일
-  FROM trainee tr
-  JOIN student st
-    ON tr.no = st.no
-  JOIN lesson le
-    ON tr.no = le.no
- WHERE tr.l_abbre = le.l_abbre;
