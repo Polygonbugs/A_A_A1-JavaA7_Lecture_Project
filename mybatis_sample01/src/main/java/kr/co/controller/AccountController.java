@@ -25,14 +25,19 @@ public class AccountController {
         account.setEmail(email);
 
         boolean result;
-        try {
-            result = dao.insertReqAccount(account);
-            view.show(result);
-        } catch(Throwable e) {
-            String reason = e.getMessage().split(":")[0];
-            if(reason.equals("ORA-00001")) {
-                System.out.println("닉네임 또는 이메일 주소가 중복되었습니다. 다시 입력하세요.");
+        if(dao.duplicationCheck(nickname, email) == false) {
+            try {
+                result = dao.insertReqAccount(account);
+                view.show(result);
+            } catch(Throwable e) {
+                String reason = e.getMessage().split(":")[0];
+                if(reason.equals("ORA-00001")) {
+                    System.out.println("닉네임 또는 이메일 주소가 중복되었습니다. 다시 입력하세요.");
+                }
             }
+
+        } else {
+            System.out.println("중복 데이터가 있습니다. 다른 닉네임과 이메일 주소를 입력하세요");
         }
 
 
