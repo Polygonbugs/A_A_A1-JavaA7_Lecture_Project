@@ -11,6 +11,10 @@
           FROM REQ_ACCOUNTS
          WHERE ISALLOWED != 'Y'
     </select>
+    <insert id="addReqAccount" parameterType="kr.co.vo.AccountVO">
+        INSERT INTO REQ_ACCOUNTS(ID, NICKNAME, EMAIL)
+             VALUES(SEQ_REQ_ACCOUNTS.NEXTVAL, #{nickname}, #{email})
+    </insert>
     <!--
         <insert id =""></insert>
         <update id =""></update>

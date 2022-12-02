@@ -10,6 +10,7 @@ public class AccountManager {
     public void start() {
         while(true) {
             System.out.println("[1] 회원 가입 요청 목록");
+            System.out.println("[2] 회원 가입 요청");
             System.out.println("[9] 프로그램 종료");
 
             int menu = 0;
@@ -27,12 +28,27 @@ public class AccountManager {
                 case 1:
                     this.getAccountRequestList();
                     break;
+                case 2:
+                    this.setAccountRequest();
+                    break;
                 case 9:
                     System.out.println("프로그램을 종료 합니다.");
                     System.exit(0);
             }
 
         }
+    }
+
+    private void setAccountRequest() {
+        AccountController ac = new AccountController();
+
+        System.out.print("닉네임 입력 : ");
+        String nickname = sc.nextLine();
+
+        System.out.print("이메일 입력 : ");
+        String email = sc.nextLine();
+
+        ac.setAccountRequest(nickname, email);
     }
 
     private void getAccountRequestList() {
