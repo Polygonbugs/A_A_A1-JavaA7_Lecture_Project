@@ -108,4 +108,17 @@ public class AccountDAO {
         sess.rollback();
         return false;
     }
+
+    public boolean updateAccountPassword(AccountVO data) {
+        int result = sess.update("test.updateAccountPassword", data);
+        if(result == 1) {
+            result = sess.insert("test.insertLogoutAccessLog", data);
+            if(result == 1) {
+                sess.commit();
+                return true;
+            }
+        }
+        sess.rollback();
+        return false;
+    }
 }

@@ -86,4 +86,21 @@ public class AccountController {
 
         view.message("로그아웃 되었습니다.");
     }
+
+    public AccountVO changePassword(AccountVO account, String newPassword) {
+        AccountDAO dao = new AccountDAO();
+
+        account.setPassword(newPassword);
+
+        boolean result = dao.updateAccountPassword(account);
+
+        AccountView view = new AccountView();
+        if(result) {
+            view.message("패스워드 변경이 완료되었습니다. - 자동으로 로그아웃 됩니다.");
+            return null;
+        } else {
+            view.message("패스워드 변경에 실패하였습니다. - 정보를 다시 확인하세요");
+            return account;
+        }
+    }
 }

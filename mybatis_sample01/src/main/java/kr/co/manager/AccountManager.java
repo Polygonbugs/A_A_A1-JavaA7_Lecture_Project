@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class AccountManager {
     private Scanner sc = new Scanner(System.in);
-    private AccountVO user = new AccountVO();
+    private AccountVO user = null;
 
     public void start() {
         while(true) {
@@ -18,6 +18,7 @@ public class AccountManager {
                 System.out.println("[4] 로그인");
             } else {
                 System.out.println("[4] 로그아웃");
+                System.out.println("[5] 패스워드 변경");
             }
             System.out.println("[9] 프로그램 종료");
 
@@ -49,12 +50,32 @@ public class AccountManager {
                         this.logout();
                     }
                     break;
+                case 5:
+                    if(user != null) {
+                        this.changePassword();
+                    }
+                    break;
                 case 9:
                     System.out.println("프로그램을 종료 합니다.");
                     System.exit(0);
             }
 
         }
+    }
+
+    private void changePassword() {
+        AccountController ac = new AccountController();
+
+        System.out.print("변경할 패스워드 입력 : ");
+        String newPassword = sc.nextLine();
+
+        System.out.print("현재 패스워드 입력 : ");
+        String oldPassword = sc.nextLine();
+
+        if(this.user.getPassword().equals(oldPassword)) {
+            this.user = ac.changePassword(this.user, newPassword);
+        }
+
     }
 
     private void logout() {
@@ -72,7 +93,7 @@ public class AccountManager {
         System.out.print("암호 : ");
         String password = sc.nextLine();
 
-        AccountVO user = ac.login(nickname, password);
+        user = ac.login(nickname, password);
     }
 
     private void acceptAccountRequest() {

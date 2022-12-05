@@ -58,6 +58,14 @@
          WHERE ID = #{id}
     </update>
     <insert id = "insertLoginAccessLog" parameterType="kr.co.vo.AccountVO">
-        INSERT INTO ACCOUNT_ACCESS_LOGS VALUES(ACCOUNT_ACCESS_LOGS.NEXTVAL, #{id}, 'LOGIN', SYSDATE)
+        INSERT INTO ACCOUNT_ACCESS_LOGS VALUES(SEQ_ACCOUNT_ACCESS_LOGS.NEXTVAL, #{id}, 'LOGIN', SYSDATE)
     </insert>
+    <insert id = "insertLogoutAccessLog" parameterType="kr.co.vo.AccountVO">
+        INSERT INTO ACCOUNT_ACCESS_LOGS VALUES(SEQ_ACCOUNT_ACCESS_LOGS.NEXTVAL, #{id}, 'LOGOUT', SYSDATE)
+    </insert>
+    <update id="updateAccountPassword" parameterType="kr.co.vo.AccountVO">
+        UPDATE ACCOUNTS
+           SET PASSWORD = #{password}
+         WHERE ID = #{id}
+    </update>
 </mapper>
