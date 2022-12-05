@@ -18,4 +18,8 @@ public class AccountView {
             System.out.println("데이터베이스에 데이터를 저장 중 문제가 발생하였습니다.");
         }
     }
+
+    public void message(String msg) {
+        System.out.println(msg);
+    }
 }

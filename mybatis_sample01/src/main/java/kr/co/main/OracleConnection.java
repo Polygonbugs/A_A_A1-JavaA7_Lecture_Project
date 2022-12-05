@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class OracleConnection {
-
+// spring 때는 사용되지 않는다고 한다.
     public static SqlSession getSqlSession() {
         SqlSession sess = null;
 
@@ -30,6 +30,7 @@ public class OracleConnection {
     public static void main(String[] args) {
         SqlSession session = OracleConnection.getSqlSession();
         // sessioon.selectOne(mapper_namespace.SQL_ID)
+        // 문제가 생길 경우 오타 의심 -> pom.xml쪽 mapper 참고
         String res = session.selectOne("test.hello");
         System.out.println(res);
         session.close();

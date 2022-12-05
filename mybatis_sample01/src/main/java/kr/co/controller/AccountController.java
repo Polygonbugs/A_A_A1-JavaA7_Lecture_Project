@@ -42,4 +42,48 @@ public class AccountController {
 
 
     }
+
+    public void acceptAccountRequest(int[] temp) {
+        AccountDAO dao = new AccountDAO();
+        AccountView view = new AccountView();
+
+        for(int id: temp) {
+            boolean result = dao.updateReqAccount(id);
+            view.show(result);
+        }
+    }
+
+    public AccountVO login(String nickname, String password) {
+        AccountDAO dao = new AccountDAO();
+        AccountView view = new AccountView();
+
+        AccountVO data = new AccountVO();
+        data.setNickname(nickname);
+        data.setPassword(password);
+
+        AccountVO loginData = dao.selectAccount(data);
+
+        if(loginData != null) {
+            view.message("로그인 처리가 완료되었습니다. - 로그인 성공!!");
+        } else {
+            view.message("로그인 정보가 잘못되었습니다. - 로그인 실패!!");
+        }
+
+        return loginData;
+    }
+
+    public void logout(AccountVO user) {
+        AccountDAO dao = new AccountDAO();
+        AccountView view = new AccountView();
+
+        boolean result = dao.insertLogoutAccessLog(user);
+
+        if(result) {
+            view.message("로그아웃 처리가 완료되었습니다. - 로그아웃 성공!!");
+        } else {
+            view.message("로그아웃 처리 중 문제가 발생하였습니다. - 로그아웃 실패!!");
+        }
+
+        view.message("로그아웃 되었습니다.");
+    }
 }

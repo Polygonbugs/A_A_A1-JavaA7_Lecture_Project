@@ -2,6 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 여기서 <select id ...>는 1개의 레코드만 반환한다. selectOne, selectList-->
+<!-- 데이터베이스를 기준으로 paramenter는 값을 입력받는 것, resultType는 출력해주는 것-->
 <mapper namespace="test">
     <select id="hello" resultType='string'>
         select 'Hello Mybatis' FROM DUAL
@@ -15,9 +17,47 @@
         INSERT INTO REQ_ACCOUNTS(ID, NICKNAME, EMAIL)
              VALUES(SEQ_REQ_ACCOUNTS.NEXTVAL, #{nickname}, #{email})
     </insert>
+    <select id = "dupCheckNickname" parameterType="string" resultType="_int">
+        SELECT COUNT(*) FROM REQ_ACCOUNTS WHERE NICKNAME = #{nickname}
+    </select>
+    <select id="dupCheckEmail" parameterType="string" resultType="_int">
+        SELECT COUNT(*) FROM REQ_ACCOUNTS WHERE NICKNAME = #{email}
+    </select>
+    <!--
+        insert, update, delete는 int가 반환되는 함수
+    -->
     <!--
         <insert id =""></insert>
         <update id =""></update>
         <delete id =""></delete>
     -->
+    <update id="updateReqAccount" parameterType="_int">
+        UPDATE REQ_ACCOUNTS
+           SET ISALLOWED = 'Y'
+         WHERE ID = #{id}
+           AND ISALLOWED != 'Y'
+    </update>
+    <select id = "reqAccountId" parameterType="_int" resultType="kr.co.vo.AccountVO">
+        SELECT ID, NICKNAME, EMAIL, ISALLOWED, REQDATE
+          FROM REQ_ACCOUNTS
+         WHERE ID = #{id}
+    </select>
+    <insert id="insertAccount">
+        INSERT INTO ACCOUNTS(ID, NICKNAME, EMAIL, PASSWORD, LOGINDATE)
+             VALUES(SEQ_ACCOUNTS.NEXTVAL, #{nickname}, #{email}, #{password}, NULL)
+    </insert>
+    <select id="selectAccount" parameterType="kr.co.vo.AccountVO" resultType="kr.co.vo.AccountVO">
+        SELECT ID, NICKNAME, EMAIL, PASSWORD, LOGINDATE
+          FROM ACCOUNTS
+         WHERE NICKNAME = #{nickname}
+           AND PASSWORD = #{password}
+    </select>
+    <update id = "updateLoginDate" parameterType="kr.co.vo.AccountVO">
+        UPDATE ACCOUNTS
+           SET LOGINDATE = SYSDATE
+         WHERE ID = #{id}
+    </update>
+    <insert id = "insertLoginAccessLog" parameterType="kr.co.vo.AccountVO">
+        INSERT INTO ACCOUNT_ACCESS_LOGS VALUES(ACCOUNT_ACCESS_LOGS.NEXTVAL, #{id}, 'LOGIN', SYSDATE)
+    </insert>
 </mapper>
