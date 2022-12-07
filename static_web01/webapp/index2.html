@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="en"><!-- html 문서 영역 시작 -->
-<head><!-- 문서 설명 및 외부 스크립트, 스타일 시트 정보-->
-    <meta 부가 정보를 나타내기 위해 작성(작성자 정보, 개발환경 정보 등)/>
-    <title>브라우저에서 제목 표기</title> <!-- 브라우저의 제목을 표시하는 태그이다 -->
-    <link 외부 css 파일 작성/>
-    <script>외부/내부 javascript 작성</script>
-    <style>스타일 시트 정보 작성</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" value="작성자">
+    <meta name="keywords" value="이 페이지를 검색할 때의 키워드 정보">
+    <meta name="generator" value="이 페이지를 만든 프로그램 및 도구">
+    <title>브라우저에 제목 표기</title>
+    <link type="text/css" rel="stylesheet" href="static/css/index.css">
+    <script type="text/javascript" src="./static/js/index.js"></script>
+    <style type="text/css">
+        body { background-color: gray;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            alert("JavaScript Run!!");
+        };
+    </script>
 </head>
-
-<body><!-- 브라우저에 출력할 내용-->
-브라우저가 참조할 정보
-
-</body><!-- html 문서 영역 끝-->
+<body>
+    <h1>Hello HTML5</h1>
+</body>
 </html>
