@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>테이블 관련 태그</title>
+</head>
+<body>
+    <!--
+        표 형태를 만들기 위해 사용하는 태그
+        table, tr, td, th, thead, tbody, tfoot
+        figcaption, colgroup, col, caption 태그들이
+        활용된다.
+        가장 기본이 되는 태그는 table, tr, td이다.
+        HTML5가 사용되면서 thead, tbody, tfoot의 사용을
+        권장하고 있다.
+    -->
+    <!-- 행과 열을 맞추지 않으면 테이블이 깨져서 나올 수 있다. -->
+    <!-- tr : 행-->
+    <!-- td : 셀-->
+    <table border="1">
+        <tr>
+            <td>1행 1열</td>
+            <td>1행 2열</td>
+            <td>1행 3열</td>
+        </tr>
+        <tr>
+            <td>2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr>
+        <tr>
+            <td>3행 1열</td>
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+        </tr>
+    </table>
+    <hr>
+
+    <!-- th를 쓰면 가운데 정렬에 강조가 된다-->
+    <table border="1">
+        <tr>
+            <th>제목A</th>
+            <th>제목B</th>
+            <th>제목C</th>
+        </tr>
+        <tr>
+            <td>2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr>
+        <tr>
+            <td>3행 1열</td>
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+        </tr>
+    </table>
+    <hr>
+
+    <table border="1">
+        <tr>
+            <th>제목A</th>
+            <td>1행 2열</td>
+            <td>1행 3열</td>
+        </tr>
+        <tr>
+            <th>제목B</th>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr>
+        <tr>
+            <th>제목C</th>
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+        </tr>
+    </table>
+    <hr>
+
+    <table border="1">
+        <caption>테이블 제목</caption>
+        <tr>
+            <th>제목A</th>
+            <th>제목B</th>
+            <th>제목C</th>
+        </tr>
+        <tr>
+            <td>2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr>
+        <tr>
+            <td>3행 1열</td>
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+        </tr>
+    </table>
+    <hr>
+
+    <!-- 약간 왼쪽으로 들여쓰기가 된다.-->
+    <figure>
+        <table border="1">
+            <caption>테이블 제목</caption>
+            <tr>
+                <th>제목A</th>
+                <th>제목B</th>
+                <th>제목C</th>
+            </tr>
+            <tr>
+                <td>2행 1열</td>
+                <td>2행 2열</td>
+                <td>2행 3열</td>
+            </tr>
+            <tr>
+                <td>3행 1열</td>
+                <td>3행 2열</td>
+                <td>3행 3열</td>
+            </tr>
+        </table>
+        <figcaption>테이블 제목</figcaption>
+    </figure>
+    <hr>
+
+    <!--
+        테이블 셀 병합을 위한 rowspan, colspan 속성
+    -->
+    <table border="1">
+        <tr>
+            <td colspan="3">1행 1, 2, 3열 병합</td>
+            <td>1행 4열</td>
+            <td>1행 5열</td>
+        </tr>
+        <tr>
+            <td>2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+            <td colspan="2">2행 4, 5열 병합</td>
+        </tr>
+        <tr>
+            <td rowspan="3">3, 4, 5행 병합 1열</td>
+            <td>3행 2열</td>
+            <td>3행 3열</td>
+            <td>3행 4열</td>
+            <td>3행 5열</td>
+        </tr>
+        <tr>
+            <td>4행 1열</td>
+            <td>4행 2열</td>
+            <td rowspan="2" colspan="2">4, 5행 병합 3, 4열 병합</td>
+            <td>4행 5열</td>
+        </tr>
+        <tr>
+            <td>5행 2열</td>
+            <td>5행 5열</td>
+        </tr>
+    </table>
+    <hr>
+
+    <table border = "1">
+        <tfoot>
+        <tr>
+            <td>총계</td>
+            <td>5</td>
+            <td>18,000</td>
+        </tr>
+        </tfoot>
+        <thead>
+        <tr>
+            <th>이름</th>
+            <th>수량</th>
+            <th>가격</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>아메리카노</td>
+            <td>2</td>
+            <td>6,000</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td>카페라떼</td>
+            <td>3</td>
+            <td>12,000</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <table border = "1" style="border-collapse:collapse;">
+        <colgroup>
+            <!-- 배경색, 너비, 테두리, 가시성 -->
+            <col style="background-color:beige; width: 180px;">
+            <col style="background-color:beige; width: 80px;">
+            <col style="background-color:beige; width: 120px;">
+        </colgroup>
+        <tfoot>
+            <tr>
+                <td>총계</td>
+                <td>5</td>
+                <td>18,000</td>
+            </tr>
+        </tfoot>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>수량</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>아메리카노</td>
+                <td>2</td>
+                <td>6,000</td>
+            </tr>
+            <tr>
+                <td>카페라떼</td>
+                <td>3</td>
+                <td>12,000</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
