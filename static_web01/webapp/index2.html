@@ -5,17 +5,36 @@
     <meta name="author" value="작성자">
     <meta name="keywords" value="이 페이지를 검색할 때의 키워드 정보">
     <meta name="generator" value="이 페이지를 만든 프로그램 및 도구">
+
+    <!-- 브라우저에 표기할 페이지 제목 -->
     <title>브라우저에 제목 표기</title>
+
+    <!-- 브라우저에 표기할 아이콘 -->
+    <link type="image/jpeg" rel="icon" href="http://localhost:63342/A_A_A1-Lecture-Project/static_web01/webapp/static/img/icon.jpeg">
+    <!-- type = MIME부류값(파일의 가장 큰 부류)/하위부류 -->
+    <!-- rel = 힌트값 -->
+    <!-- href = <url 주소 형식> (도메인)/경로 (경로 = 절대경로, 상대경로 가능) -->
+    <!-- href값에 http가 있는 경우 내부서버가 아닌 외부 서버의 파일을 불러올 수 있다. -->
+
+    <!-- 외부 CSS 파일 불러오기 -->
     <link type="text/css" rel="stylesheet" href="static/css/index.css">
+
+    <!-- 외부 Javascript 파일 불러오기 -->
     <script type="text/javascript" src="./static/js/index.js"></script>
+    <!-- src = href와 하는 역할이 같다 -->
+
     <style type="text/css">
+        /* HTML에 직접 작성한 내부 CSS */
         body { background-color: gray;}
     </style>
+
     <script type="text/javascript">
+        /* HTML에 직접 작성한 내부 JavaScript */
         window.onload = function() {
             alert("JavaScript Run!!");
         };
     </script>
+
 </head>
 <body>
     <h1>Hello HTML5</h1>
