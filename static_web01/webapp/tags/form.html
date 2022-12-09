@@ -45,14 +45,84 @@
         사용자 입력 양식을 통해 사용자가 입력한 값을
         서버에 전송하기 위해서는 반드시 form 태그가 필요하다.
     -->
+    <h3>GET 전송 예시</h3>
+    <!-- action="url 주소" : JSP, Servelet, Spring 서버가 동작하는 서버주소 -->
+    <!-- method="get or post" : 클라이언트가 서버에 request하여 서버가 response하여 클라이언트 브라우저에 출력한다.-->
     <form action="./save.jsp" method="get">
-        <!-- action="url 주소" : JSP, Servelet, Spring 서버가 동작하는 서버주소 -->
-        <!-- method="get or post" : 클라이언트가 서버에 request하여 서버가 response하여 클라이언트 브라우저에 출력한다.-->
         <input type="text" name="a">
         <input type="text" name="b">
         <input type="text" name="c">
         <button type="submit">제출</button>
     </form>
 
+    <h3>POST 전송 예시</h3>
+    <form action="./save.jsp" method="post">
+        <input type="text" name="a">
+        <input type="text" name="b">
+        <input type="text" name="c">
+        <button type="submit">제출</button>
+    </form>
+
+    <h3>checkbox, radio 예시</h3>
+    <form action="./save.jsp" method="get">
+        <h4>checkbox</h4>
+        <div>
+            <input type="checkbox" name="ch1" value="a">
+            <input type="checkbox" name="ch2" value="b">
+            <input type="checkbox" name="ch3" value="c" checked>
+        </div>
+        <h4>radio</h4>
+        <!-- 라디오 사용시 이름이 동일해야 1개씩만 선택이 가능하다 -->
+        <!-- value를 설정해줘야 어떤 것을 선택했는지 알 수 있다. -->
+        <!-- checked 옵션을 이용하면 웹 사이트 로드시 기본으로 선택되어 나온다-->
+        <div>
+            <input type="radio" name="rdo1" value="a">
+            <input type="radio" name="rdo1" value="b" checked>
+            <input type="radio" name="rdo1" value="c">
+        </div>
+        <div>
+            <button type="submit">제출</button>
+        </div>
+    </form>
+
+    <h3>select, option 사용 예시</h3>
+    <form action="./save.jsp" method="get">
+        <select name="var">
+            <option value="a">선택 1</option>
+            <option value="b">선택 2</option>
+            <option value="c" selected>선택 3</option>
+        </select>
+        <div>
+            <button type="submit">제출</button>
+        </div>
+    </form>
+
+    <h3>textarea 사용 예시</h3>
+    <form action="./save.jsp" method="get">
+        <textarea name="var" cols="30" rows="10" style="resize: none;"></textarea>
+        <div>
+            <button type="submit">제출</button>
+        </div>
+    </form>
+
+    <h3>사용자 입력 양식에 쓰이는 옵션</h3>
+    <!-- type <hidden> : 입력란을 볼 수 없게 만든다 -->
+    <form action="./save.jsp" method="get">
+        <div>
+            <input type="text" name="v1" placeholder="아이디" required>
+        </div>
+        <div>
+            <input type="password" name="v2" placeholder="비밀번호" required>
+        </div>
+        <div>
+            <input type="hidden" name="v3" value="읽기전용" readonly>
+        </div>
+        <div>
+            <input type="hidden" name="v4" value="비활성" disabled>
+        </div>
+        <div>
+            <button type="submit">제출</button>
+        </div>
+    </form>
 </body>
 </html>
