@@ -1,0 +1,53 @@
+.fs1 {
+    /* em은 기본 글꼴 크기를 기준으로 배수배에 해당하는 상대크기를 설정한다.*/
+    font-size: 0.5em;   /* 기본 크기 : 12pt, 16px*/
+}
+
+.fw1 {
+    font-weight: bolder; /* 숫자로 값을 넣으면 100 ~ 900까지 설정 가능하다 */
+                         /* 명사형으로는 lighter, bold, bolder 등이 있다.*/
+}
+
+.fs2 {
+    font-style: italic;
+}
+
+.ff1 {
+    font-family: "D2Coding", "Apple LiGothic", "sans-serif";
+}
+
+.cl {
+    color: RGBA(113, 56, 91, 0.3); /* RGB(r, g, b) r, g, b는 0 ~ 255 값 */
+}
+
+.td1 a {
+    /* underline, overline, line-through, none */
+    text-decoration: none;
+}
+
+.ts1 {
+    /*          가로, 세로, 번짐수준, 색상*/
+    text-shadow: 2px 2px 3px gray;
+}
+
+.ta1-left {
+    /* start = left*/
+    text-align: left;
+}
+
+.ta1-right {
+    /* end = right*/
+    text-align: right;
+}
+
+.ta1-center {
+    text-align: center;
+}
+
+.ta1-justify {
+    text-align: justify;
+}
+
+.lh1 {
+    line-height: 100px;
+}

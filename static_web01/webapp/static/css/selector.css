@@ -58,3 +58,54 @@ h1, h2, h3 {
 }
 
 /* 의사 클래스 선택자 */
+.pseudo :active {
+    background-color: red;
+}
+
+.pseudo :hover {
+    background-color: blue;
+}
+
+.pseudo :focus {
+    background-color: green;
+}
+
+.pseudo ::selection {
+    background-color: aqua;
+}
+
+.pseudo :visited {
+    color: red;
+}
+
+.pseudo :link {
+    color: skyblue;
+}
+
+.pseudo :checked {
+    box-shadow: 0 0 1px 2px black;
+}
+
+.pseudo2 li:first-child {
+    background-color: azure;
+}
+
+.pseudo2 li:last-child {
+    background-color: deepskyblue;
+}
+
+.pseudo2 li:nth-child(2n) {
+    background-color: coral;
+}
+
+.pseudo3 :first-of-type {
+    color: red;
+}
+
+.pseudo3 :last-of-type {
+    color : blue;
+}
+
+.pseudo3 :nth-of-type(3n) {
+    color : green;
+}
