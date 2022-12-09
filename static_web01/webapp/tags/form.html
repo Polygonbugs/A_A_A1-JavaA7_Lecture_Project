@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>폼 관련 태그</title>
+</head>
+<body>
+    <!--
+        사용자 입력 폼을 만들고 사용자가 입력한 데이터를
+        서버에 전송하기 위한 태그
+    -->
+
+    <!--
+        <input type="입력 양식 종류" name="서버가 식별할 이름" value="초기값">
+        브라우저마다 지원 유무가 다를 수 있다.
+    -->
+    <input type="text"><br>
+    <input type="password"><br>
+    <input type="checkbox">
+    <input type="radio">
+    <input type="button"><br>
+    <input type="file"><br>
+    <input type="submit"><br>
+    <input type="reset"><br>
+    <input type="number"><br>
+    <input type="date"><br>
+    <input type="time"><br>
+    <input type="datetime-local"><br>
+
+    <textarea></textarea><br>
+
+    <select>
+        <option>선택1</option>
+        <option>선택2</option>
+        <option>선택3</option>
+    </select>
+
+    <!-- 디자인 구체적으로 사용할 때는 일반 버튼을 사용하는 것이 좋다.-->
+    <button type="button">버튼</button>
+    <button type="submit">제출</button>
+    <button type="reset">초기화</button>
+
+    <hr>
+    <!--
+        사용자 입력 양식을 통해 사용자가 입력한 값을
+        서버에 전송하기 위해서는 반드시 form 태그가 필요하다.
+    -->
+    <form action="./save.jsp" method="get">
+        <!-- action="url 주소" : JSP, Servelet, Spring 서버가 동작하는 서버주소 -->
+        <!-- method="get or post" : 클라이언트가 서버에 request하여 서버가 response하여 클라이언트 브라우저에 출력한다.-->
+        <input type="text" name="a">
+        <input type="text" name="b">
+        <input type="text" name="c">
+        <button type="submit">제출</button>
+    </form>
+
+</body>
+</html>
