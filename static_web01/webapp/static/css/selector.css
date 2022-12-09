@@ -1,0 +1,60 @@
+/* 전체 선택자 */
+* {
+    color: gray;
+}
+
+/* 태그 선택자 */
+h1, h2, h3 {
+    border-style: solid;
+    border-width: 2px;
+}
+
+/* 아이디 선택자 */
+#main-title {
+    font-size: 48px;
+}
+
+/* 클래스 선택자
+    중복 사용 가능
+ */
+.bg-black {
+    background-color: black;
+    color: white;
+}
+
+/* 속성 선택자 */
+[type=text] {
+    background-color: aliceblue;
+}
+[type=password] {
+    background-color: antiquewhite;
+}
+[type=number] {
+    background-color: bisque;
+}
+[readonly] {
+    background-color: gainsboro;
+    color: cornsilk;
+}
+
+/* 자식 선택자 */
+.paraent1 > li {
+    color: black;
+}
+
+/* 자손 선택자 */
+.paraent2 li {
+    color: red;
+}
+
+/* 형제 선택자 */
+/* 이러한 선택자는 코드의 아래 방향으로만 작동된다. */
+.sibling1 + li {
+    color: brown;
+}
+
+.sibling2 ~ li {
+    color: black;
+}
+
+/* 의사 클래스 선택자 */
