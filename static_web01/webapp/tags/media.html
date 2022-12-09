@@ -25,10 +25,29 @@
                          metadata : 정보만 받아서 표시함(재생 길이, 썸네일 이미지등)
                          auto : 미리 다운로드 받음(기본값으로 설정됨)
         mute : 음소거
+
+        오디오는 다음의 코덱을 지원할 것입니다.(브라우저마다 다르기 때문에 절대적이지 않음)
+        ACC, ALAC, AMR, FLAC, G.711, G.722, MP3, Opus, Vorbis
+
+        위의 코덱을 포함하는 오디오 타입은 다음중 하나 입니다.
+        MP3, MP4, FLAC, WebRTC, MOV, MPEG, WebM, Ogg
     -->
     <audio controls autoplay loop preload="auto"
            src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+    <br>
 
+    <!-- 브라우저마다 지원할 수 있는 오디오 타입이 다를 수 있으므로 지원되지 않는 타입을 고려하여 작성한 것이다. -->
+    <audio controls>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.ogg" type="audio/ogg">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mpeg" type="audio/mpeg">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mp3">
+    </audio>
+    <br>
+    <hr>
+
+    <video controls width="360px" preload="none" poster="/static/img/test_img.jpg"
+           src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm">
+    </video>
 
 </body>
 </html>
