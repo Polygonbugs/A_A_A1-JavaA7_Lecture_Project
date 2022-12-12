@@ -1,0 +1,101 @@
+.width-height {
+    background-color: rgb(198, 198, 198);
+    width: 250px;
+    height: 200px;
+}
+.padding-margin {
+    width: 200px;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    margin: 25px 25px 25px 25px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.display > .block {
+    display: block;
+}
+.display > .inline {
+    display: inline;
+}
+.display > .none {
+    display: none;
+}
+.visibility > .hidden {
+    visibility: hidden;
+}
+
+.box-sizing > .border-box {
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.box-sizing > .content-box {
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+    box-sizing: content-box;
+}
+
+.border > .style {
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-width: thin medium thick thin;
+    border-color: red darkred black crimson;
+    border-radius: 5px 10px 15px 20px;
+    box-shadow: 5px 5px 5px 2px gray;
+}
+
+.inline-area {
+    border-style: solid;
+}
+.inline-area > .inline {
+    display: inline;
+    background-color:rgba(198, 198, 198, 0.7);
+    /* width: 180px; */
+    /* height: 180px; */
+    padding: 20px;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(255, 0, 0, 0.5);
+    margin: 20px;
+}
+
+.block-area {
+    border-style: solid;
+}
+.block-area > .block {
+    display: block;
+    background-color:rgba(198, 198, 198, 0.7);
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(255, 0, 0, 0.5);
+    margin: 20px;
+}
+
+.inline-block-area {
+    border-style: solid;
+}
+.inline-block-area > .inline-block {
+    display: inline-block;
+    background-color:rgba(198, 198, 198, 0.7);
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(255, 0, 0, 0.5);
+    margin: 20px;
+}
+

@@ -1,0 +1,50 @@
+.table-style1 {
+    border-style: solid;
+    border-collapse: collapse;
+    width: 300px;
+    height: 60px;
+}
+.table-style1 td,.table-style1 th {
+    border-style: solid;
+}
+
+.table-style2 {
+    border-style: solid;
+    border-spacing: 10px 10px;
+    width: 300px;
+    height: 60px;
+}
+.table-style2 td,.table-style2 th {
+    border-style: solid;
+}
+
+table .bg-color-blue {
+    background-color: aliceblue;
+}
+
+table td.center {
+    text-align: center;
+}
+table td.right {
+    text-align: right;
+}
+
+table .top {
+    vertical-align: top;
+}
+table .bottom {
+    vertical-align: bottom;
+}
+
+table .w60 {
+    width: 60px;
+}
+table .w120 {
+    width: 120px;
+}
+table .w180 {
+    width: 180px;
+}
+table.layout-fixed {
+    table-layout: fixed;
+}
