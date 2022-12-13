@@ -1,0 +1,141 @@
+.top-nav > .menu {
+    list-style-type: none;
+    background-color: black;
+}
+.top-nav .menu-item,
+.top-nav .menu-link {
+    display: inline-block;
+}
+.top-nav .menu-link {
+    text-decoration: none;
+    padding: 16px 8px 16px 8px;
+    color: lightblue;
+    background-color: black;
+}
+.top-nav .menu-link:hover {
+    background-color: gray;
+    color: deepskyblue;
+}
+
+
+.side-nav .menu {
+    width: 200px;
+    list-style-type: none;
+    background-color: blanchedalmond;
+    padding-inline-start: 0px;
+    box-sizing: border-box;
+}
+.side-nav .menu-link {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    text-decoration: none;
+    color: black;
+}
+.side-nav .menu-link:hover {
+    background-color: darksalmon;
+}
+.side-nav .active {
+    background-color: navajowhite;
+}
+
+.dropdown-nav .dropdown-menu .dropdown {
+    position: relative;
+}
+.dropdown-nav .dropdown-menu {
+    background-color: rgb(64, 64, 64);
+}
+.dropdown-nav .dropdown-menu,
+.dropdown-nav .sub-menu {
+    list-style-type: none;
+}
+.dropdown-nav .menu-item,
+.dropdown-nav .menu-link {
+    display: inline-block;
+}
+.dropdown-nav .menu-link {
+    text-decoration: none;
+    padding: 16px;
+    color: white;
+}
+.dropdown-nav .menu-item:hover {
+    background-color: rgb(78, 135, 78);
+}
+.dropdown-nav .dropdown-menu .sub-menu {
+    display: none;
+    position: absolute;
+    left: 0px; top: 53px;
+    padding-inline-start: 0px;
+    width: 120px;
+    box-shadow: 2px 2px 6px 0px gray;
+}
+.dropdown-nav .sub-menu .sub-item,
+.dropdown-nav .sub-menu .sub-link {
+    display: block;
+    box-sizing: border-box;
+}
+.dropdown-nav .sub-menu .sub-link {
+    text-decoration: none;
+    padding: 8px;
+    color: black;
+}
+.dropdown-nav .sub-menu .sub-link:hover {
+    background-color:rgb(183, 183, 183);
+}
+
+.dropdown-nav .menu-item:hover .sub-menu {
+    display: inline-block;
+    background-color: white;
+}
+
+
+
+.side-dropdown-nav .side-dropdown-menu {
+    list-style-type: none;
+    padding-inline-start: 0;
+    width: 200px;
+}
+
+.side-dropdown-nav .menu-item {
+    box-sizing: border-box;
+    background-color: rgb(64, 64, 64);
+}
+
+.side-dropdown-nav .menu-item:hover {
+    background-color: rgb(78, 135, 78);
+}
+
+.side-dropdown-nav .menu-link {
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+}
+
+.side-dropdown-nav .sub-menu {
+    display: none;
+}
+
+.side-dropdown-nav .dropdown:hover .sub-menu {
+    display: block;
+    background-color: rgb(64, 64, 64);
+}
+
+.side-dropdown-nav .sub-menu {
+    list-style-type: none;
+}
+
+.side-dropdown-nav .sub-menu .sub-link {
+    text-decoration: none;
+    color: white;
+    /* 인라인이어서 padding이 적용이 안된다고 한다.*/
+    padding: 6px;
+    /* 그래서 display를 block으로 변경할 것*/
+    display: block;
+}
+
+.side-dropdown-nav .sub-menu .sub-link:hover {
+    color: rgb(183, 183, 183);
+}

@@ -26,7 +26,7 @@
 }
 
 .background-image {
-    background-image: url('/static/img/googlelogo_color_272x92dp.png');
+    background-image: url('../img/googlelogo_color_272x92dp.png');
     width: 250px;
     height: 200px;
 }
@@ -56,7 +56,7 @@
     background-position: right bottom;
 }
 body {
-    background-image: url('https://naver.com/favicon.ico?1');
+    background-image: url('https://naver.com/favicon.icon1');
     background-repeat: repeat-x;
 }
 body.background-attachment {

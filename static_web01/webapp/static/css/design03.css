@@ -1,0 +1,106 @@
+button {
+    margin: 0;
+    padding: 0.5em 1em 0.5em 1em;
+    border-style: none;
+    box-sizing: border-box;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button.block {
+    display: block;
+    width: 100%;
+}
+
+.btn-ok {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.btn-ok:hover {
+    background-color: #3778ee;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: crimson;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #ee0838;
+    color: white;
+}
+
+input.input-text {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    /* 사용자 입력란을 누르면 테두리가 살짝 강조되서 나온다.*/
+    outline-style: none;
+    /* 끝부분 5px 깍아서 둥글게 만들기 */
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    /* 패딩에 대한 계산까지 고려하여 기존 범위에 맞춰서 만들수 있게 해준다*/
+    box-sizing: border-box;
+}
+
+input.input-text:hover,
+input.input-text:focus {
+    border-color: rgb(73, 131, 239);
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.input-text.block {
+    width: 100%;
+}
+
+.input-check, .input-radio {
+    display: none;
+}
+
+.check-form {
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(128, 128, 128);
+    width: 10px; height: 10px;
+}
+
+.radio-form {
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(128, 128, 128);
+    border-radius : 50%;
+    width: 10px; height: 10px;
+}
+
+.input-check:checked ~ .check-form {
+    background-color: rgb(73, 131, 239);
+    border-color: rgb(73, 131, 239);
+    position: relative;
+}
+
+.input-radio:checked ~ .radio-form {
+    background-color: rgb(73, 131, 239);
+    border-color: rgb(73, 131, 239);
+}
+
+.input-check:checked ~ .check-form::after {
+    content: "✓";
+    position: absolute;
+    left: 0px; top: -2px;
+    color: white;
+}
+
+.input-radio:checked ~ .radio-form::after {
+    content: "●";
+    font-size: 1px;
+    position: absolute;
+    left: -0px; top: -2px;
+    color: white;
+}
+

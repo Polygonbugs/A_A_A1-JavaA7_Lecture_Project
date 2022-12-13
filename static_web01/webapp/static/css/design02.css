@@ -1,0 +1,64 @@
+.table-normal {
+    border-style: solid;
+    border-width: thin;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-normal th,
+.table-normal td {
+    border-style: solid;
+    border-width: thin;
+}
+
+.table-horizon {
+    border-collapse: collapse;
+    width: 100%;
+}
+.table-horizon th,
+.table-horizon td {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.striped tbody tr:nth-child(2n-1) {
+    background-color: rgb(246, 235, 235);
+}
+
+.hover tbody tr:hover {
+    background-color: rgb(224, 224, 224);
+}
+
+.paging .page-link {
+    padding: 6px 10px 6px 10px;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 1px;
+    color: black;
+}
+
+.paging .active {
+    background-color: dimgray;
+    color: white;
+}
+
+.paging .page-link:hover {
+    background-color: dimgray;
+    color: white;
+}
+
+.paging.center {
+    text-align: center;
+}
+
+.paging.right {
+    text-align: right;
+}
+
+.paging.round .page-link {
+    border-radius: 25%;
+}
+
+.paging.circle .page-link {
+    border-radius: 50%;
+}
