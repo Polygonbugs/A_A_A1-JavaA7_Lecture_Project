@@ -87,6 +87,7 @@ input.input-text:focus {
 .input-radio:checked ~ .radio-form {
     background-color: rgb(73, 131, 239);
     border-color: rgb(73, 131, 239);
+    position : relative;
 }
 
 .input-check:checked ~ .check-form::after {
@@ -98,9 +99,8 @@ input.input-text:focus {
 
 .input-radio:checked ~ .radio-form::after {
     content: "●";
-    font-size: 1px;
+    font-size: 0.8em;
     position: absolute;
-    left: -0px; top: -2px;
+    left: -0px; top: -1px;
     color: white;
 }
-
