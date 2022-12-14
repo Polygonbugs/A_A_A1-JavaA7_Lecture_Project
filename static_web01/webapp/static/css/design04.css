@@ -1,0 +1,106 @@
+.login-form {
+    width: 350px;
+}
+.login-main {
+    border-style: solid;
+    border-color: rgb(192, 192, 192);
+    border-width: 1px;
+    border-radius: 5px;
+    border-top-width: 0px;
+    padding-top: 0em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+}
+
+.login-tab-menu .tab-link {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+    padding: 1em;
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 0.8em;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(192, 192, 192);
+    border-radius: 5px 5px 0 0;
+}
+.login-tab-menu .active {
+    border-bottom: none;
+}
+.login-tab-menu :not(.active) {
+    background-color: rgb(248, 248, 248);
+}
+.login-input-form {
+    padding-top: 4em;
+    padding-bottom: 3em;
+}
+.form-group-vertical {
+    padding-bottom: 0.4em;
+}
+.form-group-vertical .input-form {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.5em 1em 0.5em 1em;
+    outline-style: none;
+    border-style: solid;
+    border-color: rgb(192, 192, 192);
+}
+.form-group-vertical .input-form:focus {
+    border-color: rgb(3, 199, 90);
+    outline-style: none;
+}
+.form-group-vertical .input-form:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-width: 1px;
+}
+.form-group-vertical .input-form:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-width: 1px;
+}
+.form-group-between .left-form {
+    float: left;
+}
+.form-group-between .right-form {
+    float: right;
+}
+.checkbox-form:checked {
+    accent-color: rgb(3, 165, 76);
+}
+label {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 1.8em;
+    vertical-align: middle;
+    font-size: 0.8em;
+}
+.login-foot {
+    color: gray;
+    font-size: 0.6em;
+    text-align: center;
+}
+.login-foot a {
+    text-decoration: none;
+    color: gray;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.5em;
+    background-color: rgb(3, 199, 90);
+    border-color: rgb(3, 199, 90);
+    border-style: solid;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

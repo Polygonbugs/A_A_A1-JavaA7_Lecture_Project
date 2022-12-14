@@ -1,0 +1,106 @@
+.kakao-login-form {
+    width: 360px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(224, 224, 224);
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+}
+.input-form-group {
+    margin-top: 2em;
+}
+.input-form-group .input-form {
+    width: 100%;
+    margin-bottom: 0.4em;
+}
+.input-form-group .input-form .text-input {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(224, 224, 224);
+    border-bottom-width: 1.6px;
+    outline-style: none;
+    padding: 0.5em;
+}
+.input-form-group .input-form .text-input:focus {
+    border-bottom-color: rgb(65, 65, 65);
+}
+.input-form-group .input-form .text-input + .input-tip {
+    font-size: 0.4em;
+    display: none;
+}
+.input-form-group .input-form .text-input + .input-tip span {
+    color: red;
+    font-weight: bold;
+}
+.input-form-group .input-form .text-input:focus + .input-tip {
+    display: inline-block;
+}
+.input-form-group .input-form .check-input + label {
+    font-size: 0.7em;
+    color: rgb(63, 63, 63);
+}
+.button-group {
+    margin-top: 1.5em;
+}
+.button-group .btn-block {
+    width: 100%;
+    padding: 0.6em;
+    border-style: none;
+    border-radius: 5px;
+}
+.btn-yellow {
+    background-color: rgb(254, 229, 0);
+}
+.btn-gray {
+    background-color: rgb(240, 240, 240);
+}
+.button-group .separator {
+    font-size: 0.5em;
+    color:rgb(126, 126, 126);
+}
+.button-group .separator span {
+    display: inline-block;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+.button-group .separator span::before {
+    content: "";
+    height: 1px;
+    display: inline-block;
+    width: 164px;
+    background-color: rgb(224, 224, 224);
+    background-clip: content-box;
+    padding-right: 6px;
+    position: relative;
+    top: -3px;
+}
+.button-group .separator span::after {
+    content: "";
+    height: 1px;
+    display: inline-block;
+    width: 164px;
+    background-color: rgb(224, 224, 224);
+    background-clip: content-box;
+    padding-left: 6px;
+    position: relative;
+    top: -3px;
+}
+.login-foot {
+    height: 1em;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 0.6em;
+}
+.login-foot .left {
+    float: left;
+}
+.login-foot .right {
+    float: right;
+}
+.login-foot a {
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+}
