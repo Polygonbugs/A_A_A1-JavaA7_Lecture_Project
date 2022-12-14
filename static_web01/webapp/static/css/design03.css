@@ -97,6 +97,7 @@ input.input-text:focus {
     color: white;
 }
 
+/* + 기호를 쓰면 html 태그 위치에 따라 적용될 수 없을 수도 있다. */
 .input-radio:checked ~ .radio-form::after {
     content: "●";
     font-size: 0.8em;

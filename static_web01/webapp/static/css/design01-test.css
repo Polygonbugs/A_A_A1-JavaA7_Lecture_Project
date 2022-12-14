@@ -1,0 +1,52 @@
+.top-nav > .menu {
+    list-style-type : none;
+    background-color: black;
+}
+
+.top-nav .menu-item,
+.top-nav .menu-link {
+    display: inline-block;
+}
+
+.top-nav .menu-link {
+    text-decoration: none;
+    padding: 16px 8px 16px 8px;
+    color: lightblue;
+    background-color: black;
+}
+
+.top-nav .menu-link:hover {
+    background-color: gray;
+    color: deepskyblue;
+}
+
+
+.side-nav .menu {
+    width: 200px;
+    list-style-type: none;
+    background-color: blanchedalmond;
+    padding-inline-start: 0;
+    box-sizing: border-box; /*이거 잘 모르는 설정*/
+}
+.side-nav .menu-link {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    text-decoration: none;
+    color: black;
+}
+.side-nav .menu-link:hover {
+    background-color: darksalmon;
+}
+.side-nav .active {
+    background-color: navajowhite;
+}
+
+.dropdown-nav .dropdown-menu .dropdown {
+    position: relative;
+}
+.dropdown-nav .dropdown-menu {
+    background-color: rgb(64, 64, 64);
+}
+
