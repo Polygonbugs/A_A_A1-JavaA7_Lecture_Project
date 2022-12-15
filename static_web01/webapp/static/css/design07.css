@@ -1,0 +1,15 @@
+.container-center {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+class
+
+[type=radio] ~ .hidden-context {
+    display: none;
+}
+
+[type=radio]:checked ~ .hidden-context {
+    display: block;
+}
