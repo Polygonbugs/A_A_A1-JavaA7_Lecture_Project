@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link type="text/css" rel="stylesheet" href="../static/css/design06.css">
 </head>
 <body>
@@ -26,22 +27,28 @@
                 <div class="input-group">
                     <label for="">비밀번호</label>
                     <div class="input-icon">
-                        <input type="password">
+                        <div class="input-form">
+                            <input type="password">
+                        </div>
+                        <span class="icon">lock</span>
                     </div>
-                    <span>자물쇠</span>
                 </div>
                 <div class="input-group">
-                    <label for="">비밀번호 재확인</label>
+                    <label for="">비밀번호 확인</label>
                     <div class="input-icon">
-                        <input type="password">
+                        <div class="input-form">
+                            <input type="password">
+                        </div>
+                        <span class="icon">lock</span>
                     </div>
-                    <span>자물쇠</span>
                 </div>
             </div>
             <div class="input-form-group">
                 <div class="input-group">
                     <label for="">이름</label>
-                    <input type="text">
+                    <div class="input-form">
+                        <input type="text">
+                    </div>
                 </div>
                 <div class="input-group">
                     <label for="">생년월일</label>
@@ -67,39 +74,47 @@
                 </div>
                 <div class="input-group">
                     <label for="">성별</label>
-                    <select>
-                        <option>성별</option>
-                        <option>남자</option>
-                        <option>여자</option>
-                        <option>선택 안함</option>
-                    </select>
+                    <div class="input-form">
+                        <select>
+                            <option>성별</option>
+                            <option>남자</option>
+                            <option>여자</option>
+                            <option>선택 안함</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="input-group">
                     <label for="">본인 확인 이메일(선택)</label>
-                    <input type="text" placeholder="선택입력">
+                    <div class="input-form">
+                        <input type="text" placeholder="선택입력">
+                    </div>
                 </div>
             </div>
             <div class="input-form-group">
                 <div class="input-group">
                     <label for="">휴대전화</label>
-                    <select>
-                        <option>니카리과 +505</option>
-                        <option selected>대한민국 +82</option>
-                        <option>덴마크 +45</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <div class="input-inline">
-                        <input type="text" placeholder="전화번호 입력">
-                        <button type="button">인증번호 받기</button>
+                    <div class="input-form">
+                        <select>
+                            <option>니카리과 +505</option>
+                            <option selected>대한민국 +82</option>
+                            <option>덴마크 +45</option>
+                        </select>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="text" placeholder="인증번호 입력하세요">
+                    <div class="input-inline">
+                        <input class="inline-w2" type="text" placeholder="전화번호 입력">
+                        <button class="btn-green" type="button">인증번호 받기</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-form disabled">
+                        <input type="text" placeholder="인증번호 입력하세요" disabled>
+                    </div>
                 </div>
             </div>
             <div class="button-form">
-                <button type="button">가입하기</button>
+                <button class="btn-green">가입하기</button>
             </div>
         </section>
         <footer>

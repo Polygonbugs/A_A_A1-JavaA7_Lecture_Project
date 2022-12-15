@@ -20,6 +20,33 @@
     text-align: center;
 }
 
+/* fallback */
+/* font-family 폰트명 설정 */
+/* src: 실제 사진이 있는 곳*/
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v75/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1n-q_4MrImHCIJIZrDCvHOejbd5zrDAt.woff2) format('woff2');
+}
+
+/* 자물쇠 아이콘의 css 설정이다 */
+.icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
 body {
     background-color: rgb(245, 246, 247);
 }
@@ -29,6 +56,16 @@ body {
     font-weight : bold;
     font-size: 48px;
     color: rgb(0, 200, 80);
+}
+
+.input-form-group {
+    margin-bottom: 1em;
+}
+
+.input-group {
+    display: inline-block;
+    width: 100%;
+    margin: 0.6em;
 }
 
 .input-group label,
@@ -53,7 +90,8 @@ body {
     border-color: rgb(240, 240, 240);
 }
 
-.input-form input {
+.input-form input,
+.input-form select {
     display: inline-block;
     border-style: none;
     outline-style: none;
@@ -75,14 +113,74 @@ body {
 }
 
 .input-icon span {
-    display: inline-block;
+    display: block;
+    float: right;
     background-color: white;
-    width: 20%;
     position: relative;
-    top: 5px;
+    top: 8px;
     color: rgb(129, 129, 129);
+    padding-right: 0.5em;
+}
+
+.input-inline input,
+.input-inline select,
+.input-inline button {
+    display: inline-block;
+    width : 32.5%;
+    padding: 0.8em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(240, 240, 240);
+    outline-style: none;
+}
+
+.disabled {
+    background-color: rgb(240, 240, 240);
+}
+
+.input-inline .inline-w2 {
+    width: 66.3%;
+}
+
+button {
+    border-style: none;
+    border-width: 0px;
+    padding: 0.5em;
+}
+
+.button-form {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.button-form button {
+    display: block;
+    width: 100%;
+    padding : 1em;
 }
 
 
 
+.btn-green {
+    background-color: rgb(0, 200, 80);
+    color: white;
+    font-weight: bold;
+}
 
+footer {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+footer a {
+    text-decoration : none;
+    color: rgb(129, 129, 129);
+}
+
+.policy-link {
+    font-size: 0.6em;
+}
+
+.corp {
+    font-size: 0.6em;
+}
