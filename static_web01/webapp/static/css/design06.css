@@ -1,0 +1,88 @@
+/* 모든 태그의 스타일 속성을 미리 초기화 */
+/* 인라인 블럭은 모든 것이 다 보이도록 설정해주는 역할을 한다 */
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+/* 가운데 정렬이다 */
+.container-center {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-title {
+    margin-top: 4em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(245, 246, 247);
+}
+
+.logo-title .logo {
+    font-family: "Nanum Gothic";
+    font-weight : bold;
+    font-size: 48px;
+    color: rgb(0, 200, 80);
+}
+
+.input-group label,
+.input-group input,
+.input-group select {
+    display: inline-block;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+.input-form {
+    display: inline-block;
+    width: 100%;
+    padding: 0.4em;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(240, 240, 240);
+}
+
+.input-form input {
+    display: inline-block;
+    border-style: none;
+    outline-style: none;
+}
+
+.input-icon {
+    display: inline-block;
+    width: 100%;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(240, 240, 240);
+}
+
+.input-icon .input-form {
+    float: left;
+    width: 80%;
+    border-style: none;
+}
+
+.input-icon span {
+    display: inline-block;
+    background-color: white;
+    width: 20%;
+    position: relative;
+    top: 5px;
+    color: rgb(129, 129, 129);
+}
+
+
+
+
