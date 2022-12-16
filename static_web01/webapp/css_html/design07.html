@@ -2,52 +2,110 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>아이디 비밀번호 찾기</title>
+    <title>Document</title>
     <link type="text/css" rel="stylesheet" href="../static/css/design07.css">
 </head>
 <body>
+<header>
+    <nav class="top-nav-menu">
+        <div class="floating-menu">
+            <div class="float-left">
+                <a class="float-menu-link" href="https://naver.com">
+                    <img src="https://static.nid.naver.com/images/web/user/tit_logo.png">
+                    내정보
+                </a>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-dark btn-sm">로그인</button>
+                <span class="icon icon-white icon-btn icon-sm">apps</span>
+            </div>
+            <div class="float-clear"></div>
+        </div>
+    </nav>
+    <nav class="green-nav">
+        <div class="container-center">
+            <div class="menu v-center">
+                <div class="menu-item">
+                    <span class="icon icon-lg">person</span>
+                    <a class="menu-link" href="#">
+                        아이디 찾기
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <span class="icon icon-lg">lock</span>
+                    <a class="menu-link" href="#">
+                        비밀번호 찾기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 <div class="container-center">
-    <div>
-        <input type="radio" name="rdo1" id="id_rdo1">
-        <label for="id_rdo1">회원정보에 등록한 휴대전화로 인증</label>
-        <div class="hidden-context">
-            <label class="description" for="id_rdo1">회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받을 수 있습니다.</label><br>
-            <div>
-                <label for="physical-name">이름</label>
-                <input type="text" id="physical-name"><br>
-            </div>
-            <div>
-                <label for="physical-name">휴대전화</label>
-                <select>
-                    <option>+82</option>
-                    <option>+81</option>
-                </select>
-                <input type="text" placeholder="휴대전화번호">
-                <button>인증번호 받기</button><br>
-                <input type="text" placeholder="인증번호 6자리 숫자 입력" id="b2"><br>
-                <label for="b2">인증번호가 오지 않나요?</label>
+    <section class="container-main">
+        <div class="section">
+            <div class="section-name">아이디 찾기</div>
+            <div class="section-context">아이디 찾는 방법을 선택해 주세요.</div>
+        </div>
+        <div class="container-border">
+            <div class="hide-seek-menu">
+                <div class="hide-seek-item">
+                    <input type="radio" name="rdo1" id="id_rdo_a">
+                    <label for="id_rdo_a">회원정보에 등록한 휴대전화로 인증</label>
+                    <div class="hidden-context">
+                        <p class="context">회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야. 인증번호를 받을 수 있습니다.</p>
+                        <div class="input-form">
+                            <div class="input-group">
+                                <label class="input-label">이름</label>
+                                <input type="text">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">휴대전화</label>
+                                <select class="w60">
+                                    <option>+82</option>
+                                </select>
+                                <input class="w120" type="text">
+                                <button>인증번호 받기</button>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label"></label>
+                                <input type="text">
+                                <label class="info-label v-center">인증번호가 오지 않나요.
+                                    <span class="icon">help</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hide-seek-item">
+                    <input type="radio" name="rdo1" id="id_rdo_b" checked>
+                    <label for="id_rdo_b">본인확인 이메일로 인증</label>
+                    <div class="hidden-context">
+                        <p class="context">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
+                        <div class="input-form">
+                            <div class="input-group">
+                                <label class="input-label">이름</label>
+                                <input type="text">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">이메일 주소</label>
+                                <input type="text">
+                                <button>인증번호 받기</button>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label"></label>
+                                <input type="text">
+                                <label class="info-label v-center">인증번호가 오지 않나요
+                                    <span class="icon">help</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-        <input type="radio" name="rdo1" id="id_rdo2">
-        <label class="description" for="id_rdo2">본인확인 이메일로 인증</label>
-        <div class="hidden-context">
-            <label for="id_rdo2">이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</label>
-            <div>
-                <label for="physical-name2">이름</label>
-                <input type="text" id="physical-name2"><br>
-            </div>
-            <div>
-                <label for="physical-name2">이메일 주소</label>
-                <input type="text">
-                <button>인증번호 받기</button><br>
-                <input type="text" placeholder="인증번호 6자리 숫자 입력" id="d2"><br>
-                <label for="d2">인증번호가 오지 않나요?</label>
-            </div>
-        </div>
-    </div>
+    </section>
 </div>
-
+<footer></footer>
 </body>
 </html>

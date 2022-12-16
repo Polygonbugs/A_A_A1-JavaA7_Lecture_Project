@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 비밀번호 찾기</title>
+    <link type="text/css" rel="stylesheet" href="../static/css/design07-test.css">
+</head>
+<body>
+<div class="container-center">
+    <div>
+        <input type="radio" name="rdo1" id="id_rdo1">
+        <label for="id_rdo1">회원정보에 등록한 휴대전화로 인증</label>
+        <div class="hidden-context">
+            <label class="description" for="id_rdo1">회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받을 수 있습니다.</label><br>
+            <div>
+                <label for="physical-name">이름</label>
+                <input type="text" id="physical-name"><br>
+            </div>
+            <div>
+                <label for="physical-name">휴대전화</label>
+                <select>
+                    <option>+82</option>
+                    <option>+81</option>
+                </select>
+                <input type="text" placeholder="휴대전화번호">
+                <button>인증번호 받기</button><br>
+                <input type="text" placeholder="인증번호 6자리 숫자 입력" id="b2"><br>
+                <label for="b2">인증번호가 오지 않나요?</label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="radio" name="rdo1" id="id_rdo2">
+        <label class="description" for="id_rdo2">본인확인 이메일로 인증</label>
+        <div class="hidden-context">
+            <label for="id_rdo2">이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</label>
+            <div>
+                <label for="physical-name2">이름</label>
+                <input type="text" id="physical-name2"><br>
+            </div>
+            <div>
+                <label for="physical-name2">이메일 주소</label>
+                <input type="text">
+                <button>인증번호 받기</button><br>
+                <input type="text" placeholder="인증번호 6자리 숫자 입력" id="d2"><br>
+                <label for="d2">인증번호가 오지 않나요?</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
