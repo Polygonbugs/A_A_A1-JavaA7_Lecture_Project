@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link type="text/css" rel="stylesheet" href="/static/css/design09.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/design09.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -68,7 +68,27 @@
             </div>
         </nav>
         <div class="text-center mt-3">
-            <img class="img-fluid" src="../static/img/no-image.png" alt="">
+            <div id="sliderImg" class="carousel slide carousel-dark" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="img-fluid" src="../static/img/no-image.png" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="img-fluid" src="../static/img/no-image.png" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="img-fluid" src="../static/img/no-image.png" alt="">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#sliderImg" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-prev" type="button" data-bs-target="#sliderImg" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
         <div class="row mt-3">
             <div class="col-4 ms-auto">
@@ -82,50 +102,65 @@
     <section class="row mt-3">
         <div class="col-4">
             <div class="list-group list-group-flush border-2 border-top border-bottom border-danger">
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명A
-                    <span class="badge bg-primary rounded-pill">N</span>
+                    <span class="badge bg-primary tounded-pill">N</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명B
-                    <span class="badge bg-primary rounded-pill">N</span>
+                    <span class="badge bg-primary tounded-pill">N</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명C
                 </a>
             </div>
             <div class="list-group list-group-flush border-2 border-top border-bottom border-danger">
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명D
-                    <span class="badge bg-primary rounded-pill">N</span>
+                    <span class="badge bg-primary tounded-pill">N</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명E
-                    <span class="badge bg-primary rounded-pill">N</span>
+                    <span class="badge bg-primary tounded-pill">N</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명F
                 </a>
             </div>
             <div class="list-group list-group-flush border-2 border-top border-bottom border-danger">
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명G
-                    <span class="badge bg-primary rounded-pill">N</span>
+                    <span class="badge bg-primary tounded-pill">N</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명H
-                    <span class="badge bg-primary rounded-pill">N</span>
+                    <span class="badge bg-primary tounded-pill">N</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="#">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                   href="#">
                     메뉴명I
                 </a>
             </div>
         </div>
         <div class="col-8">
+            <div class="vstack mb-3">
+                <div class="border-bottom border-2 border-danger pb-2 d-flex justify-content-between">
+                    <span class="fs-5 fw-bold text-danger">주제 분류 1</span>
+                    <a class="link-secondary text-decoration-none" href="#"><small>더보기 &gt;</small></a>
+                </div>
+            </div>
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2">
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src="../static/img/thumbnail-img.png" alt="">
+                        <img class="card-img-top" src="../static/img/thumbnail-image.png" alt="">
                         <div class="card-body">
                             <p class="card-title text-truncate">제목 입니다. 글이 길어지면 잘립니다.</p>
                             <p class="card-text">작성자</p>
@@ -135,7 +170,7 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src="../static/img/thumbnail-img.png" alt="">
+                        <img class="card-img-top" src="../static/img/thumbnail-image.png" alt="">
                         <div class="card-body">
                             <p class="card-title text-truncate">제목 입니다. 글이 길어지면 잘립니다.</p>
                             <p class="card-text">작성자</p>
@@ -145,7 +180,7 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src="../static/img/thumbnail-img.png" alt="">
+                        <img class="card-img-top" src="../static/img/thumbnail-image.png" alt="">
                         <div class="card-body">
                             <p class="card-title text-truncate">제목 입니다. 글이 길어지면 잘립니다.</p>
                             <p class="card-text">작성자</p>
@@ -155,7 +190,7 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src="../static/img/thumbnail-img.png" alt="">
+                        <img class="card-img-top" src="../static/img/thumbnail-image.png" alt="">
                         <div class="card-body">
                             <p class="card-title text-truncate">제목 입니다. 글이 길어지면 잘립니다.</p>
                             <p class="card-text">작성자</p>
@@ -165,7 +200,7 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src="../static/img/thumbnail-img.png" alt="">
+                        <img class="card-img-top" src="../static/img/thumbnail-image.png" alt="">
                         <div class="card-body">
                             <p class="card-title text-truncate">제목 입니다. 글이 길어지면 잘립니다.</p>
                             <p class="card-text">작성자</p>
@@ -175,7 +210,7 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src="../static/img/thumbnail-img.png" alt="">
+                        <img class="card-img-top" src="../static/img/thumbnail-image.png" alt="">
                         <div class="card-body">
                             <p class="card-title text-truncate">제목 입니다. 글이 길어지면 잘립니다.</p>
                             <p class="card-text">작성자</p>
@@ -184,18 +219,158 @@
                     </div>
                 </div>
             </div>
-            <div class="row g-2">
+            <div class="row g-2 mt-3">
                 <div class="col-6">
-                    다른 형식의 카드1
+                    <div class="vstack mb-3">
+                        <div class="border-bottom border-2 border-danger pb-2 d-flex justify-content-between">
+                            <span class="fs-5 fw-bold text-danger">주제 분류 2</span>
+                            <a class="link-secondary text-decoration-none" href="#"><small>더보기 &gt;</small></a>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6">
-                    다른 형식의 카드2
+                    <div class="vstack mb-3">
+                        <div class="border-bottom border-2 border-danger pb-2 d-flex justify-content-between">
+                            <span class="fs-5 fw-bold text-danger">주제 분류 3</span>
+                            <a class="link-secondary text-decoration-none" href="#"><small>더보기 &gt;</small></a>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border border-0 border-bottom border-secondary rounded-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-title text-truncate fw-bold">제목 입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text text-truncate">게시글의 본문 내용입니다. 길어지면 글자가 잘립니다.</p>
+                                    <p class="card-text">
+                                        작성자<br>
+                                        <span class="text-muted">작성일 | 조회수</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid" src="../static/img/thumbnail-image.png" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <footer>
-        <div>사이트 소개</div>
+        <div class="border-2 border-top border-dark mt-5">
+            <div class="row mt-3 mb-5 d-flex justify-content-between">
+                <div class="col-auto">
+                    <span>회사명</span>
+                    <div class="vr"></div>
+                    <a class="text-secondary text-decoration-none" href="#">사이트 주소</a>
+                </div>
+                <div class="col-auto">
+                    <span>회사 로고</span>
+                </div>
+            </div>
+        </div>
     </footer>
 </div>
 </body>
