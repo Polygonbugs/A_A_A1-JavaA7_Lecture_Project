@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/js/sample01.js"></script>
+</head>
+<body>
+    <div id="print_area" style="margin-bottom: 32px">
+
+    </div>
+    <div>
+        <!-- onclick : 버튼을 클릭할 때 실행되게끔 하는 속성 -->
+        <button type="button" onclick="fn1();">fn1() 함수 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn2(10, 20);">fn2(10, 20) 함수 실행</button>
+        <button type="button" onclick="fn2(10);">fn2(10) 함수 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn3(10, 20);">fn3(10, 20) 함수 실행</button>
+        <button type="button" onclick="fn3(10);">fn3(10) 함수 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn4();">fn4() 함수 실행</button>
+        <button type="button" onclick="fn4(10);">fn4(10) 함수 실행</button>
+        <button type="button" onclick="fn4(10, 20);">fn4(10, 20) 함수 실행</button>
+        <button type="button" onclick="fn4(10, 20, 30);">fn4(10, 20, 30) 함수 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn5(10, 20);">fn5() 함수 실행</button>
+        <button type="button" onclick="(function(){document.getElementById('print_area').innerText = '익명함수가 실행되었습니다.'})();">fn5() 함수 실행2</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn6();">fn6() 함수 실행</button>
+    </div>
+
+    <script type="text/javascript">
+        console.log("Run Javascript!");
+    </script>
+</body>
+</html>

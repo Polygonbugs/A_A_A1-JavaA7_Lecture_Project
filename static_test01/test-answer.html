@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      padding: 0; margin: 0;
+      box-sizing: border-box;
+    }
+    form.table {
+      display: table;
+      margin: 32px;
+      border-spacing: 0 6px;
+    }
+    div.row {
+      display: table-row;
+      width: 450px;
+    }
+    div.row label {
+      display: table-cell;
+      text-align: center;
+      width: 80px;
+      vertical-align: middle;
+    }
+    div.row input {
+      display: table-cell;
+      width: 364px;
+    }
+    div.row textarea {
+      display: table-cell;
+      width: 364px;
+      height: 240px;
+      resize: none;
+    }
+    .center {
+      text-align: center;
+    }
+    .h-100 {
+      height: 100px;
+    }
+    .h-100 textarea {
+      height: 100px;
+      resize: none;
+    }
+    .h-100 label {
+      display: block;
+      float: left;
+      line-height: 100px;
+      width: 80px;
+      text-align: center;
+    }
+
+    .h-80 {
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+<form action="">
+  <div class="h-100">
+    <label class="middle" for="">라벨</label>
+    <textarea></textarea>
+  </div>
+</form>
+
+<form class="table" action="">
+  <div class="row">
+    <label for="">제목</label>
+    <input type="text">
+  </div>
+  <div class="row">
+    <label class="textarea" for="">내용</label>
+    <textarea></textarea>
+  </div>
+  <div class="row">
+    <label for="">첨부파일</label>
+    <input type="file">
+  </div>
+  <div class="row center">
+    <label for=""></label>
+    <button>작성하기</button>
+  </div>
+</form>
+</body>
+</html>

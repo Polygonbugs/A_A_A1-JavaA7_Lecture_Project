@@ -1,0 +1,69 @@
+.inputs {
+    display: inline-block;
+    padding: 3px;
+}
+
+.inputs label {
+    display: inline-block;
+    text-align: center;
+    width: 60px;
+}
+
+.inputs label#content {
+    vertical-align: center;
+    position: relative;
+    top: -70px;
+}
+
+.input-title,
+.input-content,
+.input-files,
+.submit-button {
+    display: inline-block;
+}
+
+.input-title input{
+    width: 253px;
+}
+
+.submit-button button{
+    position: relative;
+    left: 90px;
+}
+
+textarea {
+    resize: none;
+}
+
+thead th,
+tfoot th {
+    background-color: rgb(241, 164, 129);
+    color: white;
+}
+
+thead th {
+    padding: 5px;
+}
+
+tbody td {
+    background-color: rgb(255, 254, 228);
+}
+
+
+.container-center {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body-2-content {
+    width: 300px;
+}
+
+.body-4-content {
+    width: 110px;
+}
+
+.body-5-content {
+    width: 100px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>포트폴리오 문제</title>
+    <link type="text/css" rel="stylesheet" href="../webapp/static/css/style.css">
+</head>
+<body>
+
+<div class="container-center">
+    <fieldset>
+        <legend>공지사항 작성하기</legend>
+        <form action="insert.no" method="post">
+            <div>
+                <div class="inputs">
+                    <label>제목</label>
+                    <div class="input-title">
+                        <input type="text" name="title" placeholder="제목을 입력하시오." required>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="inputs">
+                    <label id="content">내용</label>
+                    <div class="input-content">
+                        <textarea name="content" cols="30" rows="10" placeholder="내용을 입력하시오." required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="inputs">
+                    <label>첨부파일</label>
+                    <div class="input-files">
+                        <input type="file" name="uploadFile">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="inputs">
+                    <label></label>
+                    <div class="submit-button">
+                        <button type="submit">작성하기</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+
+
+    <br>
+    <hr>
+    <br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th colspan="8" class="head-title">제목</th>
+                <th colspan="2">작성자</th>
+                <th colspan="2">작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th colspan="11">전체공지사항 갯수</th>
+                <th colspan="3">5개</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>9</td>
+                <td colspan="6" class="body-2-content">공지사항 제목 9</td>
+                <td colspan="2" class="body-3-content"><button>바로가기</button></td>
+                <td colspan="2" class="body-4-content">user01</td>
+                <td colspan="2" class="body-5-content">2021-03-29</td>
+                <td>34</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td colspan="6">공지사항 제목 9</td>
+                <td colspan="2"><button>바로가기</button></td>
+                <td colspan="2">answ445</td>
+                <td colspan="2">2021-03-12</td>
+                <td>67</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td colspan="6">공지사항 제목 3</td>
+                <td colspan="2"><button>바로가기</button></td>
+                <td colspan="2">testg12</td>
+                <td colspan="2">2021-03-01</td>
+                <td>98</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td colspan="6">공지사항 제목 2</td>
+                <td colspan="2"><button>바로가기</button></td>
+                <td colspan="2">palwe3</td>
+                <td colspan="2">2021-01-02</td>
+                <td>85</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td colspan="6">공지사항 제목 1</td>
+                <td colspan="2"><button>바로가기</button></td>
+                <td colspan="2">xml23</td>
+                <td colspan="2">2020-12-24</td>
+                <td>124</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
