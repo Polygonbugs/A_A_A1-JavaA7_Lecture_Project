@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>run04</title>
+    <script type="text/javascript" src="../static/js/sample04.js"></script>
+</head>
+<body>
+    <form action="join.jsp" method="post" onsubmit="return validForm();">
+        <div>
+            <input type="text" name="username" placeholder="아이디">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="패스워드">
+        </div>
+        <div>
+            <input type="password" name="passwordCheck" placeholder="패스워드확인">
+            <span id="passwordCheckError"></span>
+        </div>
+        <div>
+            <select name="gender">
+                <option value="m">남자</option>
+                <option value="w">여자</option>
+            </select>
+        </div>
+        <div>
+            <input type="checkbox" name="chkHobby" value="없음"><label>없음</label>
+            <input type="checkbox" name="chkHobby" value="게임"><label>게임</label>
+            <input type="checkbox" name="chkHobby" value="운동"><label>운동</label>
+            <input type="checkbox" name="chkHobby" value="맛집탐방"><label>맛집탐방</label>
+        </div>
+        <div>
+            <input type="radio" name="rdoHobby" value="없음"><label>없음</label>
+            <input type="radio" name="rdoHobby" value="게임"><label>게임</label>
+            <input type="radio" name="rdoHobby" value="운동"><label>운동</label>
+            <input type="radio" name="rdoHobby" value="맛집탐방"><label>맛집탐방</label>
+        </div>
+        <div>
+            <button type="submit">가입</button>
+        </div>
+    </form>
+</body>
+</html>
