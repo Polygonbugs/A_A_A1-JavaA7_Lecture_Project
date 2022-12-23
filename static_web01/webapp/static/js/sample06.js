@@ -47,5 +47,31 @@ function addRow() {
         작성일은 new Date() 객체를 사용하여 현재 날짜를 구하여 쓰며
         조회수는 기본 0으로 세팅한다.
     */
-    
+
+    var title = form.title.value;
+    var writer = form.writer.value;
+    var table = document.getElementById("table");
+    var tbody = table.lastElementChild;
+    var totalRow = tbody.children.length;
+    var now = new Date();
+
+    var tr = createTableRow(5);
+    tr.children[0].innerText = totalRow + 1;
+    tr.children[1].innerText = title;
+    tr.children[2].innerText = writer;
+    tr.children[3].innerText = [now.getFullYear(), (now.getMonth() + 1), now.getDate()].join("-");
+    tr.children[4].innerText = 0;
+    tbody.append(tr);
+
+    var td = tr.firstElementChild;
+}
+
+function createTableRow(columnCount) {
+    var row = document.createElement("tr");
+
+    for(let idx = 0; idx < columnCount; idx++) {
+        let column = document.createElement("td");
+        row.append(column);
+    }
+    return row;
 }
