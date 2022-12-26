@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>run06</title>
     <script type="text/javascript" src="../static/js/sample06.js"></script>
 </head>
 <body>
-    <ul id="list">
-        <li>목록1</li>
-    </ul>
-    <form>
-        <div>
-            <input type="text" name="item" placeholder="추가할 목록을 작성하세요.">
-            <select name="loc">
-                <option value="first">첫번째</option>
-                <option value="last">마지막</option>
-            </select>
-            <button type="button" onclick="addItem(this.form);">추가</button>
-        </div>
-    </form>
-    <hr>
-    <table id="table">
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <form>
-        <div>
-            <input type="text" name="title" placeholder="제목">
-            <input type="text" name="writer" placeholder="작성자">
-        </div>
-        <div>
-            <button type="button" onclick="addRow(this.form);">추가</button>
-        </div>
-    </form>
-    <form method="post" onsubmit="return validCheck();">
-        <div>
-            <input type="text" name="username" placeholder="아이디">
-        </div>
-        <div>
-            <input type="password" name="password" placeholder="패스워드">
-        </div>
-        <div>
-            <input type="password" name="passwordCheck" placeholder="패스워드 확인">
-        </div>
-        <div>
-            <button type="submit">전송</button>
-        </div>
-    </form>
+<ul id="list">
+    <li>목록1</li>
+</ul>
+<form>
+    <div>
+        <input type="text" name="item" placeholder="추가 할 목록을 작성하세요.">
+        <select name="loc">
+            <option value="first">첫번째</option>
+            <option value="last">마지막</option>
+        </select>
+        <button type="button" onclick="addItem(this.form);">추가</button>
+    </div>
+</form>
+<hr>
+<table id="table">
+    <thead>
+    <tr>
+        <th>번호</th><th>제목</th>
+        <th>작성자</th><th>작성일</th>
+        <th>조회수</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<form>
+    <div>
+        <input type="text" name="title" placeholder="제목">
+        <input type="text" name="writer" placeholder="작성자">
+    </div>
+    <div>
+        <button type="button" onclick="addRow(this.form);">추가</button>
+    </div>
+</form>
+<hr>
+<form method="post" onsubmit="return validCheck(this);">
+    <div>
+        <input type="text" name="username" placeholder="아이디">
+    </div>
+    <div>
+        <input type="password" name="password" placeholder="패스워드">
+    </div>
+    <div>
+        <input type="password" name="passwordCheck" placeholder="패스워드 확인">
+    </div>
+    <div>
+        <button type="submit">전송</button>
+    </div>
+</form>
 </body>
 </html>
