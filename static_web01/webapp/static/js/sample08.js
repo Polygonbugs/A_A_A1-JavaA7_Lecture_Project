@@ -1,23 +1,5 @@
-/* html 요소가 전부 로드된 뒤에 자바스크립트가 실행이 되는 것이 필요한 경우 */
-
-/**
- * 실시간 검사
- *      아이디는 6 ~ 12자 사이의 값을 입력하였는지 실시간으로 검사하여 
- *      문제가 있는 경우
- *      붉은색 테두리와 에러 메시지로 사용자에게 즉시 알릴 수 있도록 하고 
- *      정상 입력인 경우
- *      초록색 테두리와 정상 메시지로 사용자에게 즉시 알릴 수 있도록 한다.
- *      
- *      패스워드는 4 ~ 12자 사이의 값을 입력하였는지 실시간으로 검사하여 위의 아이디와 
- *      동일한 처리를 하도록 한다.
- *      
- *      패스워드 확인은 기존에 입력한 패스워드와 동일한 값인지를 실시간으로 검사하여 위의
- *      아이디와 동일한 처리를 하도록 한다.
- */
-
 function userNameValid(e) {
     var element = e.target;
-
     if(element.nextElementSibling !== null) {
         element.nextElementSibling.remove();
     }
@@ -27,18 +9,19 @@ function userNameValid(e) {
         div.style.color = "green";
         element.after(div);
         element.style.borderColor = "green";
+        element.setAttribute("is-valid", true);
     } else {
         let div = document.createElement("div");
         div.innerText = "아이디는 6 ~ 12 자를 입력해야 합니다.";
         div.style.color = "red";
         element.after(div);
         element.style.borderColor = "red";
+        element.setAttribute("is-valid", false);
     }
 }
 
 function passwordValid(e) {
     var element = e.target;
-
     if(element.nextElementSibling !== null) {
         element.nextElementSibling.remove();
     }
@@ -48,12 +31,14 @@ function passwordValid(e) {
         div.style.color = "green";
         element.after(div);
         element.style.borderColor = "green";
+        element.setAttribute("is-valid", true);
     } else {
         let div = document.createElement("div");
         div.innerText = "패스워드는 4 ~ 12 자를 입력해야 합니다.";
         div.style.color = "red";
         element.after(div);
         element.style.borderColor = "red";
+        element.setAttribute("is-valid", false);
     }
 }
 
@@ -80,15 +65,13 @@ function passwordCheckValid(e, other) {
 }
 
 function validCheck(form) {
-    let userNameValid = form.username.getAttribute("is-valid") === "true" ? true : false;
-    let passwordValid = form.password.getAttribute("is-valid") === "true" ? true : false;
-    let passwordCheckValid = form.passwordCheck.getAttribute("is-valid") === "true" ? true : false;
+    var userNameValid = form.username.getAttribute("is-valid") === "true" ? true : false;
+    var passwordValid = form.password.getAttribute("is-valid") === "true" ? true : false;
+    var passwordCheckValid = form.passwordCheck.getAttribute("is-valid") === "true" ? true : false;
 
     if(userNameValid && passwordValid && passwordCheckValid) {
-        alert("true:" + userNameValid);
         return true;
     } else {
-        alert("false:" + userNameValid);
         return false;
     }
 }
