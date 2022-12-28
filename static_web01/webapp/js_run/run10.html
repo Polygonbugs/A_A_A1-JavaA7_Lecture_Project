@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Run10</title>
+    <!-- 순서 : jquery -> 개인 javascript -->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/js/sample10.js"></script>
 </head>
 <body>
     <table border="1">
@@ -42,5 +44,21 @@
             </tr>
         </tfoot>
     </table>
+    <div>
+        <input type="text">
+    </div>
+
+    <hr>
+
+    <h2>즐겨찾기 링크 모음</h2>
+    <form>
+        <input type="text" name="url" placeholder="링크주소를 입력하세요." required>
+        <input type="text" name="name" placeholder="이름을 입력하세요." required>
+        <!-- this는 button element를 지칭한다 -->
+        <button type="button" onclick="addBookmark(this.form)">등록</button>
+    </form>
+    <ul class="bookmark-list">
+        <li><a href="https://naver.com">네이버</a></li>
+    </ul>
 </body>
 </html>
