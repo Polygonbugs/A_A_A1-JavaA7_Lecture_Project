@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/static/bs5/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/bs5/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/js/temp.js"></script>
+</head>
+<body>
+    <header class="mb-3">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand col-2 me-4" href="#">로고</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top_menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="top_menu" class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item me-5">
+                            <a class="nav-link active" href="#">메뉴 1</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link" href="#">메뉴 2</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link" href="#">메뉴 3</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link" href="#">메뉴 4</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">개인설정</a>
+                            <ul class="dropdown-menu dropdown-menu-dark" style="left: -4em; z-index: 9999;">
+                                <li><a class="dropdown-item" href="#">설정 메뉴 1</a></li>
+                                <li><a class="dropdown-item" href="#">설정 메뉴 2</a></li>
+                                <li><a class="dropdown-item" href="#">설정 메뉴 3</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="./myinfo/">정보 수정</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="m-3">
+        <div class="row g-1">
+            <aside class="pt-3 col-2 sticky-top overflow-auto" style="height: 75vh;">
+                <h6 class="mb-3 pb-1 border-bottom border-2 border-dark">구역 1</h6>
+                <div class="list-group list-group-flush mb-3">
+                    <a class="list-group-item list-group-item-action active" href="#">분류 1</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 2</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 3</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 4</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 5</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 6</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 7</a>
+                </div>
+            </aside>
+            <section class="col-8">
+                <h4 class="mt-4 ms-4">분류 1</h4>
+                <div class="mx-4">
+                    <div class="row mb-3">
+                        <form style="width: 24em;">
+                            <div class="row g-0">
+                                <input class="col me-2 form-control" type="text" placeholder="검색어">
+                                <button class="col-auto btn btn-outline-secondary" type="button">검색</button>
+                            </div>
+                        </form>
+                        <div class="ms-auto col-auto">
+                            <select class="form-select">
+                                <option value="5">5 개</option>
+                                <option value="10" selected>10 개</option>
+                                <option value="15">15 개</option>
+                                <option value="20">20 개</option>
+                                <option value="25">25 개</option>
+                                <option value="30">30 개</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <colgroup>
+                            <col class="col-1">
+                            <col class="col-auto">
+                            <col class="col-2">
+                            <col class="col-2">
+                            <col class="col-1">
+                        </colgroup>
+                        <thead class="text-center">
+                            <tr>
+                                <th>컬럼 1</th>
+                                <th>컬럼 2</th>
+                                <th>컬럼 3</th>
+                                <th>컬럼 4</th>
+                                <th>컬럼 5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                            <tr>
+                                <td>값</td><td>값</td><td>값</td>
+                                <td>값</td><td>값</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">6</a></li>
+                            <li class="page-item"><a class="page-link" href="#">7</a></li>
+                            <li class="page-item"><a class="page-link" href="#">8</a></li>
+                            <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <aside class="pt-3 col-2 sticky-top overflow-auto" style="height: 75vh;">
+                <h6 class="mb-3 pb-1 border-bottom border-2 border-dark">구역 2</h6>
+                <div class="list-group list-group-flush mb-3">
+                    <a class="list-group-item list-group-item-action" href="#">분류 A</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 B</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 C</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 D</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 E</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 F</a>
+                    <a class="list-group-item list-group-item-action" href="#">분류 G</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <footer class="mx-3 my-5">
+        <div class="text-end text-muted">
+            Copyright 2022. xxxxx Co. all rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.custom-dropdown > .dropdown-toggle::after {
+    content: none;
+}
+.custom-dropdown > a {
+    color: var(--bs-black);
+}
