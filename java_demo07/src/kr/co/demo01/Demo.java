@@ -28,7 +28,6 @@ public class Demo {
         s1.setGender('M');
         s1.setYear(3);
         s1.setClassRoom(5);
-
         System.out.println(s1.getName() + "|" + s1.getAge() + "|" + s1.getYear());
 
         Customer c1 = new Customer("홍길동");
