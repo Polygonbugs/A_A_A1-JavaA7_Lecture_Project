@@ -10,6 +10,14 @@
     INSERT INTO VISIT_T VALUES(#{nickname}, #{context}, DEFAULT)
   </insert>
   <select id="select" resultType="model.dto.VisitDTO">
-    SELECT nickname, context, createdate FROM VISIT_T ORDER BY createdate DESC
+    SELECT name AS nickname, context, createdate FROM VISIT_T
+     WHERE nickname = #{nickname}
+       AND context LIKE '%' || #{찾을문자열} || '%'
+     ORDER BY createdate DESC
+  </select>
+  <select id="selectNickname" resultType="model.dto.VisitDTO" parameterType="model.dto.VisitDTO">
+    SELECT nickname, context, createdate FROM VISIT_T
+     WHERE nickname = #{nickname}
+     ORDER BY createdate DESC
   </select>
 </mapper>

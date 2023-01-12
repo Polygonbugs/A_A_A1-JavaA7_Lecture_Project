@@ -13,7 +13,7 @@ public class OracleConnection {
 	public static SqlSession getSqlSession() {
 		SqlSession sess = null;
 		
-		try(InputStream is = Resources.getResourceAsStream("resources/mybatis-config.xml")) {
+		try(InputStream is = Resources.getResourceAsStream("mybatis-config.xml")) {
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
 			sess = factory.openSession(false);
 		} catch (IOException e) {

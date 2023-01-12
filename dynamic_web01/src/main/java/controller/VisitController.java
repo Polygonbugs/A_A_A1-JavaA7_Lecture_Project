@@ -44,7 +44,8 @@ public class VisitController extends HttpServlet {
 		if(result) {
 			resp.sendRedirect("./visit");
 		} else {
-			req.getRequestDispatcher("/WEB-INF/view/fail.jsp").forward(req, resp);
+			//req.getRequestDispatcher("/WEB-INF/view/fail.jsp").forward(req, resp);
+			resp.sendRedirect("./fail");
 		}
 	}
 }

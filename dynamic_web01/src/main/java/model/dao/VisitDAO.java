@@ -29,4 +29,8 @@ public class VisitDAO {
 		return dataList;
 	}
 
+	public List<VisitDTO> selectNickname(VisitDTO data) {
+		List<VisitDTO> dataList = session.selectList("visitMapper.selectNickname", data);
+		return dataList;
+	}
 }
