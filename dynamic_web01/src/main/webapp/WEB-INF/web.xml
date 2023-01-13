@@ -41,6 +41,16 @@
     <servlet-name>bookmarkUpdateServlet</servlet-name>
     <url-pattern>/bookmark/update</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>bookmarkDeleteServlet</servlet-name>
+    <servlet-class>controller.BookmarkDeleteController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>bookmarkDeleteServlet</servlet-name>
+    <url-pattern>/bookmark/delete</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>

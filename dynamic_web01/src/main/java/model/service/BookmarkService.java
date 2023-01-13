@@ -44,4 +44,17 @@ public class BookmarkService {
         dao.rollback(); dao.close();
         return false;
     }
+
+    public boolean remove(BookmarkDTO dto) {
+        BookmarkDAO dao = new BookmarkDAO();
+        int count = dao.delete(dto);
+
+        if(count == 1) {
+            dao.commit(); dao.close();
+            return true;
+        }
+        dao.rollback(); dao.close();
+        return false;
+
+    }
 }

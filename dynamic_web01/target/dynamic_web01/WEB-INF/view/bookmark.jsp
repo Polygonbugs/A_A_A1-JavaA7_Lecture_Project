@@ -25,7 +25,10 @@
     <li>
         <a href="<%=d.getUrl() %>"><%=d.getName() %></a>
         <button type="button" onclick="location.href='./bookmark/update?id=<%=d.getId()%>'">수정</button>
-        <button>삭제</button>
+        <button type="submit" form="deleteForm<%=d.getId() %>">삭제</button>
+        <form id="deleteForm<%=d.getId() %>" action="./bookmark/delete" method="post">
+            <input type="hidden" name="id" value="<%=d.getId()%>">
+        </form>
     </li>
     <% } %>
 </ul>
