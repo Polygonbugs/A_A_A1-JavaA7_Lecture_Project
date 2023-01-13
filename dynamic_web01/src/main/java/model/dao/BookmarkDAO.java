@@ -10,6 +10,15 @@ public class BookmarkDAO {
 
     private SqlSession session = OracleConnection.getSqlSession();
 
+    /**
+     * 데이터베이스에 저장할 데이터의 식별값을 생성하기 위한 메서드
+     * @return id
+     */
+    public int getId() {
+        int id = session.selectOne("bookmarkMapper.getId");
+        return id;
+    }
+
     public List<BookmarkDTO> selectAll() {
         List<BookmarkDTO> data = session.selectList("bookmarkMapper.selectAll");
         return data;
@@ -46,4 +55,6 @@ public class BookmarkDAO {
         int count = session.delete("bookmarkMapper.delete", dto);
         return count;
     }
+
+
 }

@@ -8,6 +8,9 @@
     <title>즐겨찾기</title>
 </head>
 <body>
+<div>
+    <a href="./">메인으로</a>
+</div>
 <h2>즐겨찾기</h2>
 <form action="./bookmark" method="post">
     <div>

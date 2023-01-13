@@ -12,6 +12,9 @@
     <title>즐겨찾기 수정</title>
 </head>
 <body>
+    <div>
+        <a href="../bookmark">돌아가기</a>
+    </div>
     <h2>수정 폼</h2>
     <form action="./update" method="post">
         <input type="hidden" name="id" value="<%=((BookmarkDTO)request.getAttribute("data")).getId() %>">

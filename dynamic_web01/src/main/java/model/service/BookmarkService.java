@@ -16,6 +16,9 @@ public class BookmarkService {
 
     public boolean add(BookmarkDTO dto) {
         BookmarkDAO dao = new BookmarkDAO();
+        int id = dao.getId();
+        dto.setId(id);
+
         int rowCount = dao.insert(dto);
         if(rowCount == 1) {
             dao.commit();
