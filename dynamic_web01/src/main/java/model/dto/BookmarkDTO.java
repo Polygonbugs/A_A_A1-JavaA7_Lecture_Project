@@ -4,6 +4,7 @@ public class BookmarkDTO {
     // mapper에서의 순서와 상관없이 작성하면 된다.
     private String name;
     private String url;
+    private int id;
 
     public String getUrl() {
         return url;
@@ -21,11 +22,20 @@ public class BookmarkDTO {
         this.name = name;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "BookmarkDTO{" +
-                "url='" + url + '\'' +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

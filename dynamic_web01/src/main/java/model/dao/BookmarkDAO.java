@@ -31,4 +31,14 @@ public class BookmarkDAO {
     public void close() {
         session.close();
     }
+
+    public BookmarkDTO selectId(int id) {
+        BookmarkDTO data = session.selectOne("bookmarkMapper.selectId", id);
+        return data;
+    }
+
+    public int update(BookmarkDTO dto) {
+        int count = session.update("bookmarkMapper.update", dto);
+        return count;
+    }
 }

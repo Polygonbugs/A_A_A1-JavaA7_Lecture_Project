@@ -22,7 +22,11 @@
 </form>
 <ul>
     <% for(BookmarkDTO d: (List<BookmarkDTO>)request.getAttribute("data")) { %>
-    <li><a href="<%=d.getUrl() %>"><%=d.getName() %></a></li>
+    <li>
+        <a href="<%=d.getUrl() %>"><%=d.getName() %></a>
+        <button type="button" onclick="location.href='./bookmark/update?id=<%=d.getId()%>'">수정</button>
+        <button>삭제</button>
+    </li>
     <% } %>
 </ul>
 </body>

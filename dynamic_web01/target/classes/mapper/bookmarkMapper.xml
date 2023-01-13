@@ -3,10 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bookmarkMapper">
+    <select id="selectId" parameterType="int" resultType="model.dto.BookmarkDTO">
+        SELECT id, url, name FROM BOOKMARK_T WHERE id = #{id}
+    </select>
     <select id="selectAll" resultType="model.dto.BookmarkDTO">
-        SELECT url, name FROM BOOKMARK_T
+        SELECT id, url, name FROM BOOKMARK_T
     </select>
     <insert id="insert" parameterType="model.dto.BookmarkDTO">
         INSERT INTO BOOKMARK_T VALUES(#{url}, #{name})
     </insert>
+    <update id="update" parameterType="model.dto.BookmarkDTO">
+        UPDATE BOOKMARK_T
+           SET url = #{url}
+             , name = #{name}
+         WHERE id = #{id}
+    </update>
 </mapper>
