@@ -17,7 +17,7 @@
     </insert>
     <update id="update" parameterType="model.dto.BookmarkDTO">
         UPDATE BOOKMARK_T
-           SET id = #{url}
+           SET id = #{id}
              , url = #{url}
              , name = #{name}
          WHERE id = #{id}

@@ -13,13 +13,14 @@
 </head>
 <body>
     <div>
-        <a href="../bookmark">돌아가기</a>
+        <c:url var="bookmarkUrl" value="/bookmark" />
+        <a href="${bookmarkUrl }">돌아가기</a>
     </div>
     <h2>수정 폼</h2>
-    <form action="./update" method="post">
-        <input type="hidden" name="id" value="<%=((BookmarkDTO)request.getAttribute("data")).getId() %>">
-        <input type="text" name="url" value="<%=((BookmarkDTO)request.getAttribute("data")).getUrl() %>">
-        <input type="text" name="name" value="<%=((BookmarkDTO)request.getAttribute("data")).getName() %>">
+    <form action="${bookmarkUrl }/update" method="post">
+        <input type="hidden" name="id" value="${requestScope.data.id }">
+        <input type="text" name="url" value="${requestScope.data.url }">
+        <input type="text" name="name" value="${requestScope.data.name }">
         <div>
             <button type="submit">수정</button>
         </div>
