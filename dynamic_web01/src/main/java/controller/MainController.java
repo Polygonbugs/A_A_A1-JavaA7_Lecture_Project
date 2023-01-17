@@ -3,10 +3,7 @@ package controller;
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 public class MainController extends HttpServlet {
 	
@@ -21,6 +18,9 @@ public class MainController extends HttpServlet {
 		}
 		req.setAttribute("iCnt", iCnt);
 
+		HttpSession session = req.getSession();
+		System.out.println("로그인 상태: " + session.getAttribute("login"));
+		System.out.println("계정 정보 : " + session.getAttribute("user"));
 		/*Cookie[] cookies = req.getCookies();
 		for(Cookie c: cookies) {
 			System.out.println(c.getName() + "|" + c.getValue());

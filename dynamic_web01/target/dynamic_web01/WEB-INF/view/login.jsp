@@ -19,7 +19,7 @@
 <form action="${loginUrl }" method="post">
     <div>
         <label>아이디</label>
-        <input type="text" name="userId" value="${requestScope.rememberId }">
+        <input type="text" name="userId" value="${cookie.remember.value }">   <!-- Cookies는 쿠키 정보를 저장하고 있다. EL에서 제공하는 기능이다 -->
         <c:if test="${not empty requestScope.error }">
             <span style="color: red">${requestScope.error }</span>
         </c:if>
@@ -31,7 +31,7 @@
     <div>
         <label for="id_remember">아이디 기억하기</label>
         <c:choose>
-            <c:when test="${empty requestScope.rememberId}">
+            <c:when test="${empty cookie.remember }">
                 <input type="checkbox" id="id_remember" name="remember">
             </c:when>
             <c:otherwise>

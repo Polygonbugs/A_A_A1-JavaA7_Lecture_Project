@@ -29,5 +29,9 @@
 	    <li><%=i %>번재 목록</li>
 	<% } %>
 	</ul>
+	${sessionScope.login }<br>
+	${sessionScope.userId }<br>
+	${sessionScope.email }<br>
+	${sessionScope.password }<br>
 </body>
 </html>
