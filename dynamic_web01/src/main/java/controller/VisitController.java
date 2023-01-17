@@ -35,7 +35,7 @@ public class VisitController extends HttpServlet {
 		VisitDTO dto = new VisitDTO();
 		String nickname = req.getParameter("nickname");
 		String context = req.getParameter("context");
-		dto.setNickName(nickname);
+		dto.setNickname(nickname);
 		dto.setContext(context);
 		
 		VisitService service = new VisitService();

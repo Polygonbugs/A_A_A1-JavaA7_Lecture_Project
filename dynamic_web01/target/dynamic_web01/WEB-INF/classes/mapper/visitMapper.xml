@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="visitMapper">
-  <select id="connectTest" resultType="string">
-  	SELECT 'CONNECT SUCCESS' FROM DUAL
-  </select>
-  <insert id="insert" parameterType="model.dto.VisitDTO">
-    INSERT INTO VISIT_T VALUES(#{nickname}, #{context}, DEFAULT)
-  </insert>
-  <select id="select" resultType="model.dto.VisitDTO">
-    SELECT name AS nickname, context, createdate FROM VISIT_T
-     WHERE nickname = #{nickname}
-       AND context LIKE '%' || #{찾을문자열} || '%'
-     ORDER BY createdate DESC
-  </select>
-  <select id="selectNickname" resultType="model.dto.VisitDTO" parameterType="model.dto.VisitDTO">
-    SELECT nickname, context, createdate FROM VISIT_T
-     WHERE nickname = #{nickname}
-     ORDER BY createdate DESC
-  </select>
+    <select id="connectTest" resultType="string">
+        SELECT 'CONNECT SUCCESS' FROM DUAL
+    </select>
+    <insert id="insert" parameterType="model.dto.VisitDTO">
+        INSERT INTO VISIT_T VALUES(#{nickname}, #{context}, DEFAULT)
+    </insert>
+    <select id="select" resultType="model.dto.VisitDTO">
+        SELECT nickname, context, createdate FROM VISIT_T ORDER BY createdate DESC
+    </select>
+    <select id="selectNickname" resultType="model.dto.VisitDTO" parameterType="model.dto.VisitDTO">
+        SELECT nickname, context, createdate FROM VISIT_T
+        WHERE nickname = #{nickname}
+        ORDER BY createdate DESC
+    </select>
 </mapper>
