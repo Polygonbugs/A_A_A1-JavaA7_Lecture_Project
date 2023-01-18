@@ -2,9 +2,11 @@ package model.dto;
 
 public class BookmarkDTO {
     // mapper에서의 순서와 상관없이 작성하면 된다.
+
+    private String userId;
+    private int id;
     private String name;
     private String url;
-    private int id;
 
     public String getUrl() {
         return url;
@@ -28,6 +30,14 @@ public class BookmarkDTO {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override

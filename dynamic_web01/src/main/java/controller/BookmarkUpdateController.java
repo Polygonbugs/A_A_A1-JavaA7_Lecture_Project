@@ -5,7 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.dto.BookmarkDTO;
+import model.dto.UserDTO;
 import model.service.BookmarkService;
 
 import java.io.IOException;
@@ -20,9 +22,19 @@ public class BookmarkUpdateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Parameter는 전부 문자열 형식이다. 그렇지만 id는 데이터베이스에서 NUMBER 자료형이다. 형변환이 필요하다.
+        HttpSession session = req.getSession();
+
+        if(session.getAttribute("login") == null) {
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
+
+        UserDTO userData = (UserDTO)session.getAttribute("user");
+
         String id = req.getParameter("id");
         BookmarkDTO dto = new BookmarkDTO();
         dto.setId(Integer.parseInt(id));
+        dto.setUserId(userData.getUserId());
 
         BookmarkService service = new BookmarkService();
         dto = service.get(dto);
@@ -32,12 +44,22 @@ public class BookmarkUpdateController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        if(session.getAttribute("login") == null) {
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
+
+        UserDTO userData = (UserDTO)session.getAttribute("user");
+
         String id = req.getParameter("id");
         String url = req.getParameter("url");
         String name = req.getParameter("name");
 
         BookmarkDTO dto = new BookmarkDTO();
         dto.setId(Integer.parseInt(id));
+        dto.setUserId(userData.getUserId());
         dto.setUrl(url);
         dto.setName(name);
 

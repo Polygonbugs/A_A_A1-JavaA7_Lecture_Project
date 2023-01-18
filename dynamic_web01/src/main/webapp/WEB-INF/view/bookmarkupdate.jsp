@@ -17,7 +17,7 @@
         <a href="${bookmarkUrl }">돌아가기</a>
     </div>
     <h2>수정 폼</h2>
-    <form action="${bookmarkUrl }/update" method="post">
+    <form action="${bookmarkUrl }" method="post">
         <input type="hidden" name="id" value="${requestScope.data.id }">
         <input type="text" name="url" value="${requestScope.data.url }">
         <input type="text" name="name" value="${requestScope.data.name }">

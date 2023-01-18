@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.dto.BookmarkDTO;
+import model.dto.UserDTO;
 import model.service.BookmarkService;
 
 import java.io.IOException;
@@ -16,15 +17,35 @@ public class BookmarkController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        if(session.getAttribute("login") == null) {
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
+
+        UserDTO userData = (UserDTO)session.getAttribute("user");
+        BookmarkDTO dto = new BookmarkDTO();
+        dto.setUserId(userData.getUserId());
+
         BookmarkService service = new BookmarkService();
-        List<BookmarkDTO> data = service.getAll();      // Object로 Upcasting이 이루어진다.
+        List<BookmarkDTO> data = service.getAll(dto);      // Object로 Upcasting이 이루어진다.
         req.setAttribute("data", data);
         req.getRequestDispatcher("/WEB-INF/view/bookmark.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        if(session.getAttribute("login") == null) {
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
+
+        UserDTO userData = (UserDTO)session.getAttribute("user");
+
         BookmarkDTO dto = new BookmarkDTO();
+        dto.setUserId(userData.getUserId());
         dto.setUrl(req.getParameter("url"));
         dto.setName(req.getParameter("name"));
 

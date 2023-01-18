@@ -7,9 +7,9 @@ import java.util.List;
 
 public class BookmarkService {
 
-    public List<BookmarkDTO> getAll() {
+    public List<BookmarkDTO> getAll(BookmarkDTO dto) {
         BookmarkDAO dao = new BookmarkDAO();
-        List<BookmarkDTO> data = dao.selectAll();
+        List<BookmarkDTO> data = dao.selectAll(dto);
         dao.close();
         return data;
     }
@@ -32,7 +32,7 @@ public class BookmarkService {
 
     public BookmarkDTO get(BookmarkDTO dto) {
         BookmarkDAO dao = new BookmarkDAO();
-        BookmarkDTO data = dao.selectId(dto.getId());
+        BookmarkDTO data = dao.selectId(dto);
         return data;
     }
 

@@ -17,9 +17,9 @@
 <c:url var="mainUrl" value="/" />
 <h1>Welcome First Web Servlet</h1>
 <a href="${mainUrl}visit">방명록</a>
-<a href="${mainUrl}bookmark">즐겨찾기</a>
 <c:choose>
     <c:when test="${sessionScope.login }">
+        <a href="${mainUrl}bookmark">즐겨찾기</a>
         <a href="${mainUrl}logout">로그아웃</a>
         <a href="${mainUrl}myinfo">개인정보</a>
     </c:when>
