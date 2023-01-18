@@ -40,4 +40,20 @@ public class UserService {
             }
         }
     }
+
+    public UserDTO update(UserDTO data, UserDTO updateData, String password) {
+        UserDAO dao = new UserDAO();
+        UserDTO nowData = dao.selectUser(data);
+        if(nowData.getPassword().equals(password)) {
+            nowData.setPassword(updateData.getPassword());
+            nowData.setEmail(updateData.getEmail());
+            int count = dao.update(nowData);
+            if(count == 1) {
+                dao.commit(); dao.close();
+                return nowData;
+            }
+            return null;
+        }
+        return null;
+    }
 }

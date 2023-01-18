@@ -10,4 +10,10 @@
     <select id="selectUser" parameterType="model.dto.UserDTO" resultType="model.dto.UserDTO">
         SELECT userId, password, email FROM USER_T WHERE userId = #{userId}
     </select>
+    <update id="update" parameterType="model.dto.UserDTO">
+        UPDATE USER_T
+           SET password = #{password}
+             , email = #{email}
+         WHERE userId = #{userId}
+    </update>
 </mapper>
