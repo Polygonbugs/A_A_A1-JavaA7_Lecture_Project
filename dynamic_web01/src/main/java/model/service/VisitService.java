@@ -1,5 +1,6 @@
 package model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,4 +35,17 @@ public class VisitService {
 		dao.close();
 		return dataList;
     }
+
+	public List<Integer> getPageList() {
+		VisitDAO dao = new VisitDAO();
+		int totalRowCount = dao.selectTotalRowCount();
+		int mod = totalRowCount % 10 == 0? 0 : 1;
+		int pageCount = (totalRowCount / 10) + mod;
+
+		List<Integer> pageList = new ArrayList<Integer>();
+		for(int i = 1; i <= pageCount; i++) {
+			pageList.add(i);
+		}
+		return pageList;
+	}
 }

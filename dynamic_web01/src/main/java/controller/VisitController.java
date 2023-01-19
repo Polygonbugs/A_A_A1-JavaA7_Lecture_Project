@@ -34,7 +34,11 @@ public class VisitController extends HttpServlet {
 
 		VisitService service = new VisitService();
 		List<VisitDTO> visitList = service.getPage(pNum);
+
+		List<Integer> pageList = service.getPageList();
+
 		req.setAttribute("dataList", visitList);
+		req.setAttribute("pageList", pageList);
 		req.getRequestDispatcher("/WEB-INF/view/visit.jsp").forward(req, resp);
 	}
 	

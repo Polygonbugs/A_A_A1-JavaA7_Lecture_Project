@@ -26,4 +26,7 @@
                 FROM (SELECT * FROM VISIT_T ORDER BY CREATEDATE DESC)
         ) WHERE N BETWEEN #{start} AND #{end}
     </select>
+    <select id="totalRowCount" resultType="int">
+        SELECT COUNT(*) FROM VISIT_T
+    </select>
 </mapper>

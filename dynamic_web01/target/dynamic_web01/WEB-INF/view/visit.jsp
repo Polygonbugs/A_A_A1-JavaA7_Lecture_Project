@@ -39,11 +39,9 @@
 </ul>
 <div>
 	<a href="#">prev</a>
-	<a href="${visitUrl }?p=1">1</a>
-	<a href="${visitUrl }?p=2">2</a>
-	<a href="${visitUrl }?p=3">3</a>
-	<a href="${visitUrl }?p=4">4</a>
-	<a href="${visitUrl }?p=5">5</a>
+	<c:forEach var="pNum" items="${requestScope.pageList }">
+		<a href="${visitUrl}?p=${pNum }">${pNum }</a>
+	</c:forEach>
 	<a href="#">next</a>
 </div>
 </body>

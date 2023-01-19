@@ -41,6 +41,11 @@ public class VisitDAO {
 		return dataList;
     }
 
+	public int selectTotalRowCount() {
+		int count = session.selectOne("visitMapper.totalRowCount");
+		return count;
+	}
+
 	public void commit() {
 		session.commit();
 	}
