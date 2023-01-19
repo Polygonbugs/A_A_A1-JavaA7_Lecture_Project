@@ -1,103 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>dynamic_web01</display-name>
+    <display-name>dynamic_web01</display-name>
 
-  <servlet>
-    <servlet-name>mainServlet</servlet-name>
-    <servlet-class>controller.MainController</servlet-class>
-  </servlet>
 
-  <servlet-mapping>
-    <servlet-name>mainServlet</servlet-name>
-    <url-pattern>/main</url-pattern>
-  </servlet-mapping>
+    <filter>
+        <filter-name>loggingFilter</filter-name>
+        <filter-class>filter.LoggingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-  <servlet>
-    <servlet-name>homeServlet</servlet-name>
-    <servlet-class>controller.HomeController</servlet-class>
-  </servlet>
+    <filter>
+        <filter-name>loginCheckFilter</filter-name>
+        <filter-class>filter.LoginCheckFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginCheckFilter</filter-name>
+        <url-pattern>/bookmark</url-pattern>
+        <url-pattern>/bookmark/*</url-pattern>
+        <url-pattern>/myinfo</url-pattern>
+    </filter-mapping>
 
-  <servlet-mapping>
-    <servlet-name>homeServlet</servlet-name>
-    <url-pattern>/home</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>mainServlet</servlet-name>
+        <servlet-class>controller.MainController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>visitServlet</servlet-name>
-    <servlet-class>controller.VisitController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>mainServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>visitServlet</servlet-name>
-    <url-pattern>/visit</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>homeServlet</servlet-name>
+        <servlet-class>controller.HomeController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>bookmarkUpdateServlet</servlet-name>
-    <servlet-class>controller.BookmarkUpdateController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>homeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>bookmarkUpdateServlet</servlet-name>
-    <url-pattern>/bookmark/update</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>visitServlet</servlet-name>
+        <servlet-class>controller.VisitController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>bookmarkDeleteServlet</servlet-name>
-    <servlet-class>controller.BookmarkDeleteController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>visitServlet</servlet-name>
+        <url-pattern>/visit</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>bookmarkDeleteServlet</servlet-name>
-    <url-pattern>/bookmark/delete</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>bookmarkUpdateServlet</servlet-name>
+        <servlet-class>controller.BookmarkUpdateController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>joinServlet</servlet-name>
-    <servlet-class>controller.JoinController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>bookmarkUpdateServlet</servlet-name>
+        <url-pattern>/bookmark/update</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>joinServlet</servlet-name>
-    <url-pattern>/join</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>bookmarkDeleteServlet</servlet-name>
+        <servlet-class>controller.BookmarkDeleteController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>loginServlet</servlet-name>
-    <servlet-class>controller.LoginController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>bookmarkDeleteServlet</servlet-name>
+        <url-pattern>/bookmark/delete</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>loginServlet</servlet-name>
-    <url-pattern>/login</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>joinServlet</servlet-name>
+        <servlet-class>controller.JoinController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>logoutServlet</servlet-name>
-    <servlet-class>controller.LogoutController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>joinServlet</servlet-name>
+        <url-pattern>/join</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>logoutServlet</servlet-name>
-    <url-pattern>/logout</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>controller.LoginController</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>myinfoServlet</servlet-name>
-    <servlet-class>controller.MyinfoController</servlet-class>
-  </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>myinfoServlet</servlet-name>
-    <url-pattern>/myinfo</url-pattern>
-  </servlet-mapping>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>controller.LogoutController</servlet-class>
+    </servlet>
 
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>myinfoServlet</servlet-name>
+        <servlet-class>controller.MyinfoController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myinfoServlet</servlet-name>
+        <url-pattern>/myinfo</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+    </welcome-file-list>
 </web-app>

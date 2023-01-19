@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>즐겨찾기 수정</title>
+    <%@ include file="./module/css_js_import.jsp"%>
 </head>
 <body>
     <div>

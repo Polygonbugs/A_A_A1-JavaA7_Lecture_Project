@@ -1,23 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%--@ page import="java.util.List, model.dto.VisitDTO" --%>
-<%--@ page import="java.text.SimpleDateFormat" --%>
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>방명록</title>
-<c:url var="staticUrl" value="../static" />
-<link type="text/css" rel="stylesheet" href="${staticUrl }/bs5/css/bootstrap.min.css">
-<link type="text/javscript" href="${staticUrl}/bs5/js/bootstrap.bundle.min.js"/>
-<link type="text/javscript" href="https://code.jquery.com/jquery-latest.min.js"/>
+	<meta charset="UTF-8">
+	<title>방명록</title>
+	<%@ include file="./module/css_js_import.jsp" %>
 </head>
 <body>
-<c:url var="mainUrl" value="/" />
-<a href="${mainUrl }">메인</a>
+<%@ include file="./module/top_nav.jsp" %>
 <h2>방명록</h2>
 <c:url var="visitUrl" value="/visit" />
 <form action="${visitUrl }" method="post">
@@ -28,12 +22,29 @@
 		<button type="submit">등록</button>
 	</div>
 </form>
+<div>
+	<select>
+		<option>10개</option>
+		<option>15개</option>
+		<option>20개</option>
+		<option>25개</option>
+		<option>30개</option>
+	</select>
+</div>
 <ul>
 	<c:forEach var="data" items="${requestScope.dataList }">
-		<%-- <fmt:formatDate type="both" dateStyle="long" timeStyle="long" var="date" value="${data.createDate }" />  --%>
 		<fmt:formatDate type="both" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="date" value="${data.createDate }"/>
-		<li>${data.userId } | ${data.context } | ${date } </li>
+		<li>${data.userId } | ${data.context } | ${date }</li>
 	</c:forEach>
 </ul>
+<div>
+	<a href="#">prev</a>
+	<a href="${visitUrl }?p=1">1</a>
+	<a href="${visitUrl }?p=2">2</a>
+	<a href="${visitUrl }?p=3">3</a>
+	<a href="${visitUrl }?p=4">4</a>
+	<a href="${visitUrl }?p=5">5</a>
+	<a href="#">next</a>
+</div>
 </body>
 </html>

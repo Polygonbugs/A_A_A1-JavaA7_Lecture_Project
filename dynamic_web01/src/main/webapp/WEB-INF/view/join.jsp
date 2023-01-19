@@ -12,9 +12,7 @@
 <html>
 <head>
     <title>회원가입</title>
-    <c:url var="staticUrl" value="../static" />
-    <link type="text/css" rel="stylesheet" href="${staticUrl }/bs5/css/bootstrap.min.css">
-    <link type="text/javascript" rel="stylesheet" href="${staticUrl}/bs5/js/bootstrap.bundle.min.js">
+    <%@ include file="./module/css_js_import.jsp"%>
 </head>
 <body>
     <h1>회원가입</h1>

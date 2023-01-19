@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>즐겨찾기</title>
+    <%@ include file="./module/css_js_import.jsp"%>
 </head>
 <body>
 <div>

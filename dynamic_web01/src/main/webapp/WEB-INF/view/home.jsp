@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="./module/css_js_import.jsp"%>
 </head>
 <body>
 	<h1 style="color: <%=(String)request.getAttribute("color") %>">직접 생성한 JSP/Servlet 페이지</h1>

@@ -17,4 +17,13 @@
         WHERE userId = #{userId}
         ORDER BY createdate DESC
     </select>
+    <select id="selectPage" resultType="model.dto.VisitDTO" parameterType="map">
+        SELECT userid, context, createdate
+        FROM ( SELECT ROWNUM AS N
+                    , USERID
+                    , CONTEXT
+                    , CREATEDATE
+                FROM (SELECT * FROM VISIT_T ORDER BY CREATEDATE DESC)
+        ) WHERE N BETWEEN #{start} AND #{end}
+    </select>
 </mapper>

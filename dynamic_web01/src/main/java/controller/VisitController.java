@@ -23,8 +23,17 @@ public class VisitController extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pageNumber = req.getParameter("p");
+		int pNum;
+
+		if(pageNumber == null || pageNumber.isEmpty()) {
+			pNum = 1;
+		} else {
+			pNum = Integer.parseInt(pageNumber);
+		}
+
 		VisitService service = new VisitService();
-		List<VisitDTO> visitList = service.getList();
+		List<VisitDTO> visitList = service.getPage(pNum);
 		req.setAttribute("dataList", visitList);
 		req.getRequestDispatcher("/WEB-INF/view/visit.jsp").forward(req, resp);
 	}

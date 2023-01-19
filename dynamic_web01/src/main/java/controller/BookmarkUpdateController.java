@@ -24,11 +24,6 @@ public class BookmarkUpdateController extends HttpServlet {
         // Parameter는 전부 문자열 형식이다. 그렇지만 id는 데이터베이스에서 NUMBER 자료형이다. 형변환이 필요하다.
         HttpSession session = req.getSession();
 
-        if(session.getAttribute("login") == null) {
-            resp.sendRedirect(req.getContextPath() + "/login");
-            return;
-        }
-
         UserDTO userData = (UserDTO)session.getAttribute("user");
 
         String id = req.getParameter("id");
@@ -45,11 +40,6 @@ public class BookmarkUpdateController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-
-        if(session.getAttribute("login") == null) {
-            resp.sendRedirect(req.getContextPath() + "/login");
-            return;
-        }
 
         UserDTO userData = (UserDTO)session.getAttribute("user");
 

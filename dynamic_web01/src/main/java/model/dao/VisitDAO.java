@@ -1,6 +1,8 @@
 package model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -32,5 +34,22 @@ public class VisitDAO {
 	public List<VisitDTO> selectNickname(VisitDTO data) {
 		List<VisitDTO> dataList = session.selectList("visitMapper.selectNickname", data);
 		return dataList;
+	}
+
+    public List<VisitDTO> selectPage(Map<String, Integer> page) {
+		List<VisitDTO> dataList = session.selectList("visitMapper.selectPage", page);
+		return dataList;
+    }
+
+	public void commit() {
+		session.commit();
+	}
+
+	public void rollback() {
+		session.rollback();
+	}
+
+	public void close() {
+		session.close();
 	}
 }
