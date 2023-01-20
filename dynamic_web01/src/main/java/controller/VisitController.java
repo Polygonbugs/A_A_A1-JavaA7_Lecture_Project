@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import model.dto.UserDTO;
 import model.dto.VisitDTO;
 import model.service.VisitService;
@@ -25,20 +22,50 @@ public class VisitController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pageNumber = req.getParameter("p");
 		int pNum;
-
 		if(pageNumber == null || pageNumber.isEmpty()) {
 			pNum = 1;
 		} else {
 			pNum = Integer.parseInt(pageNumber);
 		}
 
-		VisitService service = new VisitService();
-		List<VisitDTO> visitList = service.getPage(pNum);
+		Cookie cookie = null;
+		Cookie[] cookies = req.getCookies();
+		for(Cookie c: cookies) {
+			if(c.getName().equals("cnt")){
+				cookie = c;
+			}
+		}
 
-		List<Integer> pageList = service.getPageList();
+		String cnt = req.getParameter("cnt");
+		if(cnt != null) {
+			if(cnt.isEmpty()) {
+				if(cookie != null) {
+					cnt = cookie.getValue();
+				} else {
+					cnt = "10";	// 초기값
+				}
+			}
+		} else {
+			if(cookie != null) {
+				cnt = cookie.getValue();
+			} else {
+				cnt = "10";
+			}
+		}
+
+		cookie = new Cookie("cnt", cnt);
+		cookie.setMaxAge(60 * 60 * 24 * 5);
+		resp.addCookie(cookie);
+
+		VisitService service = new VisitService();
+		List<VisitDTO> visitList = service.getPage(pNum, Integer.parseInt(cnt));
+		List<Integer> pageList = service.getPageList(Integer.parseInt(cnt));
+		int lastPageNumber = service.getLastPageNumber(Integer.parseInt(cnt));
 
 		req.setAttribute("dataList", visitList);
 		req.setAttribute("pageList", pageList);
+		req.setAttribute("lastPageNumber", lastPageNumber);
+		req.setAttribute("cnt", cnt);
 		req.getRequestDispatcher("/WEB-INF/view/visit.jsp").forward(req, resp);
 	}
 	

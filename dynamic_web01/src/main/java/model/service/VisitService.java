@@ -25,10 +25,10 @@ public class VisitService {
 		return dataList;
 	}
 
-    public List<VisitDTO> getPage(int pNum) {
+    public List<VisitDTO> getPage(int pNum, int cnt) {
 		Map<String, Integer> page = new HashMap<String, Integer>();
-		page.put("start", (pNum - 1) * 10 + 1);
-		page.put("end", pNum * 10);
+		page.put("start", (pNum - 1) * cnt + 1);
+		page.put("end", pNum * cnt);
 
 		VisitDAO dao = new VisitDAO();
 		List<VisitDTO> dataList = dao.selectPage(page);
@@ -36,16 +36,25 @@ public class VisitService {
 		return dataList;
     }
 
-	public List<Integer> getPageList() {
+	public List<Integer> getPageList(int cnt) {
 		VisitDAO dao = new VisitDAO();
 		int totalRowCount = dao.selectTotalRowCount();
-		int mod = totalRowCount % 10 == 0? 0 : 1;
-		int pageCount = (totalRowCount / 10) + mod;
+		int mod = totalRowCount % cnt == 0? 0 : 1;
+		int pageCount = (totalRowCount / cnt) + mod;
 
 		List<Integer> pageList = new ArrayList<Integer>();
 		for(int i = 1; i <= pageCount; i++) {
 			pageList.add(i);
 		}
 		return pageList;
+	}
+
+	public int getLastPageNumber(int cnt) {
+		VisitDAO dao = new VisitDAO();
+		int totalRowCount = dao.selectTotalRowCount();
+		int mod = totalRowCount % cnt == 0? 0 : 1;
+		int pageCount = (totalRowCount / cnt) + mod;
+		dao.close();
+		return pageCount;
 	}
 }
