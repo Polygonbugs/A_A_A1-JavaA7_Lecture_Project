@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.*;
 import model.dto.BookmarkDTO;
 import model.dto.UserDTO;
 import model.service.BookmarkService;
+import page.Paging;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,6 +18,44 @@ public class BookmarkController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String pageNumber = req.getParameter("p");
+        int pNum;
+
+        if(pageNumber == null || pageNumber.isEmpty()) {
+            pNum = 1;
+        } else {
+            pNum = Integer.parseInt(pageNumber);
+        }
+
+        Cookie cookie = null;
+        Cookie[] cookies = req.getCookies();
+        for(Cookie c: cookies) {
+            if(c.getName().equals("cnt")) {
+                cookie = c;
+            }
+        }
+
+        String cnt = req.getParameter("cnt");
+        if(cnt != null) {
+            if(cnt.isEmpty()) {
+                if(cookie != null) {
+                    cnt = cookie.getValue();
+                } else {
+                    cnt = "10"; // 초기값
+                }
+            }
+        } else {
+            if(cookie != null) {
+                cnt = cookie.getValue();
+            } else {
+                cnt = "10";
+            }
+        }
+
+        cookie = new Cookie("cnt", cnt);
+        cookie.setMaxAge(60 * 60 * 24 * 5);
+        resp.addCookie(cookie);
+
         HttpSession session = req.getSession();
 
         UserDTO userData = (UserDTO)session.getAttribute("user");
@@ -24,8 +63,9 @@ public class BookmarkController extends HttpServlet {
         dto.setUserId(userData.getUserId());
 
         BookmarkService service = new BookmarkService();
-        List<BookmarkDTO> data = service.getAll(dto);      // Object로 Upcasting이 이루어진다.
-        req.setAttribute("data", data);
+        Paging paging = service.getPage(dto, pNum, Integer.parseInt(cnt));      // Object로 Upcasting이 이루어진다.
+        req.setAttribute("paging", paging);
+
         req.getRequestDispatcher("/WEB-INF/view/bookmark.jsp").forward(req, resp);
     }
 

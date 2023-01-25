@@ -12,6 +12,14 @@
     <select id="selectAll" parameterType="model.dto.BookmarkDTO" resultType="model.dto.BookmarkDTO">
         SELECT id, userId, url, name FROM BOOKMARK_T WHERE userId = #{userId} ORDER BY id
     </select>
+    <select id="selectPage" parameterType="map" resultType="model.dto.BookmarkDTO">
+        SELECT id, userid, url, name
+        FROM (SELECT ROWNUM AS N
+        , ID, USERID, URL, NAME
+        FROM (SELECT id, userId, url, name FROM BOOKMARK_T WHERE userId = #{userId} ORDER BY id)
+        )
+        WHERE N BETWEEN #{start} AND #{end}
+    </select>
     <insert id="insert" parameterType="model.dto.BookmarkDTO">
         INSERT INTO BOOKMARK_T VALUES(#{id}, #{userId}, #{url}, #{name})
     </insert>
@@ -26,4 +34,7 @@
     <delete id="delete" parameterType="model.dto.BookmarkDTO">
         DELETE FROM BOOKMARK_T WHERE id = #{id} AND userId = #{userId}
     </delete>
+    <select id = "selectTotalRowCount" parameterType="model.dto.BookmarkDTO" resultType="int">
+        SELECT COUNT(*) FROM BOOKMARK_T WHERE userId = #{userId}
+    </select>
 </mapper>

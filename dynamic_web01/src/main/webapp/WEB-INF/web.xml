@@ -113,6 +113,65 @@
         <url-pattern>/myinfo</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>boardServlet</servlet-name>
+        <servlet-class>controller.board.IndexController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>boardServlet</servlet-name>
+        <url-pattern>/board</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>boardDetailServlet</servlet-name>
+        <servlet-class>controller.board.DetailController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>boardDetailServlet</servlet-name>
+        <url-pattern>/board/detail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>boardAddServlet</servlet-name>
+        <servlet-class>controller.board.AddController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>boardAddServlet</servlet-name>
+        <url-pattern>/board/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>boardUpdateServlet</servlet-name>
+        <servlet-class>controller.board.UpdateController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>boardUpdateServlet</servlet-name>
+        <url-pattern>/board/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>boardDeleteServlet</servlet-name>
+        <servlet-class>controller.board.DeleteController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>boardDeleteServlet</servlet-name>
+        <url-pattern>/board/delete</url-pattern>
+    </servlet-mapping>
+    <!-- <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/view/error/404.jsp</location>
+    </error-page> -->
+
+    <!-- <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/view/error/500.jsp</location>
+    </error-page> -->
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>

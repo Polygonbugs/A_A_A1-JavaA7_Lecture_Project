@@ -18,5 +18,6 @@
         <mapper resource="mapper/visitMapper.xml" />
         <mapper resource="mapper/bookmarkMapper.xml" />
         <mapper resource="mapper/userMapper.xml" />
+        <mapper resource="mapper/boardMapper.xml" />
     </mappers>
 </configuration>

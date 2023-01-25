@@ -25,41 +25,42 @@
 <div>
 	<form action="${visitUrl }">
 		<select name="cnt" onchange="submit();">
-			<option value="10" ${requestScope.cnt eq 10 ? "selected" : ""}>10개</option>
-			<option value="15" ${requestScope.cnt eq 15 ? "selected" : ""}>15개</option>
-			<option value="20" ${requestScope.cnt eq 20 ? "selected" : ""}>20개</option>
-			<option value="25" ${requestScope.cnt eq 25 ? "selected" : ""}>25개</option>
-			<option value="30" ${requestScope.cnt eq 30 ? "selected" : ""}>30개</option>
+			<option value="2" ${requestScope.paging.pageLimit eq 2 ? "selected" : "" }>2 개</option>
+			<option value="10" ${requestScope.paging.pageLimit eq 10 ? "selected" : "" }>10 개</option>
+			<option value="15" ${requestScope.paging.pageLimit eq 15 ? "selected" : "" }>15 개</option>
+			<option value="20" ${requestScope.paging.pageLimit eq 20 ? "selected" : "" }>20 개</option>
+			<option value="25" ${requestScope.paging.pageLimit eq 25 ? "selected" : "" }>25 개</option>
+			<option value="30" ${requestScope.paging.pageLimit eq 30 ? "selected" : "" }>30 개</option>
 		</select>
 	</form>
 </div>
 <ul>
-	<c:forEach var="data" items="${requestScope.dataList }">
+	<c:forEach var="data" items="${requestScope.paging.page }">
 		<fmt:formatDate type="both" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="date" value="${data.createDate }"/>
 		<li>${data.userId } | ${data.context } | ${date }</li>
 	</c:forEach>
 </ul>
-<div>
-	<c:set var="pageNumber" value="${empty param.p ? 1: param.p}"/>
+<ul class="pagination">
+	<c:set var="pageNumber" value="${empty param.p ? 1 : param.p }" />
 	<c:choose>
-		<c:when test="${pageNumber eq 1}">
-			<a>prev</a>
+		<c:when test="${requestScope.paging.prevPage eq -1 }">
+			<li class="paging-item disabled"><a class="page-link">prev</a></li>
 		</c:when>
 		<c:otherwise>
-			<a href="${visitUrl }?p=${pageNumber - 1}">prev</a>
+			<li class="page-item"><a class="page-link" href="${visitUrl }?p=${requestScope.paging.prevPage }">prev</a></li>
 		</c:otherwise>
 	</c:choose>
-	<c:forEach var="pNum" items="${requestScope.pageList }">
-		<a href="${visitUrl }?p=${pNum }">${pNum }</a>
+	<c:forEach var="pNum" items="${requestScope.paging.pageList }">
+		<li class="page-item ${pNum eq param.p ? 'active' : ''}"><a class="page-link" href="${visitUrl }?p=${pNum }">${pNum }</a></li>
 	</c:forEach>
 	<c:choose>
-		<c:when test="${pageNumber eq requestScope.lastPageNumber }">
-			<a>next</a>
+		<c:when test="${requestScope.paging.nextPage eq -1 }">
+			<li class="page-item disabled"><a class="page-link">next</a></li>
 		</c:when>
 		<c:otherwise>
-			<a href="${visitUrl }?p=${pageNumber + 1}">next</a>
+			<li class="page-item"><a class="page-link" href="${visitUrl }?p=${requestScope.paging.nextPage }">next</a></li>
 		</c:otherwise>
 	</c:choose>
-</div>
+</ul>
 </body>
 </html>

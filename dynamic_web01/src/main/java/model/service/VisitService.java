@@ -7,6 +7,7 @@ import java.util.Map;
 
 import model.dao.VisitDAO;
 import model.dto.VisitDTO;
+import page.Paging;
 
 public class VisitService {
 
@@ -22,39 +23,25 @@ public class VisitService {
 	public List<VisitDTO> getList() {
 		VisitDAO dao = new VisitDAO();
 		List<VisitDTO> dataList = dao.select();
+		dao.close();
 		return dataList;
 	}
 
-    public List<VisitDTO> getPage(int pNum, int cnt) {
+	public Paging getPage(int pNum, int cnt) {
 		Map<String, Integer> page = new HashMap<String, Integer>();
 		page.put("start", (pNum - 1) * cnt + 1);
 		page.put("end", pNum * cnt);
 
 		VisitDAO dao = new VisitDAO();
 		List<VisitDTO> dataList = dao.selectPage(page);
-		dao.close();
-		return dataList;
-    }
 
-	public List<Integer> getPageList(int cnt) {
-		VisitDAO dao = new VisitDAO();
 		int totalRowCount = dao.selectTotalRowCount();
-		int mod = totalRowCount % cnt == 0? 0 : 1;
+		int mod = totalRowCount % cnt == 0 ? 0 : 1;
 		int pageCount = (totalRowCount / cnt) + mod;
 
-		List<Integer> pageList = new ArrayList<Integer>();
-		for(int i = 1; i <= pageCount; i++) {
-			pageList.add(i);
-		}
-		return pageList;
+		Paging paging = new Paging(dataList, pNum, pageCount, cnt, 5);
+		dao.close();
+		return paging;
 	}
 
-	public int getLastPageNumber(int cnt) {
-		VisitDAO dao = new VisitDAO();
-		int totalRowCount = dao.selectTotalRowCount();
-		int mod = totalRowCount % cnt == 0? 0 : 1;
-		int pageCount = (totalRowCount / cnt) + mod;
-		dao.close();
-		return pageCount;
-	}
 }

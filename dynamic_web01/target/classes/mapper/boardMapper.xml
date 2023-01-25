@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+    <select id="selectPage" parameterType="map" resultType="model.dto.BoardDTO">
+        SELECT id, btype, title, writer, createDate, viewCnt
+          FROM (
+            SELECT ROWNUM AS N
+                 , id
+                 , btype
+                 , title
+                 , writer
+                 , createDate
+                 , viewCnt
+              FROM (SELECT id, btype, title, writer, createDate, viewCnt FROM BOARD_T ORDER BY BTYPE DESC, ID)
+            )
+        WHERE N BETWEEN #{start} AND #{end}
+    </select>
+    <select id="selectTotalRowCount" resultType="int">
+        SELECT COUNT(*) FROM BOARD_T
+    </select>
+</mapper>

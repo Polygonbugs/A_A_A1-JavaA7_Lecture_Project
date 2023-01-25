@@ -5,6 +5,7 @@ import model.dto.BookmarkDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Map;
 
 public class BookmarkDAO {
 
@@ -19,31 +20,35 @@ public class BookmarkDAO {
         return id;
     }
 
+    public BookmarkDTO selectId(BookmarkDTO dto) {
+        BookmarkDTO data = session.selectOne("bookmarkMapper.selectId", dto);
+        return data;
+    }
+
+
     public List<BookmarkDTO> selectAll(BookmarkDTO dto) {
         List<BookmarkDTO> data = session.selectList("bookmarkMapper.selectAll", dto);
         return data;
     }
 
-    public int insert(BookmarkDTO dto) {
-        int count = session.insert("bookmarkMapper.insert", dto);
-        return count;
+    public List<BookmarkDTO> selectPage(Map<String, Object> map) {
+        List<BookmarkDTO> data = session.selectList("bookmarkMapper.selectPage", map);
+        return data;
     }
 
     public void commit() {
         session.commit();
     }
-
     public void rollback() {
         session.rollback();
     }
-
     public void close() {
         session.close();
     }
 
-    public BookmarkDTO selectId(BookmarkDTO dto) {
-        BookmarkDTO data = session.selectOne("bookmarkMapper.selectId", dto);
-        return data;
+    public int insert(BookmarkDTO dto) {
+        int count = session.insert("bookmarkMapper.insert", dto);
+        return count;
     }
 
     public int update(BookmarkDTO dto) {
@@ -56,5 +61,8 @@ public class BookmarkDAO {
         return count;
     }
 
-
+    public int selectTotalRowCount(BookmarkDTO dto) {
+        int count = session.selectOne("bookmarkMapper.selectTotalRowCount", dto);
+        return count;
+    }
 }
