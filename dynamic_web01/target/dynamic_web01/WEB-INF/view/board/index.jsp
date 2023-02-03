@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@include file="../module/css_js_import.jsp"%>
+<%@ include file="../module/css_js_import.jsp"%>
 <html>
 <head>
     <title>게시판 목록 페이지</title>
